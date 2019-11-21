@@ -1,0 +1,169 @@
+﻿
+@{
+    ViewBag.Title = "Pricing-Detail";
+}
+<!-- addListingInner page start -->
+<div class="container">
+    <div class="addListingInnerWrapper">
+        <div class="staticNav">
+            <a class="pp" href="#">Pricing plans</a>
+            <a class="g active" href="#">General Information</a>
+            <a class="ph" href="#">Photos</a>
+            <a class="c" href="#">Contact information</a>
+            <a class="p" href="#">Pricing</a>
+        </div>
+
+        <div class="rightSection">
+            <div class="addListingDetails">
+                <div class="sectionHeader">
+                    <p>Your listing details</p>
+                </div>
+
+                <div class="sectionBody">
+
+                    <div class="inputType md-form">
+                        <input type="text" id="title" class="form-control">
+                        <label for="title">Title</label>
+                    </div>
+
+                    <div class="inputType md-form">
+                        <input type="text" id="Tagline" class="form-control">
+                        <label for="Tagline">Tagline</label>
+                    </div>
+
+                    <div class="inputType">
+                        <textarea placeholder="Description" rows="5" type="text" name="desc" id="desc"></textarea>
+                    </div>
+
+                    <div class="selectType">
+                        <select class="mdb-select md-form">
+                            <option value="" disabled selected>Job type</option>
+                            <option value="1">Type</option>
+                            <option value="2">Type</option>
+                            <option value="3">Type</option>
+                        </select>
+
+                        <select class="mdb-select md-form">
+                            <option value="" disabled selected>Category</option>
+                            <option value="1">Option 1</option>
+                            <option value="2">Option 2</option>
+                            <option value="3">Option 3</option>
+                        </select>
+
+                        <select class="mdb-select md-form">
+                            <option value="" disabled selected>Where</option>
+                            <option value="1">Baku</option>
+                            <option value="2">Baku</option>
+                            <option value="3">Baku</option>
+                        </select>
+
+                        <select class="mdb-select md-form">
+                            <option value="" disabled selected>Company</option>
+                            <option value="1">Next</option>
+                            <option value="2">CM</option>
+                            <option value="3">IBM</option>
+                        </select>
+
+                        <select class="mdb-select md-form">
+                            <option value="" disabled selected>Experience level</option>
+                            <option value="1">Option</option>
+                            <option value="2">Option</option>
+                            <option value="3">Option</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="addListingPhotos">
+                <div class="sectionHeader">
+                    <p>Photos</p>
+                </div>
+
+                <div class="sectionBody">
+                    <span class="photoInfo">Maximum file size - 2 MB</span>
+
+                    <div class="photoUpload">
+                        <input type="file" name="Image" id="img">
+                        <label for="img">
+                            <i class="fas fa-upload"></i>
+                        </label>
+
+                        <div class="uploadedImages">
+                            <img src="http://via.placeholder.com/90x90" alt="Imagees">
+                            <img src="http://via.placeholder.com/90x90" alt="Imagees">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="addListingContact">
+                <div class="sectionHeader">
+                    <p>Contact informstion</p>
+                </div>
+
+                <div class="sectionBody">
+                    <div class="inputType md-form">
+                        <input type="text" id="email" class="form-control">
+                        <label for="email">E-mail</label>
+                    </div>
+
+                    <div class="inputType md-form">
+                        <input type="text" id="phone" class="form-control">
+                        <label for="phone">Phone number</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="addListingPricing">
+                <div class="sectionHeader">
+                    <p>Pricing</p>
+                </div>
+
+                <div class="sectionBody">
+                    <div class="inputType md-form">
+                        <input type="text" id="price" class="form-control">
+                        <label for="price">Price</label>
+                    </div>
+
+                    <div class="currencyType">
+                        <select class="browser-default custom-select">
+                            <option value="1">$</option>
+                            <option value="2">$</option>
+                            <option value="3">$</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn btnListingSend">Send</button>
+
+        </div>
+
+
+    </div>
+</div>
+<!-- addListingInner page end -->
+@section scripts{
+    <script>
+        $(function () {
+            // staticNav scroll
+            var $sidebar = $(".staticNav"),
+                $window = $(window),
+                offset = $sidebar.offset(),
+                topPadding = 15;
+
+            $(window).scroll(function () {
+                if ($window.scrollTop() > offset.top) {
+                    $sidebar.stop().animate({
+                        marginTop: $window.scrollTop() - offset.top + topPadding
+                    });
+                } else {
+                    $sidebar.stop().animate({
+                        marginTop: 0
+                    });
+                }
+            })
+        });
+    </script>
+}

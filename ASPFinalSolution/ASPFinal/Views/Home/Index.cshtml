@@ -1,0 +1,219 @@
+﻿@{
+    ViewBag.Title = "Home";
+}
+
+<!-- mobileMenu start -->
+<div class="closeLine">
+    <span>
+        <i class="fas fa-times"></i>
+    </span>
+</div>
+
+<div class="mobileMenuInner">
+    <div class="account">
+        <svg id="Group_193" data-name="Group 193" xmlns="https://www.w3.org/2000/svg" width="16" height="17.753" viewBox="0 0 16 17.753">
+            <circle id="Ellipse_1" data-name="Ellipse 1" cx="4.44" cy="4.44" r="4.44" transform="translate(3.558 0)" fill="#fff" />
+            <path id="Path_20" data-name="Path 20" d="M16,197.2H0a8,8,0,0,1,16,0Z" transform="translate(0 -179.444)" fill="#fff" />
+        </svg>
+    </div>
+
+
+    <div class="menuItems">
+        <a href="index.html">Home</a>
+        <a href="explore.html">Explore</a>
+        <a href="listing.html">Listing</a>
+        <a href="#">More</a>
+    </div>
+
+    <a class="addList" href="addListing.html">+ Add listing</a>
+</div>
+<!-- Main section start -->
+<section class="main">
+    <div class="container">
+        <div class="findSection">
+            <div class="desc">
+                <h1>Find your next job easily</h1>
+                <p>Everyday we get +<span>10.000</span> listing</p>
+            </div>
+            <div class="tabLine">
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="buy" role="tabpanel" aria-labelledby="buy-tab">
+
+                        <div class="md-form">
+                            <input type="text" id="form1" class="form-control">
+                            <label for="form1">Job title</label>
+                        </div>
+
+                        <select class="mdb-select md-form" searchable="Search...">
+                            <option value="" disabled selected>Job type</option>
+                            <option value="1">Option 1</option>
+                            <option value="2">Option 2</option>
+                            <option value="3">Option 3</option>
+                        </select>
+
+                        <select class="mdb-select md-form" searchable="Search...">
+                            <option value="" disabled selected>Category</option>
+                            <option value="1">Option 1</option>
+                            <option value="2">Option 2</option>
+                            <option value="3">Option 3</option>
+                        </select>
+
+                        <select class="mdb-select md-form" searchable="Search...">
+                            <option value="" disabled selected>Where</option>
+                            <option value="1">Option 1</option>
+                            <option value="2">Option 2</option>
+                            <option value="3">Option 3</option>
+                        </select>
+
+                    </div>
+                </div>
+                <button class="searchBtn">Search</button>
+                <form action="explore.html" method="get">
+                    <button class="searchBtn detailed">Detailed search</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Main section end -->
+<!-- Categories section start -->
+<section class="categories">
+    <div class="container">
+        <div class="categoriesWrapper">
+            <div class="textBar">
+                <h1>Recent Jobs</h1>
+                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.</p>
+            </div>
+
+            <div class="categoriesBar">
+                <a href="@Url.Action("index","explore")">
+                    <div class="categoriesItem">
+                        <p>Graphic Designer</p>
+                        <span>New York, USA</span>
+
+                        <img src="~/Public/img/global/jobArrow.svg" alt="Arrow">
+                    </div>
+                </a>
+
+                <a href="explore.html">
+                    <div class="categoriesItem">
+                        <p>Copyrighter</p>
+                        <span>Tallin, Estonia</span>
+
+                        <img src="~/Public/img/global/jobArrow.svg" alt="Arrow">
+                    </div>
+                </a>
+
+                <a href="explore.html">
+                    <div class="categoriesItem">
+                        <p>Account</p>
+                        <span>Paris, France</span>
+
+                        <img src="~/Public/img/global/jobArrow.svg" alt="Arrow">
+                    </div>
+                </a>
+
+                <a href="explore.html">
+                    <div class="categoriesItem">
+                        <p>Manager</p>
+                        <span>Baku, Azerbaijan</span>
+
+                        <img src="~/Public/img/global/jobArrow.svg" alt="Arrow">
+                    </div>
+                </a>
+
+                <a href="explore.html">
+                    <div class="categoriesItem">
+                        <p>Photograph</p>
+                        <span>Berlin, Germany</span>
+
+                        <img src="~/Public/img/global/jobArrow.svg" alt="Arrow">
+                    </div>
+                </a>
+
+                <a href="explore.html">
+                    <div class="categoriesItem">
+                        <p>.NET Developer</p>
+                        <span>San Fransisco, USA</span>
+
+                        <img src="~/Public/img/global/jobArrow.svg" alt="Arrow">
+                    </div>
+                </a>
+
+                <a href="explore.html">
+                    <div class="categoriesItem">
+                        <p>FrontEnd Developer</p>
+                        <span>Prague, Czech Republic</span>
+
+                        <img src="~/Public/img/global/jobArrow.svg" alt="Arrow">
+                    </div>
+                </a>
+
+                <a href="explore.html">
+                    <div class="categoriesItem">
+                        <p>Project Manager</p>
+                        <span>Montreal, Canada</span>
+
+                        <img src="~/Public/img/global/jobArrow.svg" alt="Arrow">
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Categories section end -->
+<!-- Pricing section start -->
+<section class="pricing">
+    <div class="container">
+        <div class="pricingWrapper">
+            <div class="pricingContent">
+                <h1>Pricing plans</h1>
+                <p>You can select one of the pricing plans or you can try the free listing submission just one time.</p>
+
+                <a class="tryBtn" href="addListing.html">Try it for free</a>
+            </div>
+
+            <div class="pricingList">
+                <div class="pricingItem">
+                    <p class="planName">Bronze</p>
+                    <h1 class="planPrice"><sup>$</sup>5<span>/mo</span></h1>
+
+                    <ul>
+                        <li>3 listing submissions</li>
+                        <li>180 days expirations</li>
+                        <li>Sell your car</li>
+                        <li>Rent your car</li>
+                    </ul>
+                </div>
+
+                <div class="pricingItem">
+
+                    <p class="recomeded">RECOMENDED</p>
+
+                    <p class="planName">Silver</p>
+                    <h1 class="planPrice"><sup>$</sup>10<span>/mo</span></h1>
+
+                    <ul>
+                        <li>5 listing submissions</li>
+                        <li>180 days expirations</li>
+                        <li>Sell your car</li>
+                        <li>Rent your car</li>
+                    </ul>
+                </div>
+
+                <div class="pricingItem">
+                    <p class="planName">Gold</p>
+                    <h1 class="planPrice"><sup>$</sup>15<span>/mo</span></h1>
+
+                    <ul>
+                        <li>10 listing submissions</li>
+                        <li>180 days expirations</li>
+                        <li>Sell your car</li>
+                        <li>Rent your car</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Pricing section end -->

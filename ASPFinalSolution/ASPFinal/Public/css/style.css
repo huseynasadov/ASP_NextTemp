@@ -1,0 +1,2701 @@
+
+/* -----------------------------------------------------------------------------------
+
+    Template Name: Next Job - HTML5 Template
+    Template URI: http://nextexmp.org/car
+    Description: Next Job - HTML5 Template
+    Author: Nextemp
+    Author URI: http://nextemp.org/
+    Version: 1.0.0
+
+-----------------------------------------------------------------------------------
+    
+    CSS INDEX
+    =========================================
+    
+    1. Theme default CSS
+            1.1 - Fonts
+            1.2 - Global
+    2. Navbar
+            2.1 – Login Form
+            2.2 – Mobile menu
+            2.3 – Navbar with header
+    3. Main section
+            3.1 – Find section
+    4. Categories section
+    5. Pricing section
+    6. Footer section
+    7. Contact page
+            7.1 – Contact Body
+    8. News Page
+            8.1- newsInside page
+    9. Explore page
+    11. addListing page
+            10.1 – addListingInner page
+    11. Account page
+    12. listInside page
+    13. Responsive css on responsive.css
+
+----------------------------------------------------------------------------------- */
+
+
+
+/* --- 1.Theme default CSS --- */
+
+/* --- 1.1 - Fonts  --- */
+
+/* =========== FontAwesome =========== */
+
+@font-face {
+font-family: 'FontAwesome';
+font-style: normal;
+font-weight: 900;
+font-display: auto;
+src: url("../webfonts/fa-solid-900.eot");
+src: url("../webfonts/fa-solid-900.eot?#iefix") format("embedded-opentype"), url("../webfonts/fa-solid-900.woff2") format("woff2"), url("../webfonts/fa-solid-900.woff") format("woff"), url("../webfonts/fa-solid-900.ttf") format("truetype"), url("../webfonts/fa-solid-900.svg#fontawesome") format("svg"); }
+
+   
+/* --- 1.2 - Global --- */
+
+body{
+    background: #F2F3F5;
+    overflow-x: hidden;
+}
+
+/* --- 2. Navbar --- */
+nav{
+    position: absolute !important;
+    width: 100%;
+    justify-content: space-between !important;
+    box-shadow: none !important;
+    margin-top: 60px;
+    padding: 0 !important;
+    z-index: 1;
+}
+
+nav .navbar-brand img{
+    height: initial !important;
+}
+
+nav .searchWrap{
+    width: 25%;
+}
+
+nav .searchWrap .searchBar{
+    position: relative;
+    border: none;
+    background: transparent;
+    border-bottom: 1px solid white;
+    width: 100%;
+    padding-bottom: 12px;
+    padding-left: 46px;
+    z-index: 1;
+}
+
+nav .searchWrap .searchBar + label{
+    position: absolute;
+    display: inline-block;
+    top: 0;
+}
+
+nav .searchWrap .searchBar + label:before{
+    content: '\f002';
+    font-family: 'FontAwesome';
+    color: white;
+    font-size: 17px;
+}
+
+nav .searchWrap .searchBar{
+    color: white;
+    font-size: 14px;
+}
+
+nav .searchWrap .searchBar:focus{
+    outline: none;
+}
+
+nav .navbar-collapse{
+    flex-grow: 0 !important;
+}
+
+nav .navbar-nav{
+    align-items: center;
+}
+
+nav .nav-item{
+    position: relative;
+    margin-left: 30px;
+    transition: .2s all linear;
+}
+
+nav .nav-item.dropdown{
+    position: relative;
+}
+
+nav .nav-item.dropdown .dropInner{
+    position: absolute;
+    display: none;
+    padding-top: 15px;
+}
+
+nav .nav-item.dropdown .dropItems{
+    transition: .2s all linear;
+    background: white;
+    border-radius: 3px;
+    padding: 20px;
+    width: 200px;
+    padding-top: 15px;
+    left: 0;
+}
+
+nav .nav-item.dropdown .dropItems a{
+    color: black;
+    display: block;
+    margin: 10px 0;
+    transition: .2s all linear;
+}
+
+nav .nav-item.dropdown .dropItems a:hover{
+    padding-left: 10px;
+}
+
+nav .nav-item.dropdown:hover .dropInner{
+    display: block;
+}
+
+nav .nav-item::after{
+    content: "";
+    position: absolute;
+    border-bottom: 1px solid white;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    transition: .2s all linear;
+}
+
+nav .nav-item:not(.account):not(.addList):hover::after{
+    width: 100%;
+}
+
+nav .nav-item.account{
+    margin-left: 25px;
+    border: 1px solid white;
+    border-radius: 3px;
+    padding: 7px 13px;
+    text-align: center;
+    cursor: pointer;
+}
+
+nav .nav-item.account svg{
+    width: 15px;
+}
+
+nav .nav-link{
+    font-size: 14px;
+    color: white !important;
+}
+
+nav .nav-link.addList{
+    padding: 10px 30px !important;
+    background: #2271EF;
+    color: white;
+    border-radius: 3px;
+}
+
+/* --- 2.1 - Login form --- */
+.loginForm{
+    display: none;
+    position: absolute;
+    background: white;
+    padding: 40px 30px 20px;
+    right: 0;
+    bottom: -615%;
+    border-radius: 3px;
+}
+
+.loginForm .md-form{
+    margin: 0;
+    width: 200px;
+}
+
+.loginForm .md-form:nth-of-type(2){
+    margin-top: 25px;
+}
+
+.loginForm input{
+    border-color: #C2C7CE;
+}
+
+.loginForm label{
+    font-size: 14px;
+    color: #C2C7CE;
+    top: 10px;
+}
+
+.loginForm .btnLogin{
+    margin: 0;
+    margin-top: 24px;
+    padding: 10px;
+    background: #2271EF;
+    color: white;
+    text-transform: inherit;
+    width: 100%;
+}
+
+.loginForm a{
+    display: block;
+    color: #2271EF;
+    font-size: 13px;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.loginForm::before{
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    right: 10px;
+    top: -7px;
+    background: white;
+    border-radius: 3px;
+    transform: rotate(-45deg);
+}
+
+/* --- 2.2 - mobileMenu --- */
+.closeLine,
+.mobileMenuInner{
+    display: none;
+}
+
+/* --- 2.3 - Navbar with header --- */
+.header{
+    background: white;
+    height: 160px;
+}
+
+.header .nav-item::after{
+    border-bottom-color: #000;
+}
+
+.header .nav-item.account{
+    border: 1px solid black;
+}
+
+.header .nav-item.account svg #Ellipse_1,
+.header .nav-item.account svg #Path_20{
+    fill: #000;
+}
+
+.header .nav-link{
+    color: #000 !important;
+}
+
+.header .nav-link.addList{
+    color: white !important;
+    background: #000;
+}
+
+.header .searchWrap .searchBar{
+    border-bottom-color: #000;
+}
+
+/* --- 1.3 - Preloader --- */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #fff;
+    /* change if the mask should have another color then white */
+    z-index: 99;
+    /* makes sure it stays on top */
+}
+
+#status {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    left: 50%;
+    /* centers the loading animation horizontally one the screen */
+    top: 50%;
+    /* centers the loading animation vertically one the screen */
+    background-image: url(/Public/img/global/preloader.svg);
+    /* path to your loading animation */
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: -100px 0 0 -100px;
+    /* is width and height divided by two */
+}
+
+
+
+/* --- 3. Main section --- */
+.main {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    background-image: url(/Public/img/mainBg.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: top;
+    top: 0;
+    height: 50vh;
+    width: 100%;
+}
+
+/* --- 3.1 - Find section --- */
+.main .findSection{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 0 auto;
+    top: 55%;
+    z-index: 1;
+}
+
+.main .findSection .desc{
+    width: 100%;
+}
+
+.main .findSection .desc h1{
+    font-size: 64px;
+    color: white;
+    font-weight: 700;
+}
+
+.main .findSection .desc p{
+    color: white;
+    font-size: 15px;
+}
+
+.main .findSection .desc p span{
+    font-weight: 600;
+}
+
+.main .findSection .tabLine{
+    width: 100%;
+    margin-top: 30px;
+}
+
+.main .findSection .tabLine .tab-content{
+    background: white;
+    padding: 5px 50px;
+}
+
+.main .findSection .tabLine .tab-content .tab-pane{
+    display: flex;
+    justify-content: space-between;
+}
+
+.main .findSection .tabLine .tab-content .tab-pane>.md-form{
+    width: 23%;
+}
+
+.main .findSection .tabLine .tab-content .tab-pane .md-form label{
+    font-size: 14px;
+}
+
+.main .findSection .tabLine .tab-content .tab-pane .select-wrapper{
+    width: 23%;
+    margin-bottom: 0;
+}
+
+.main .findSection .tabLine .tab-content .tab-pane .select-wrapper .select-dropdown{
+    font-size: 14px;
+    color: #9099A7;
+}
+
+.main .findSection .tabLine .tab-content .tab-pane .select-wrapper span.caret{
+    font-size: 15px;
+    margin-right: 15px;
+}
+
+.main .findSection .tabLine button.searchBtn{
+    float: right;
+    font-size: 14px;
+    color: white;
+    background: #2271EF;
+    padding: 12px 60px;
+    border: none;
+    font-weight: 700;
+}
+
+.main .findSection .tabLine button.searchBtn.detailed{
+    background: none;
+    padding: 0;
+    margin-right: 40px;
+    margin-top: 13px;
+    color: #808080;
+    font-weight: 400;
+}
+
+/* --- 4. Categories section --- */
+.categories{
+    position: relative;
+    margin-top: 180px;
+}
+
+.categoriesWrapper{
+    display: flex;
+    align-items: baseline;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.categoriesWrapper .textBar{
+    position: relative;
+    width: 27%;
+    margin-right: 32px;
+}
+
+.categoriesWrapper .textBar:before{
+    content: "";
+    position: absolute;
+    border-top: 5px solid #2271EF;
+    top: -38px;
+    left: 0;
+    width: 40px;
+}
+
+.categoriesWrapper .textBar h1{
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.categoriesWrapper .textBar p{
+    font-size: 14px;
+    margin-top: 25px;
+}
+
+.categoriesWrapper .categoriesBar{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.categoriesWrapper .categoriesBar a{
+    flex: 0 0 50%;
+}
+
+.categoriesWrapper .categoriesBar .categoriesItem{
+    position: relative;
+    background: white;
+    padding-bottom: 10px;
+    margin: 0 8px 15px;
+    padding: 10px 30px;
+    transition: .2s all linear;
+}
+
+.categoriesWrapper .categoriesBar .categoriesItem p{
+    font-size: 14px;
+    color: #919191;
+    font-weight: 700;
+    margin-bottom: 0;
+    transition: .2s all linear;
+}
+
+.categoriesWrapper .categoriesBar .categoriesItem span{
+    color: #919191;
+    font-size: 12px;
+    display: block;
+    margin-top: 5px;
+    transition: .2s all linear;
+}
+
+.categoriesWrapper .categoriesBar .categoriesItem img{
+    position: absolute;
+    right: 30px;
+    top: 47%;
+}
+
+.categoriesWrapper .categoriesBar .categoriesItem:hover p,
+.categoriesWrapper .categoriesBar .categoriesItem:hover span
+    {
+    color: white;
+}
+
+.categoriesWrapper .categoriesBar .categoriesItem:hover{
+    background: #2271EF;
+    -webkit-box-shadow: 0px 0px 46px 15px rgba(224,224,224,1);
+    -moz-box-shadow: 0px 0px 46px 15px rgba(224,224,224,1);
+    box-shadow: 0px 0px 46px 15px rgba(224,224,224,1);
+}
+
+/* --- 5. Pricing section --- */
+.pricing{
+    margin-top: 60px;
+    padding: 100px 0;
+    background: #2271EF;
+}
+
+.pricing .pricingWrapper{
+    display: flex;
+}
+
+.pricing .pricingWrapper .pricingContent{
+    width: 17%;
+    margin: 0 70px;
+}
+
+.pricing .pricingWrapper .pricingContent h1{
+    font-size: 64px;
+    font-weight: 700;
+    color: white;
+}
+
+.pricing .pricingWrapper .pricingContent p{
+    font-size: 14px;
+    margin-top: 20px;
+    color: white;
+}
+
+.pricing .pricingWrapper .pricingContent .tryBtn{
+    display: inline-block;
+    color: white;
+    font-size: 14px;
+    border: 1px solid white;
+    padding: 10px 30px;
+    margin-top: 25px;
+    border-radius: 3px;
+}
+
+.pricing .pricingWrapper .pricingList{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.pricing .pricingWrapper .pricingList .pricingItem{
+    position: relative;
+    flex: 0 0 31.333333%;
+    background: white;
+    border: 1px solid white;
+    text-align: center;
+    padding: 50px 0 20px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin: 0 10px;
+    transition: .2s all linear;
+}
+
+.pricing .pricingWrapper .pricingList .pricingItem .recomeded{
+    position: absolute;
+    font-size: 12px;
+    top: 25px;
+    color: #1E52A8;
+    text-align: center;
+    width: 100%;
+}
+
+.pricing .pricingWrapper .pricingList .pricingItem .planName{
+    font-size: 25px;
+    color: #286FE9;
+    transition: .2s all linear;
+}
+
+.pricing .pricingWrapper .pricingList .pricingItem .planPrice{
+    font-size: 64px;
+    font-weight: 600;
+    color: #286FE9;
+    transition: .2s all linear;
+}
+
+.pricing .pricingWrapper .pricingList .pricingItem .planPrice sup{
+    font-size: 24px;
+    top: -1.2em !important;
+}
+
+.pricing .pricingWrapper .pricingList .pricingItem .planPrice span{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.pricing .pricingWrapper .pricingList .pricingItem ul{
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.pricing .pricingWrapper .pricingList .pricingItem ul li{
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #ADADAD;
+    transition: .2s all linear;
+}
+
+.pricing .pricingWrapper .pricingList .pricingItem:hover {
+    background: #2570EC;
+}
+
+.pricing .pricingWrapper .pricingList .pricingItem:hover .planName,
+.pricing .pricingWrapper .pricingList .pricingItem:hover .planPrice,
+.pricing .pricingWrapper .pricingList .pricingItem:hover ul li{
+    color: white;
+}
+
+
+/* --- 6. Footer section --- */
+footer{
+    background: white;
+    padding: 53px 0 90px;
+}
+
+footer .socialIcons{
+    margin-top: 40px;
+}
+
+footer .socialIcons a{
+    display: inline-block;
+    border: 1px solid #000;
+    border-radius: 3px;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    line-height: 35px;
+    color: black;
+    margin-right: 10px;
+    font-size: 15px;
+    transition: .2s all linear;
+}
+
+footer .socialIcons a:hover{
+    background: black;
+    color: white;
+}
+
+footer .copyright{
+    font-size: 14px;
+    color: #ADADAD;
+    margin-bottom: 0;
+}
+
+footer .copyright:nth-of-type(1){
+    margin-top: 40px;
+}
+
+footer .footeSecTitle{
+    position: relative;
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+}
+
+footer .footeSecTitle:after{
+    content: "";
+    position: absolute;
+    border-bottom: 2px solid #2570EC;
+    width: 40px;
+    left: 0;
+    bottom: -10px;
+}
+
+footer .news{
+    margin-top: 40px;
+}
+
+footer .news a{
+    display: block;
+    margin-bottom: 20px;
+}
+
+footer .news .innerNews{
+    display: flex;
+}
+
+footer .news .innerNews img{
+    height: 70px;
+    width: 70px;
+    object-fit: cover;
+    border-radius: 3px;
+    margin-right: 20px;
+}
+
+
+footer .news .innerNews .newsTitle{
+    font-size: 14px;
+    font-weight: 600;
+    color: #656569;
+    margin-bottom: 0;
+}
+
+footer .news .innerNews .newsDesc{
+    font-size: 14px;
+    color: #919191;
+}
+footer .links{
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+footer .links a{
+    flex: 0 0 50%;
+    color: #919191;
+    font-size: 14px;
+    margin-bottom: 35px;
+    transition: .2s all linear;
+}
+
+footer .links a:hover{
+    color: #2570EC;
+    padding-left: 10px;
+}
+
+footer .phone,
+footer .address{
+    margin-top: 40px;
+    color: #919191;
+    font-size: 14px;
+}
+
+/* --- 7. Contact Page --- */
+.contactTitle{
+    font-size: 48px;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 60px;
+}
+
+.contactDesc{
+    font-size: 16px;
+    margin-top: 10px;
+    color: #5C5C5C;
+    display: inline-block;
+    text-align: center;
+    width: 44%;
+}
+
+/* --- 7.1 Contact Body --- */
+.contactWrapper{
+   display: flex;
+   flex-wrap: wrap;
+   width: 80%;
+   margin: 40px auto 100px;
+   border-radius: 3px;
+   overflow: hidden;
+}
+
+.contactWrapper .contactForm,
+.contactWrapper .contactInformation{
+    flex: 0 0 50%;
+    padding: 45px;
+    text-align: left;
+}
+
+.contactWrapper .contactForm{
+    background: white;
+}
+
+.contactWrapper .contactForm .formTitle{
+    display: flex;
+    align-items: flex-start;
+    color: #5C5C5C;
+    font-size: 14px;
+}
+
+.contactWrapper .contactForm .formTitle img{
+    margin-right: 15px;
+}
+
+.contactWrapper .contactForm .form-group{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.contactWrapper .contactForm .form-group:nth-of-type(1){
+    margin-top: 40px;
+}
+
+.contactWrapper .contactForm .form-group label{
+    font-size: 14px;
+    color: #5C5C5C;
+    position: relative;
+    top: 30px;
+    flex: 0 0 100%;
+    order: 1;
+    transition: .2s all linear;
+    transform: scale(1,1);
+    z-index: 1;
+}
+
+.contactWrapper .contactForm .form-group input,
+.contactWrapper .contactForm .form-group textarea{
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #DEDEDE;
+    left: 0;
+    font-size: 14px;
+    color: #5C5C5C;
+    flex: 0 0 100%;
+    padding-bottom: 8px;
+    order: 2;
+}
+
+.contactWrapper .contactForm .form-group input,
+.contactWrapper .contactForm .form-group textarea{
+    font-size: 14px;
+}
+
+.contactWrapper .contactForm .form-group textarea{
+    resize: none;
+    height: 160px;
+}
+
+.contactWrapper .contactForm .form-group input:focus,
+.contactWrapper .contactForm .form-group textarea:focus{
+    outline: none;
+}
+
+.contactWrapper .contactForm .form-group input:focus+label,
+.contactWrapper .contactForm .form-group textarea:focus+label{
+    top: 0;
+    transform: scale(0.9,0.9);
+    transform-origin: top left;
+}
+
+.contactWrapper .contactForm .btnSend{
+    font-size: 14px;
+    font-weight: 600;
+    background: #2271EF !important;
+    text-transform: none !important;
+    width: 132px;
+}
+
+.contactWrapper .contactInformation{
+    background: #2271EF;
+}
+
+.contactWrapper .contactInformation .contactInformationTitle{
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+}
+
+.contactWrapper .contactInformation .contactInformationTitle + .phone{
+    color: white;
+    margin-top: 56px;
+}
+
+.contactWrapper .contactInformation .contactInformationTitle + .phone + .address{
+    color: white;
+    margin-top: 30px;
+}
+
+.contactWrapper .contactInformation .socialIcons{
+    margin-top: 140px;
+}
+
+.contactWrapper .contactInformation .socialIcons a{
+    display: inline-block;
+    border: 1px solid #fff;
+    border-radius: 3px;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    line-height: 35px;
+    color: white;
+    margin-right: 10px;
+    font-size: 15px;
+    transition: .2s all linear;
+}
+
+.contactWrapper .contactInformation .socialIcons a:hover{
+    background: white;
+    color: #2271EF;
+}
+
+
+/* --- 8. News Page --- */
+.newsWrapper{
+    margin-top: 100px;
+}
+
+.newsWrapper .headerBar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.newsWrapper .headerBar .pageTitle{
+    position: relative;
+    font-size: 30px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.newsWrapper .headerBar .pageTitle::before{
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    width: 40px;
+    border-bottom: 5px solid #2271EF;
+}
+
+.newsWrapper .headerBar select{
+    width: 140px;
+}
+
+.newsWrapper .headerBar .select-wrapper .select-dropdown{
+    font-size: 14px;
+    color: #000;
+    border-color: #000;
+}
+
+.newsWrapper .headerBar .select-wrapper span.caret{
+    font-size: 15px;
+    margin-right: 11px;
+}
+
+.newsWrapper .headerBar .select-wrapper span.caret i{
+    color: #000 !important;
+}
+
+.newsWrapper .newsList{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.newsWrapper .newsList a{
+    flex: 0 0 32.5%;
+    margin-bottom: 20px;
+    transition: .2s all ease-in-out;
+}
+
+.newsWrapper .newsList a:hover{
+    margin-top: -10px; 
+}
+
+.newsWrapper .newsList .newsItem{
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.newsWrapper .newsList .newsItem .itemCover{
+    position: relative;
+    height: 300px;
+}
+
+.newsWrapper .newsList .newsItem .itemCover:after{
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.newsWrapper .newsList .newsItem .itemCover img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.newsWrapper .newsList .newsItem .itemBody{
+    position: relative;
+    background: #fff;
+    padding: 29px;
+}
+
+.newsWrapper .newsList .newsItem .itemBody .itemName{
+    color: #2271EF;
+    font-size: 14px;
+    font-weight: 600;
+    width: 50%;
+}
+
+.newsWrapper .newsList .newsItem .itemBody .itemDesc{
+    font-size: 14px;
+    color: #919191;
+}
+
+.newsWrapper .newsList .newsItem .itemBody .itemDate{
+    background: url(/Public/img/global/quick.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    position: absolute;
+    padding: 20px 40px 0;
+    right: 20px;
+    font-size: 11px;
+    color: #7C7C7C;
+    font-weight: 600;
+    text-align: center;
+    top: -41px;
+}
+
+/* --- 8.1 - NewsInside Page ---  */
+.cover{
+    position: relative;
+    height: 550px;
+}
+
+.cover:after{
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.cover img[alt="Cover"]{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.newsBody{
+    position: relative;
+    z-index: 1;
+    margin: -250px auto 100px;
+}
+
+.newsBody a.btnBack{
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: white;
+}
+
+.newsBody a.btnBack img{
+    margin-right: 13px;
+}
+
+.newsBody .bodyHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 30px;
+}
+
+.newsBody .bodyHeader h4{
+    font-size: 30px;
+    font-weight: 600;
+    margin: 0;
+    color: white;
+    width: 30%;
+}
+
+.newsBody .bodyHeader .newsDate{
+    font-size: 14px;
+    color: white;
+    padding: 10px 17px 10px 10px;
+    border: 1px solid #fff;
+    border-radius: 2px;
+    margin: 0;
+}
+
+.newsBody .bodyHeader .newsDate i{
+    font-size: 15px;
+    margin-right: 15px;
+}
+
+.newsBody .bodyContent{
+    background: #fff; 
+    margin-top: 30px;
+    border-radius: 3px;
+    padding: 60px 0;
+}
+
+.newsBody .bodyContent p{
+    color: #919191;
+    font-size: 16px;
+    text-align: justify;
+    line-height: 26px;
+    margin: 0 45px;
+}
+
+.newsBody .bodyContent .innerImage{
+    position: relative;
+    height: 570px;
+    margin: 35px 0 45px;
+}
+
+.newsBody .bodyContent .innerImage:after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.newsBody .bodyContent .innerImage img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.newsBody .bodyContent hr{
+    margin-top: 25px;
+}
+
+.newsBody .bodyContent .newsComment{
+    margin: 37px 45px 0;
+}
+
+.newsBody .bodyContent .newsComment .commentSectionTitle{
+    position: relative;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+    color: #000;
+}
+
+.newsBody .bodyContent .newsComment .commentSectionTitle:after{
+    content: "";
+    position: absolute;
+    border-bottom: 2px solid #2570EC;
+    width: 40px;
+    left: 0;
+    bottom: -10px;
+}
+
+.newsBody .bodyContent .newsComment .commentItem{
+    display: flex;
+    margin-top: 33px;
+}
+
+.newsBody .bodyContent .newsComment .commentItem:nth-of-type(1){
+    margin-top: 70px;
+}
+
+.newsBody .bodyContent .newsComment .commentItem img,
+.newsBody .bodyContent .newsComment .addComment img{
+    border-radius: 100%;
+    height: 70px;
+    width: 70px;
+    object-fit: cover;
+}
+
+.newsBody .bodyContent .newsComment .commentItem .commentText{
+    margin-left: 13px;
+    padding-left: 5px;
+    border-bottom: 1px solid #DEDEDE;
+    width: 100%;
+}
+
+.newsBody .bodyContent .newsComment .commentItem .commentText p{
+    font-size: 14px;
+    margin: 0;
+    color: #919191;
+}
+
+.newsBody .bodyContent .newsComment .btnSeeMore{
+    float: right;
+    color: #2271EF;
+    font-size: 14px;
+    margin-top: 30px;
+}
+
+.newsBody .bodyContent .newsComment .addComment{
+    display: flex;
+    margin-top: 90px;
+    align-items: flex-end;
+}
+
+.newsBody .bodyContent .newsComment .addComment .commentInput{
+    border-bottom: 1px solid #DEDEDE;
+    margin-left: 13px;
+    height: 70px;
+    width: 50%;
+}
+
+.newsBody .bodyContent .newsComment .addComment .commentInput input[type="text"]{
+    border: none;
+}
+
+.newsBody .bodyContent .newsComment .addComment .commentInput input[type="text"]{
+    font-size: 14px;
+    color: #B1B1B1;
+}
+
+.newsBody .bodyContent .newsComment .addComment .commentInput input[type="text"]:focus{
+    outline: none;
+}
+
+.newsBody .bodyContent .newsComment .addComment .btnAddComment{
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    background: #2271EF;
+    border: none;
+    height: 46px;
+    border-radius: 2px;
+    padding: 0 30px;
+    margin-left: 50px;
+}
+
+
+/* --- 9. Explore Page --- */
+.exploreWrapper{
+    margin: 70px 0 100px;
+}
+
+.exploreWrapper .headerBar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.exploreWrapper .headerBar .resultText{
+    font-size: 16px;
+    margin: 0;
+}
+
+.exploreWrapper .headerBar .resultText span{
+    font-weight: 600;
+}
+
+.exploreWrapper .headerBar select{
+    width: 140px;
+}
+
+.exploreWrapper .headerBar .select-wrapper{
+    margin: 0;
+}
+
+.exploreWrapper .headerBar .select-wrapper .select-dropdown{
+    font-size: 14px;
+    color: #000;
+    border-color: #000;
+}
+
+.exploreWrapper .headerBar .select-wrapper span.caret{
+    font-size: 15px;
+    margin-right: 11px;
+}
+
+.exploreWrapper .headerBar .select-wrapper span.caret i{
+    color: #000 !important;
+}
+
+.exploreWrapper .explore{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.exploreWrapper .explore .exploreSearch{
+    width: 25%;
+}
+
+.exploreWrapper .explore .exploreSearch .nav-tabs{
+    border-bottom: none;
+}
+
+.exploreWrapper .explore .exploreSearch .nav-item{
+    width: 50%;
+}
+
+.exploreWrapper .explore .exploreSearch .nav-item:nth-of-type(1) .nav-link{
+    border-top-right-radius: 0px !important;
+}
+
+.exploreWrapper .explore .exploreSearch .nav-item:nth-of-type(2) .nav-link{
+    border-top-left-radius: 0px !important;
+}
+
+.exploreWrapper .explore .exploreSearch .nav-link[data-toggle="tab"]{
+    font-size: 15px;
+    color: #9CA5BA;
+    background: #EAEDF2;
+    font-weight: 600;
+    border: none;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    padding: 20px 58px !important;
+}
+
+.exploreWrapper .explore .exploreSearch .nav-link.active[data-toggle="tab"]{
+    color: #000;
+    background: #fff;
+}
+
+.exploreWrapper .explore .exploreSearch .tab-content{
+    background: white;
+    padding: 30px;
+}
+
+.exploreWrapper .explore .exploreSearch .tab-content .tab-pane .select-wrapper{
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.exploreWrapper .explore .exploreSearch .tab-content .tab-pane .select-wrapper .select-dropdown{
+    font-size: 14px;
+    color: #9099A7;
+}
+
+.exploreWrapper .explore .exploreSearch .tab-content .tab-pane .select-wrapper span.caret{
+    font-size: 15px;
+    margin-right: 15px;
+}
+
+.exploreWrapper .explore .exploreSearch .tab-content .tab-pane .btnExploreSearch{
+    background: #2271EF;
+    width: 100%;
+    margin: 0;
+    margin-top: 22px;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: none !important;
+}
+
+.exploreWrapper .explore .exploreSearch .tab-content .tab-pane .btnExploreSearch:hover{
+    color: white;
+}
+
+.exploreWrapper .explore .exploreSearch .tab-content .tab-pane .btnExploreSearch i{
+    margin-right: 20px;
+}
+
+.exploreWrapper .explore .exploreSearch .tab-content .tab-pane .btnReset{
+    display: block;
+    font-weight: 600;
+    color: black;
+    margin-top: 23px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.exploreWrapper .explore .exploreSearch .tab-content .tab-pane .btnReset i{
+    margin-right: 8px;
+}
+
+.exploreWrapper .explore .exploreResult{
+    display: flex;
+    justify-content: space-between;
+    width: 74%;
+}
+
+.exploreWrapper .explore .exploreResult .jobList{
+    width: 30%;
+}
+
+.exploreWrapper .explore .exploreResult .jobList a{
+    display: block;
+    margin-bottom: 15px;
+}
+
+.exploreWrapper .explore .exploreResult .jobList a:last-child{
+    margin: 0;
+}
+
+.exploreWrapper .explore .exploreResult .jobList .jobListItem{
+    position: relative;
+    background: white;
+    border-radius: 3px;
+    padding: 10px 30px;
+    transition: .2s all linear;
+}
+
+.exploreWrapper .explore .exploreResult .jobList .jobListItem p{
+    color: #919191;
+    font-size: 14px;
+    font-weight: 700;
+    margin: 0;
+    transition: .2s all linear;
+}
+
+.exploreWrapper .explore .exploreResult .jobList .jobListItem span{
+    display: inline-block;
+    font-size: 12px;
+    color: #919191;
+    transition: .2s all linear;
+}
+
+.exploreWrapper .explore .exploreResult .jobList .jobListItem img{
+    position: absolute;
+    right: 30px;
+    top: 46%;
+}
+
+.exploreWrapper .explore .exploreResult .jobList .jobListItem:hover,
+.exploreWrapper .explore .exploreResult .jobList a.jobActive .jobListItem{
+    background: #2271EF;
+}
+
+.exploreWrapper .explore .exploreResult .jobList .jobListItem:hover p,
+.exploreWrapper .explore .exploreResult .jobList .jobListItem:hover span,
+.exploreWrapper .explore .exploreResult .jobList a.jobActive p,
+.exploreWrapper .explore .exploreResult .jobList a.jobActive span{
+    color: white;
+}
+
+.exploreWrapper .explore .exploreResult .jobInner{
+    position: relative;
+    width: 69%;
+    background: white;
+    border-radius: 3px;
+    padding: 30px;
+}
+
+.exploreWrapper .explore .exploreResult .jobInner .jobTitle{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #EAEAEA;
+    padding-bottom: 25px;
+}
+
+.exploreWrapper .explore .exploreResult .jobInner .jobTitle .companyInfo{
+    display: flex;
+    align-items: center;
+}
+
+.exploreWrapper .explore .exploreResult .jobInner .jobTitle .companyInfo img{
+    width: 80px;
+    margin-right: 15px;
+}
+
+.exploreWrapper .explore .exploreResult .jobInner .jobTitle .companyInfo p{
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.exploreWrapper .explore .exploreResult .jobInner .jobTitle .companyInfo span{
+    font-size: 12px;
+}
+
+.exploreWrapper .explore .exploreResult .jobInner .jobTitle .btnApply{
+    background: #2271EF;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: none;
+    padding: 10px 35px;
+}
+
+.exploreWrapper .explore .exploreResult .jobInner .jobTitle .btnApply:hover{
+    color: white;
+}
+
+.exploreWrapper .explore .exploreResult .jobInner .jobBody{
+    margin-top: 40px;
+}
+
+.exploreWrapper .explore .exploreResult .jobInner .jobBody p{
+    font-size: 14px;
+    color: #919191;
+    text-align: justify;
+}
+
+.exploreWrapper .explore .exploreResult .jobInner .jobBody p span{
+    font-size: 14px;
+    font-weight: 600;
+    color: black;
+    display: block;
+}
+
+.exploreWrapper .explore .exploreResult .jobInner span.jobDate{
+    position: absolute;
+    font-size: 14px;
+    color: #919191;
+    left: 30px;
+    bottom: 30px;
+}
+
+.exploreWrapper .pagination{
+    position: relative;
+    width: 74%;
+    margin-left: 26%;
+    background: white;
+    border-radius: 2px;
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 30px;
+}
+
+.exploreWrapper .pagination .pageNumbers{
+    width: initial;
+}
+ 
+.exploreWrapper .pagination .pageNumbers a{
+    color: #000;
+    font-size: 16px;
+    margin-right: 16px;
+}
+
+.exploreWrapper .pagination .pageNumbers a.active{
+    color: #2271EF;
+}
+
+.exploreWrapper .pagination p{
+    color: #AAAAAA;
+    font-size: 16px;
+    display: inline-block;
+    margin: 0;
+}
+
+/* --- 10. addListing Page --- */
+.addListingWrapper{
+    margin: 100px 0;
+    text-align: center;
+}
+
+.addListingWrapper h1{
+    color: black;
+    font-weight: 700;
+    font-size: 48px;
+}
+
+.addListingWrapper p{
+    color: #A2A5AA;
+    font-size: 14px;
+    margin-top: 22px;
+}
+
+.addListingWrapper span{
+    color: #2570EC;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.addListingWrapper .pricingList{
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    margin: 30px auto 0;
+}
+
+.addListingWrapper .pricingList a{
+    position: relative;
+    flex: 0 0 31.333333%;
+    background: white;
+    text-align: center;
+    padding: 50px 0 20px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin: 0 10px;
+    transition: .2s all linear;
+}
+
+.addListingWrapper .pricingList .pricingItem .recomeded{
+    position: absolute;
+    font-size: 12px;
+    top: 25px;
+    color: #1E52A8;
+    text-align: center;
+    width: 100%;
+}
+
+.addListingWrapper .pricingList .pricingItem .planName{
+    font-size: 25px;
+    color: #286FE9;
+    transition: .2s all linear;
+}
+
+.addListingWrapper .pricingList .pricingItem .planPrice{
+    font-size: 64px;
+    font-weight: 600;
+    color: #286FE9;
+    transition: .2s all linear;
+}
+
+.addListingWrapper .pricingList .pricingItem .planPrice sup{
+    font-size: 24px;
+    top: -1.2em !important;
+}
+
+.addListingWrapper .pricingList .pricingItem .planPrice span{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.addListingWrapper .pricingList .pricingItem ul{
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.addListingWrapper .pricingList .pricingItem ul li{
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #ADADAD;
+    transition: .2s all linear;
+}
+
+.addListingWrapper .pricingList a:hover {
+    background: #2570EC;
+}
+
+.addListingWrapper .pricingList a:hover .planName,
+.addListingWrapper .pricingList a:hover .planPrice,
+.addListingWrapper .pricingList a:hover ul li{
+    color: white;
+}
+
+/* --- 10.1 - addListingInner page --- */
+.addListingInnerWrapper{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: 100px auto;
+}
+
+.addListingInnerWrapper .staticNav{
+    align-self: flex-start;
+    background: #2372EF;
+    padding: 47px 48px 36px;
+    width: 25%;
+    border-radius: 3px;
+}
+
+.addListingInnerWrapper .staticNav a{
+    display: block;
+    font-size: 14px;
+    margin-bottom: 15px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.addListingInnerWrapper .staticNav a.active{
+    position: relative;
+    color: rgba(255, 255, 255, 1);
+    padding-left: 25px;
+}
+
+.addListingInnerWrapper .staticNav a.active:before{
+    content: url(../img/global/dot.svg);
+    position: absolute;
+    left: 0;
+    top: 2px;
+}
+
+.addListingInnerWrapper .rightSection{
+    width: 74%;
+}
+
+.addListingInnerWrapper .addListingDetails{
+    background: white;
+    border-radius: 3px;
+}
+
+.addListingInnerWrapper .sectionHeader{
+    border-bottom: 1px solid #DEDEDE;
+    padding: 44px 50px 37px;
+}
+
+.addListingInnerWrapper .sectionHeader p{
+    position: relative;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.addListingInnerWrapper .sectionHeader p:after{
+    content: "";
+    position: absolute;
+    border-bottom: 2px solid #2271EF;
+    width: 40px;
+    left: 0;
+    bottom: -10px;
+}
+
+.addListingInnerWrapper .sectionBody{
+    padding: 30px 50px;
+}
+
+.addListingInnerWrapper .sectionBody .listType{
+    display: flex;
+    align-items: center;
+}
+
+.addListingInnerWrapper .sectionBody .listType p{
+    font-size: 14px;
+    color: #7B7B7B;
+    margin: 0;
+}
+
+.addListingInnerWrapper .sectionBody .listType label{
+    margin: 0;
+}
+
+.addListingInnerWrapper .sectionBody .listType label input{
+    position: absolute;
+    left: -9999px;
+}
+
+.addListingInnerWrapper .sectionBody .listType label div{
+    background: #EAEDF2;
+    color: #5C5C5C;
+    font-size: 14px;
+    padding: 10px 62px;
+    border-radius: 2px;
+    margin-left: 25px;
+    cursor: pointer;
+    transition: .2s all linear;
+}
+
+.addListingInnerWrapper .sectionBody .listType label div:nth-of-type(1){
+    margin-left: 40px;
+}
+
+.addListingInnerWrapper .sectionBody .listType label input[type=radio]:checked + div {
+    background: #2372EF;
+    color: white;
+}
+
+.addListingInnerWrapper .sectionBody .inputType{
+    position: relative;
+    margin-top: 50px;
+}
+
+.addListingInnerWrapper .sectionBody .inputType input,
+.addListingInnerWrapper .sectionBody .inputType textarea{
+    background: none;
+    border: none;
+    border-bottom: 1px solid #DEDEDE;
+    width: 100%;
+    font-size: 14px;
+}
+
+.addListingInnerWrapper .sectionBody .inputType textarea{
+    resize: none;
+}
+
+.addListingInnerWrapper .sectionBody .inputType textarea{
+    font-size: 14px;
+}
+
+.addListingInnerWrapper .sectionBody .inputType input:focus,
+.addListingInnerWrapper .sectionBody .inputType textarea:focus{
+    outline: none;
+}
+
+.addListingInnerWrapper .sectionBody .inputType label{
+    position: absolute;
+    font-size: 14px;
+    color: black;
+    bottom: -5px;
+    padding-bottom: 2px;
+    transition: .2s all linear;
+}
+
+.addListingInnerWrapper .sectionBody .selectType{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 45px;
+}
+
+.addListingInnerWrapper .sectionBody .selectType .select-wrapper{
+    width: 48%;
+    margin: 0;
+    margin-bottom: 38px;
+}
+
+.addListingInnerWrapper .sectionBody .selectType .select-wrapper input.select-dropdown{
+    font-size: 14px;
+}
+
+
+.addListingInnerWrapper .sectionBody .selectType .select-wrapper span.caret{
+    font-size: 15px;
+    margin-right: 15px;
+}
+
+.addListingInnerWrapper .sectionBody .checkType{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.addListingInnerWrapper .sectionBody .checkType .form-check{
+    flex: 0 0 50%;
+    padding-left: 0;
+    margin-bottom: 17px;
+}
+
+.addListingInnerWrapper .sectionBody .checkType .form-check label{
+    font-size: 14px;
+}
+
+.addListingInnerWrapper .addListingPhotos,
+.addListingInnerWrapper .addListingContact,
+.addListingInnerWrapper .addListingPricing{
+    background: white;
+    margin-top: 15px;
+    border-radius: 3px;
+}
+
+.addListingInnerWrapper .sectionBody span.photoInfo{
+    font-size: 14px;
+    color: #2372EF;
+}
+
+.addListingInnerWrapper .sectionBody .photoUpload{
+    margin-top: 15px;
+}
+
+.addListingInnerWrapper .sectionBody .photoUpload input[type="file"]{
+    position: absolute;
+    left: -9999px;
+}
+
+.addListingInnerWrapper .sectionBody .photoUpload input[type="file"]+label{
+    height: 90px;
+    width: 90px;
+    border: 1px solid #9D9D9D;
+    border-radius: 3px;
+    text-align: center;
+    line-height: 90px;
+    cursor: pointer;
+    margin-right: 35px;
+}
+
+.addListingInnerWrapper .sectionBody .photoUpload input[type="file"]+label i{
+    font-size: 20px;
+    color: #9D9D9D;
+}
+
+.addListingInnerWrapper .sectionBody .photoUpload .uploadedImages{
+    display: inline-block;
+}
+
+
+.addListingInnerWrapper .sectionBody .photoUpload .uploadedImages img{
+    height: 90px;
+    width: 90px;
+    border-radius: 3px;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+
+.addListingInnerWrapper .addListingContact .sectionBody{
+    display: flex;
+}
+
+.addListingInnerWrapper .addListingContact .inputType,
+.addListingInnerWrapper .addListingPricing .inputType{
+    width: 35%;
+    margin: 20px 0;
+}
+
+.addListingInnerWrapper .addListingContact .inputType:nth-of-type(1){
+    margin-right: 20%;
+}
+
+.addListingInnerWrapper .addListingPricing .inputType,
+.addListingInnerWrapper .addListingPricing .currencyType{
+    display: inline-block !important;
+}
+
+.addListingInnerWrapper .addListingPricing .currencyType{
+    width: 70px;
+    margin-left: 20px;
+}
+
+.addListingInnerWrapper .addListingPricing .currencyType select{
+    text-indent: 25%;
+    background: #2271EF;
+    border-radius: 3px;
+    color: white;
+    border: none;
+    font-size: 12px;
+}
+
+.addListingInnerWrapper .addListingPricing .currencyType select:focus{
+    box-shadow: none !important;
+}
+
+.addListingInnerWrapper .addListingPricing .currencyType select.custom-select{
+    background-image: url(../img/global/arrowDown.svg);
+    background-position: 47px 7px;
+    background-size: 10px 20px;
+    background-repeat: no-repeat;
+}
+
+.addListingInnerWrapper .btnListingSend{
+    display: block;
+    margin-top: 15px;
+    background: #2271EF;
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    border: none;
+    border-radius: 3px;
+    width: 100%;
+    padding: 15px 0;
+    text-transform: initial !important;
+    margin-left: 0;
+}
+
+/* --- 11. Account page --- */
+.accountWrapper{
+    width: 90%;
+    margin: 100px auto;
+}
+
+.accountWrapper div[class^="col"]{
+    padding: 0;
+}
+
+.accountWrapper .nav{
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.accountWrapper .nav a{
+    font-size: 14px;
+    color: #5C5C5C;
+    background: #EAEDF2;
+    border-radius: 0;
+    padding: 20px 30px;
+    display: flex;
+    align-items: center;
+}
+
+.accountWrapper .nav a i{
+    display: inline-block;
+    height: 17px;
+    width: 17px;
+    text-align: center;
+    line-height: 17px;
+    margin-right: 10px;
+}
+
+.accountWrapper .nav a.active{
+    background: white;
+    color: #2372EF;
+}
+
+.accountWrapper .tab-content{
+    background: white;
+    padding: 40px 50px 75px;
+}
+
+.accountWrapper .tab-content .accountInner .customerName{
+    font-size: 25px;
+    line-height: 27px;
+}
+
+.accountWrapper .tab-content .accountInner .customerName span{
+    font-weight: 600;
+    display: block;
+}
+
+.accountWrapper .tab-content .accountInner .pendingListingCount{
+    color: #5C5C5C;
+    font-size: 14px;
+    margin-top: 40px;
+}
+
+.accountWrapper .tab-content .accountInner .pendingListingCount a{
+    font-size: 12px;
+    margin-left: 20px;
+    color: #2372EF;
+}
+
+.accountWrapper .tab-content .accountInner .pendingListingCount a img{
+    margin-left: 5px;
+}
+
+.accountWrapper .tab-content .accountInner .accountCards{
+    margin-top: 63px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.accountWrapper .tab-content .accountInner .accountCards .cardItem{
+    background: #2372EF;
+    border-radius: 3px;
+    width: 30%;
+    padding: 20px 25px;
+}
+ 
+.accountWrapper .tab-content .accountInner .accountCards .cardItem .cardTitle{
+    font-size: 14px;
+    color: white;
+}
+
+.accountWrapper .tab-content .accountInner .accountCards .cardItem .cardBottomLine{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.accountWrapper .tab-content .accountInner .accountCards .cardItem .cardBottomLine h1{
+    font-size: 30px;
+    font-weight: 600;
+    color: white;
+}
+
+.accountWrapper .tab-content .accountInner .accountCards .cardItem .cardBottomLine a{
+    font-size: 12px;
+    color: #fff;
+}
+
+.accountWrapper .tab-content .accountInner .accountCards .cardItem .cardBottomLine a img{
+    margin-left: 5px;
+}
+
+.accountWrapper .tab-content .sellList{
+    margin-top: 60px;
+}
+
+.accountWrapper .tab-content .rentList h6,
+.accountWrapper .tab-content .sellList h6,
+.accountWrapper .tab-content .proList h6,
+.accountWrapper .tab-content .favList h6,
+.accountWrapper .tab-content h6{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.accountWrapper .tab-content .lists{
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.accountWrapper .tab-content .lists .listItem{
+    width: 30%;
+    border-radius: 3px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.accountWrapper .tab-content .lists .listItem .itemCover{
+    position: relative;
+    height: 180px;
+}
+
+.accountWrapper .tab-content .lists .listItem .itemCover img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.accountWrapper .tab-content .lists .listItem .itemCover .price{
+    background: url(../img/listing/priceBg.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    position: absolute;
+    color: white;
+    font-size: 14px;
+    padding: 8px 29px 2px 19px;
+    font-weight: 700;
+    bottom: 0px;
+    left: 0px;
+    z-index: 2;
+}
+
+.accountWrapper .tab-content .lists .listItem .itemCover .like{
+    position: absolute;
+    z-index: 1;
+    padding: 2px 7px;
+    border-radius: 3px;
+    background: white;
+    left: 15px;
+    top: 15px;
+}
+
+
+.accountWrapper .tab-content .lists .listItem .itemCover .like i{
+    color: #EF5F5F;
+}
+
+.accountWrapper .tab-content .lists .listItem .itemCover .price span{
+    font-size: 10px;
+    font-weight: 400;
+}
+
+.accountWrapper .tab-content .lists .listItem .itemCover .itemHover{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.4);
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: .2s all linear;
+}
+
+.accountWrapper .tab-content .lists .listItem:hover .itemCover .itemHover{
+   opacity: 1;
+}
+
+.accountWrapper .tab-content .lists .listItem .itemCover .itemHover a{
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+    background: white;
+    border-radius: 100%;
+    text-align: center;
+    color: #707070;
+    line-height: 22px;
+    margin: 0 10px;
+}
+
+.accountWrapper .tab-content .lists .listItem .itemCover .itemHover a i{
+    font-size:10px;
+}
+
+.accountWrapper .tab-content .lists .listItem  .itemBody{
+    padding: 15px 20px;
+    border: 1px solid #E8E8E8;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.accountWrapper .tab-content .lists .listItem  .itemBody .carName{
+    position: relative;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.accountWrapper .tab-content .lists .listItem  .itemBody .carName:after{
+    content: "";
+    position: absolute;
+    border-bottom: 2px solid #2271EF;
+    width: 30px;
+    left: 0;
+    bottom: -7px;
+}
+
+.accountWrapper .tab-content .lists .listItem  .itemBody .carInfo{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.accountWrapper .tab-content .lists .listItem  .itemBody .carInfo p{
+    margin: 0;
+    font-size: 14px;
+    color: #9B9B9B;
+    font-weight: 600;
+    line-height: 13px;
+}
+
+.accountWrapper .tab-content .lists .listItem  .itemBody .carInfo p sup{
+    font-size: 6px;
+    top: -1.2em;
+}
+
+.accountWrapper .tab-content .lists .listItem  .itemBody .carInfo p span{
+    display: block;
+    font-size: 8px;
+    font-weight: 400;
+}
+
+.accountWrapper .tab-content .pricingInner{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+.accountWrapper .tab-content .pricingInner .couponPack{
+    display: flex;
+    align-self: flex-start;
+     border: 1px solid #2271EF;
+    border-radius: 3px;
+}
+
+.accountWrapper .tab-content .pricingInner .couponPack .left{
+    border-right: 1px solid #2271EF;
+    padding: 20px 30px 0;
+}
+
+.accountWrapper .tab-content .pricingInner .couponPack .left .packName{
+    color: #2271EF;
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.accountWrapper .tab-content .pricingInner .couponPack .left .packPrice{
+    font-size: 42px;
+    font-weight: 600;
+    color: #286FE9;
+    margin-top: 70px;
+}
+
+.accountWrapper .tab-content .pricingInner .couponPack .left .packPrice sup{
+    font-size: 15px;
+    top: -1.2em;
+}
+
+.accountWrapper .tab-content .pricingInner .couponPack .left .packPrice span{
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.accountWrapper .tab-content .pricingInner .couponPack .right{
+    padding: 20px 45px 0 20px;
+}
+
+.accountWrapper .tab-content .pricingInner .couponPack .right p{
+    font-size: 14px;
+}
+
+.accountWrapper .tab-content .pricingInner .couponPack .right p.expireDate{
+    color: #2271EF;
+    font-weight: 600;
+    margin-top: 67px;
+}
+
+.accountWrapper .tab-content .pricingInner .couponPack .right p span{
+    font-weight: 600;
+}
+
+.accountWrapper .tab-content .pricingInner .invoiceTable{
+    margin-left: 40px;
+    width: 50%;
+}
+
+.accountWrapper .tab-content .pricingInner .invoiceTable .invoiceTitle{
+    font-size: 20px;
+    color: #2271EF;
+    font-weight: 700;
+}
+
+.accountWrapper .tab-content .pricingInner .invoiceTable tbody{
+    border-bottom: 1px solid #707070;
+}
+
+.accountWrapper .tab-content .pricingInner .invoiceTable th{
+    font-size: 14px;
+    font-weight: 600;
+    padding-left: 0;
+    padding-bottom: 10px;
+    border-color: #2271EF;
+}
+
+.accountWrapper .tab-content .pricingInner .invoiceTable td{
+    font-size: 14px;
+    padding: 20px 0;
+    border-color: #707070;
+}
+
+.accountWrapper .tab-content .pricingInner a{
+    display: inline-block;
+    font-size: 12px;
+    color: #2271EF;
+}
+
+.accountWrapper .tab-content .pricingInner a img{
+    margin-left: 10px;
+}
+
+
+.accountWrapper .tab-content .detailInner .inputGroup{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.accountWrapper .tab-content .detailInner .inputGroup .md-form{
+    flex: 0 0 100%;
+}
+
+.accountWrapper .tab-content .detailInner .inputGroup label{
+    font-size: 14px;
+}
+
+.accountWrapper .tab-content .detailInner .inputGroup span{
+    color: #BABCBF;
+    font-size: 14px;
+    flex: 0 0 100%;
+    font-style: italic;
+}
+
+.accountWrapper .tab-content .detailInner .inputGroup:nth-of-type(1){
+    margin-top: 60px;
+}
+
+.accountWrapper .tab-content .detailInner .inputGroup:nth-of-type(1) .md-form{
+    flex:0 0 40%;
+}
+
+.accountWrapper .tab-content .detailInner p{
+    position: relative;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 35px;
+}
+
+.accountWrapper .tab-content .detailInner p:after{
+    content: "";
+    position: absolute;
+    border-bottom: 2px solid #2271EF;
+    width: 40px;
+    left: 0;
+    bottom: -10px;
+}
+
+.accountWrapper .tab-content .detailInner .btnSave{
+    color: white;
+    width: 100%;
+    background: #2271EF;
+    font-size: 16px;
+    text-transform: inherit;
+    margin: 0;
+}
+
+
+/* ---12. listInside page --- */
+.listInsideWrapper{
+    margin-top: 70px;
+}
+
+.listInsideWrapper a.btnBack{
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #2271EF;
+}
+
+.listInsideWrapper a.btnBack img{
+    margin-right: 13px;
+}
+
+.listInsideWrapper .listInsideInner{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 26px;
+}
+
+.listInsideWrapper .listInsideInner .insideLeft{
+    background: white;
+    align-self: flex-start;
+    border-radius: 3px;
+    width: 49.5%;
+}
+
+.listInsideWrapper .listInsideInner .insideLeft .headerLine{
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 40px;
+}
+
+.listInsideWrapper .listInsideInner .insideLeft .headerLine .carNameSec,
+.listInsideWrapper .listInsideInner .insideLeft .headerLine .carPriceSec{
+    display: flex;
+    align-items: center;
+}
+
+.listInsideWrapper .listInsideInner .insideLeft .headerLine .carNameSec h5{
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.listInsideWrapper .listInsideInner .insideLeft .headerLine .carNameSec span{
+    color: #2271EF;
+    border: 1px solid #2271EF;
+    font-size: 10px;
+    border-radius: 3px;
+    padding: 5px 20px;
+    margin-left: 15px;
+}
+
+.listInsideWrapper .listInsideInner .insideLeft .headerLine .carPriceSec .date{
+    position: relative;
+    display: flex;
+    align-items: center;   
+    margin: 0;
+    font-size: 12px;
+    color: #808080;
+}
+
+.listInsideWrapper .listInsideInner .insideLeft .headerLine .carPriceSec .date:after{
+    content: "";
+    position: absolute;
+    border-right: 1px solid #D0D0D0;
+    height: 39px;
+    top: -10px;
+    right: -20px;
+}
+
+.listInsideWrapper .listInsideInner .insideLeft .headerLine .carPriceSec .date i{
+    margin-right: 10px;
+    font-size: 15px;
+}
+
+.listInsideWrapper .listInsideInner .insideLeft .headerLine .carPriceSec h3{
+    font-size: 22px;
+    font-weight: 600;
+    margin-left: 40px;
+    margin-bottom: 0;
+}
+
+.slider #sync1 .item{
+    color: #FFF;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    text-align: center;
+    height: 350px;
+}
+
+.slider #sync1 .item img{
+    height: 100%;
+    object-fit: cover;
+}
+
+.slider #sync2{
+    margin-top: 0px;
+}
+
+.slider #sync2 .item{
+    color: #FFF;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+.slider #sync2 .item h1{
+  font-size: 18px;
+}
+
+.slider #sync2 .synced .item{
+  background: #0c83e7;
+}
+
+.listInsideWrapper .listInsideInner .insideLeft .features{
+    padding: 40px;
+    padding-bottom: 0;
+}
+
+.listInsideWrapper .listInsideInner .insideSecTitle{
+    position: relative;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.listInsideWrapper .listInsideInner .insideSecTitle:after{
+    content: "";
+    position: absolute;
+    border-bottom: 2px solid #2271EF;
+    width: 40px;
+    bottom: -10px;
+    left: 0;
+}
+
+.listInsideWrapper .listInsideInner .insideLeft .features .featuresItemList{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+.listInsideWrapper .listInsideInner .insideLeft .features .featuresItemList .featuresItem{
+    position: relative;
+    font-size: 14px;
+    color: #919191;
+    cursor: pointer;
+    flex: 0 0 30%;
+    left: 0;
+    margin-bottom: 40px;
+    transition: .2s all linear;
+}
+
+.listInsideWrapper .listInsideInner .insideLeft .features .featuresItemList .featuresItem:hover{
+    color: #2271EF;
+    left: 10px;
+}
+
+.listInsideWrapper .listInsideInner .insideLeft .features .featuresItemList .featuresItem i{
+    margin-right: 7px;
+}
+
+.listInsideWrapper .listInsideInner .insideRight{
+    width: 49.5%;
+}
+
+.listInsideWrapper .listInsideInner .insideRight .carDescription{
+    background: white;
+    padding: 30px 40px;
+    border-radius: 3px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.listInsideWrapper .listInsideInner .insideRight .carDesc{
+    font-size: 14px;
+    color: #525252;
+    line-height: 27px;
+    text-align: justify;
+    margin-top: 25px;    
+}
+
+.listInsideWrapper .listInsideInner .insideRight .carfeatures{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+.listInsideWrapper .listInsideInner .insideRight .carfeatures .featureCol,
+.listInsideWrapper .listInsideInner .insideRight .carfeatures .featureCol .innerCol{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex: 0 0 50%;
+}
+
+.listInsideWrapper .listInsideInner .insideRight .carfeatures .featureCol .innerCol .featureTitle,
+.listInsideWrapper .listInsideInner .insideRight .carfeatures .featureCol .innerCol .featureTxt{
+    font-size: 14px;
+    font-weight: 600;
+    flex: 0 0 100%;
+}
+
+.listInsideWrapper .listInsideInner .insideRight .carfeatures .featureCol .innerCol .featureTxt{
+    font-weight: 400;
+}
+
+.listInsideWrapper .listInsideInner .insideRight .carAdress{
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #000;
+    margin-top: 27px;
+}
+
+.listInsideWrapper .listInsideInner .insideRight .carAdress i{
+    font-size: 30px;
+    margin-right: 16px;
+}
+
+.listInsideWrapper .listInsideInner .insideRight .showMap{
+    display: block;
+    color: #2271EF;
+    font-size: 12px;
+    margin-left: 38px;
+    margin-top: -18px;
+}
+
+.listInsideWrapper .listInsideInner .insideRight .buttonsLine{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    border-top: 1px solid #DEDEDE;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    padding: 30px;
+}
+
+.listInsideWrapper .listInsideInner .insideRight .buttonsLine .btnCall{
+    background: #2271EF;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    text-transform: inherit;
+}
+
+.listInsideWrapper .listInsideInner .insideRight .buttonsLine .btnCall i{
+    margin-right: 14px;
+    transform: rotate(90deg);
+    font-size: 12px;
+}
+
+.listInsideWrapper .listInsideInner .insideRight .buttonsLine .othereButtons a{
+    display: inline-flex;
+    align-items: center;
+    font-size: 14px;
+    color: #000;
+    padding: 10px 20px;
+    border: 1px solid #000;
+    border-radius: 3px;
+    margin-left: 10px;
+}
+
+.listInsideWrapper .listInsideInner .insideRight .buttonsLine .othereButtons a i{
+    margin-right: 15px;
+    font-size: 17px;
+}
+
+.listInsideWrapper .listInsideInner .insideRight .comments{
+    background: white;
+    padding: 30px 40px;
+    padding-bottom: 50px;
+    margin-top: 20px;
+    border-radius: 3px;
+    border-bottom: 1px solid #DEDEDE;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.listInsideWrapper .listInsideInner .insideRight .comments .commentBody{
+    margin-top: 60px;
+}
+
+
+.listInsideWrapper .listInsideInner .insideRight .commentItem{
+    display: flex;
+    margin-bottom: 35px;
+}
+
+.listInsideWrapper .listInsideInner .insideRight .commentItem img{
+    border-radius: 100%;
+    height: 70px;
+    width: 70px;
+    object-fit: cover;
+}
+
+.listInsideWrapper .listInsideInner .insideRight .commentTxt,
+.listInsideWrapper .listInsideInner .insideRight textarea{
+    padding: 0 20px 20px 10px;
+    border: none;
+    border-bottom: 1px solid #DEDEDE;
+    width: 100%;
+    margin-left: 10px;
+    font-size: 13px;
+    resize: none;
+}
+
+.listInsideWrapper .listInsideInner .insideRight textarea:focus{
+    outline: none;
+}
+
+
+.listInsideWrapper .listInsideInner .insideRight .comments .commentBody .btnSeeMore{
+    float: right;
+    color: #2271EF;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+
+.listInsideWrapper .listInsideInner .insideRight .addComment{
+    background: white;
+    padding: 30px 40px;
+    padding-bottom: 100px;
+}
+
+.listInsideWrapper .listInsideInner .insideRight .addComment .btnSubmit{
+    background: #2271EF;
+    color: white;
+    text-transform: inherit;
+    font-weight: 600;
+    font-size: 14px;
+    float: right;
+}

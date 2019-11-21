@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "Pricing";
+}
+
+
+<!-- addListing Page start -->
+<div class="container">
+    <div class="addListingWrapper">
+        <h1>Add listing</h1>
+        <p class="mb-0">You can select one of the pricing plans or you can try the free listing submission just one time.</p>
+        <span>Try it for free</span>
+
+        <div class="pricingList">
+            <a href="@Url.Action("Detail","Pricing")">
+                <div class="pricingItem">
+                    <p class="planName">Bronze</p>
+                    <h1 class="planPrice"><sup>$</sup>5<span>/mo</span></h1>
+
+                    <ul>
+                        <li>3 listing submissions</li>
+                        <li>180 days expirations</li>
+                        <li>Sell your car</li>
+                        <li>Rent your car</li>
+                    </ul>
+                </div>
+            </a>
+
+            <a href="@Url.Action("Detail","Pricing")">
+                <div class="pricingItem">
+
+                    <p class="recomeded">RECOMENDED</p>
+
+                    <p class="planName">Silver</p>
+                    <h1 class="planPrice"><sup>$</sup>10<span>/mo</span></h1>
+
+                    <ul>
+                        <li>5 listing submissions</li>
+                        <li>180 days expirations</li>
+                        <li>Sell your car</li>
+                        <li>Rent your car</li>
+                    </ul>
+                </div>
+            </a>
+
+            <a href="@Url.Action("Detail","Pricing")">
+                <div class="pricingItem">
+                    <p class="planName">Gold</p>
+                    <h1 class="planPrice"><sup>$</sup>15<span>/mo</span></h1>
+
+                    <ul>
+                        <li>10 listing submissions</li>
+                        <li>180 days expirations</li>
+                        <li>Sell your car</li>
+                        <li>Rent your car</li>
+                    </ul>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+<!-- addListing Page end -->

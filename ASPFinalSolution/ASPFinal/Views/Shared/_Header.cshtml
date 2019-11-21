@@ -1,0 +1,82 @@
+﻿<!-- Navbar section start -->
+<div class="header">
+    <div class="container">
+        <div class="position-relative">
+            <nav class="navbar navbar-expand-lg navbar-light">
+
+                <a class="navbar-brand" href="index.html"><img src="~/Public/img/global/logo-black.svg" alt="Logo"></a>
+
+                <div class="searchWrap position-relative">
+                    <form action="explore.html" method="get">
+                        <input class="searchBar" type="text" name="search" id="search" placeholder="What are looking for?">
+                        <label for="seachBar"></label>
+                    </form>
+                </div>
+
+                <button class="navbar-toggler" type="button">
+                    <i class="fa fa-bars text-white"></i>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("index","home")">Home</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("index","explore")">Explore</a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#">More</a>
+
+                            <div class="dropInner">
+                                <div class="dropItems">
+                                    <a href="@Url.Action("index","blog")">Blog</a>
+                                    <a href="@Url.Action("index","pricing")">Pricing plans</a>
+                                    <a href="@Url.Action("index","account")">Account</a>
+                                    <a href="@Url.Action("index","contact")">Contact</a>
+                                </div>
+                            </div>
+
+                        </li>
+
+                        <li class="nav-item addList">
+                            <a class="nav-link addList" href="@Url.Action("index","pricing")">+ Add listing</a>
+                        </li>
+
+                        <li class="nav-item account">
+                            <svg id="Group_193" data-name="Group 193" xmlns="https://www.w3.org/2000/svg" width="16" height="17.753" viewBox="0 0 16 17.753">
+                                <circle id="Ellipse_1" data-name="Ellipse 1" cx="4.44" cy="4.44" r="4.44" transform="translate(3.558 0)" fill="#fff" />
+                                <path id="Path_20" data-name="Path 20" d="M16,197.2H0a8,8,0,0,1,16,0Z" transform="translate(0 -179.444)" fill="#fff" />
+                            </svg>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Login form start -->
+                <div class="loginForm">
+
+                    <form action="account.html" method="get">
+                        <div class="md-form">
+                            <input type="text" id="username" class="form-control">
+                            <label for="username">Username</label>
+                        </div>
+
+                        <div class="md-form">
+                            <input type="text" id="pass" class="form-control">
+                            <label for="pass">Password</label>
+                        </div>
+
+                        <button class="btn btnLogin">Sign in</button>
+                    </form>
+
+                    <a href="#">Create new account</a>
+                </div>
+                <!-- Login form end -->
+
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- Navbar section end -->

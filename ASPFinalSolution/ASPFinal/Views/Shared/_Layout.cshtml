@@ -1,0 +1,209 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+    @Styles.Render("~/bundles/css")
+    @*<link rel="stylesheet" href="~/Public/css/mdb.min.css">
+        <link rel="stylesheet" href="~/Public/css/style.css">
+        <link rel="stylesheet" href="~/Public/css/responsive.css">*@
+    <title>@ViewBag.Title - Next Job</title>
+</head>
+<body>
+    <div id="preloader">
+        <div id="status">&nbsp;</div>
+    </div>
+    <div class="@(ViewBag.Page=="Home" ? "":"header")">
+       
+        <div class="container">
+            <div class="position-relative">
+                <nav class="navbar navbar-expand-lg navbar-light">
+
+                    <a class="navbar-brand" href="index.html"><img src="~/Public/img/global/@(ViewBag.Page=="Home" ? "logo.svg":"logo-black.svg")" alt="Logo"></a>
+                    @{
+                        ViewBag.Page = null;
+                    }
+                    <div class="searchWrap position-relative">
+                        <form action="explore.html" method="get">
+                            <input class="searchBar" type="text" name="search" id="search" placeholder="What are looking for?">
+                            <label for="seachBar"></label>
+                        </form>
+                    </div>
+
+                    <button class="navbar-toggler" type="button">
+                        <i class="fa fa-bars text-white"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("index","home")">Home</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("index","explore")">Explore</a>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="#">More</a>
+
+                                <div class="dropInner">
+                                    <div class="dropItems">
+                                        <a href="@Url.Action("index","blog")">Blog</a>
+                                        <a href="@Url.Action("index","pricing")">Pricing plans</a>
+                                        <a href="@Url.Action("index","account")">Account</a>
+                                        <a href="@Url.Action("index","contact")">Contact</a>
+                                    </div>
+                                </div>
+
+                            </li>
+
+                            <li class="nav-item addList">
+                                <a class="nav-link addList" href="@Url.Action("index","pricing")">+ Add listing</a>
+                            </li>
+
+                            <li class="nav-item account">
+                                <svg id="Group_193" data-name="Group 193" xmlns="https://www.w3.org/2000/svg" width="16" height="17.753" viewBox="0 0 16 17.753">
+                                    <circle id="Ellipse_1" data-name="Ellipse 1" cx="4.44" cy="4.44" r="4.44" transform="translate(3.558 0)" fill="#fff" />
+                                    <path id="Path_20" data-name="Path 20" d="M16,197.2H0a8,8,0,0,1,16,0Z" transform="translate(0 -179.444)" fill="#fff" />
+                                </svg>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Login form start -->
+                    <div class="loginForm">
+
+                        <form action="account.html" method="get">
+                            <div class="md-form">
+                                <input type="text" id="username" class="form-control">
+                                <label for="username">Username</label>
+                            </div>
+
+                            <div class="md-form">
+                                <input type="text" id="pass" class="form-control">
+                                <label for="pass">Password</label>
+                            </div>
+
+                            <button class="btn btnLogin">Sign in</button>
+                        </form>
+
+                        <a href="#">Create new account</a>
+                    </div>
+                    <!-- Login form end -->
+
+                </nav>
+            </div>
+        </div>
+    </div>
+    @RenderBody()
+
+    <!-- Footer section start -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-2 col-md-4">
+                    <img src="~/Public/img/global/logo-black.svg" alt="Logo">
+
+                    <div class="socialIcons">
+                        <a href="#">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                    <p class="copyright"> &copy; 2019 Copyright NextCard.</p>
+                    <p class="copyright"> All right reserved.</p>
+                </div>
+
+                <div class="col-xl-5 col-md-8">
+                    <p class="footeSecTitle">The news</p>
+
+                    <div class="news">
+                        <a href="@Url.Action("detail","Blog")">
+                            <div class="innerNews">
+                                <img src="~/Public/img/th-1.png" alt="Image">
+                                <div class="newsContent">
+                                    <p class="newsTitle">
+                                        Infiniti will exit western Europe to focus on U.S., China
+                                    </p>
+                                    <p class="newsDesc">
+                                        Infiniti will stop building the Q30 sedan and the QX30 crossover in the ...
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="@Url.Action("detail","Blog")">
+                            <div class="innerNews">
+                                <img src="~/Public/img/th-2.png" alt="Image">
+                                <div class="newsContent">
+                                    <p class="newsTitle">
+                                        Alfa Romeo will recall 60,000 vehicles worldwide
+                                    </p>
+                                    <p class="newsDesc">
+                                        The Alfa Romeo recall concerns about 19,100 vehicles in the United States, most of which are in the possession of dealerships.
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="@Url.Action("detail","Blog")">
+                            <div class="innerNews">
+                                <img src="~/Public/img/th-2.png" alt="Image">
+                                <div class="newsContent">
+                                    <p class="newsTitle">
+                                        VW accelerates electric push with more models, more production
+                                    </p>
+                                    <p class="newsDesc">
+                                        VW Group increased the global production and product scope ...
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-lg-4 col-md-6">
+                    <p class="footeSecTitle">Some useful links</p>
+                    <div class="links">
+                        <a href="#">Home</a>
+                        <a href="#">Licences</a>
+                        <a href="#">About Us</a>
+                        <a href="#">Agreements</a>
+                        <a href="#">Pricing plans</a>
+                        <a href="#">Afiliate program</a>
+                        <a href="#">Terms of usage</a>
+                    </div>
+                </div>
+
+                <div class="col-xl-2 col-lg-4 col-md-6">
+                    <p class="footeSecTitle">Contact</p>
+
+                    <p class="phone">
+                        +994 12 123 45 67 <br>
+                        +994 12 123 45 67 <br>
+                        info@nextcar.temp
+                    </p>
+
+                    <p class="address">
+                        232 Nizami district H.Javid 123
+                        Baku, Azerbaijan
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer section end -->
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    @RenderSection("scripts", false)
+    @Scripts.Render("~/bundles/javascript")
+</body>
+</html>
