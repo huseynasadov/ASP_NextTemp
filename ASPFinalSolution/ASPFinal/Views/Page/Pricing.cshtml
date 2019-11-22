@@ -1,0 +1,112 @@
+﻿
+@{
+    ViewBag.Title = "Pricing";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section class="pricing-bg">
+    <div class="bg-overlay"></div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="page-header-title text-center text-white">
+                    @{Html.RenderPartial("~/Views/Shared/_Breadcrumb.cshtml");}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end home -->
+<!-- PRICING START -->
+<section class="section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <p class="text-muted text-center mb-4 f-17">Praesent venenatis metus at tortor pulvinar varius ipsum dolor amet consectetuer adipiscing Aenean commodo ligula.</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="pricing-box list-grid-item p-4 mt-4">
+                    <h5 class="text-muted text-center text-uppercase">Free</h5>
+                    <p class="text-muted text-center mb-0 price p-1"><span class="text-custom font-weight-normal"><sup>$</sup>00/</span>Month</p>
+                    <div class="pricing-plan-item text-center">
+                        <ul class="list-unstyled mb-4">
+                            <li class="text-muted"><i class="mdi mdi-minus mr-3"></i>Bandwidth: 1GB</li>
+                            <li class="text-muted"><i class="mdi mdi-minus mr-3"></i>Onlinespace: 50MB</li>
+                            <li class="text-muted"><i class="mdi mdi-minus mr-3"></i>Support: No</li>
+                            <li class="text-muted"><i class="mdi mdi-minus mr-3"></i>Domain: 5</li>
+                            <li class="text-muted"><i class="mdi mdi-minus mr-3"></i>Hidden Fees: No</li>
+                        </ul>
+                        <div class="text-center mt-3">
+                            <a href="#" class="btn btn-block pricing-btn btn-outline">Buy</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="pricing-box list-grid-item p-4 mt-4">
+                    <h5 class="text-muted text-center text-uppercase">Economy</h5>
+                    <p class="text-muted text-center mb-0 price p-1"><span class="text-custom font-weight-normal"><sup>$</sup>70/</span>Month</p>
+                    <div class="pricing-plan-item text-center">
+                        <ul class="list-unstyled mb-4">
+                            <li class="text-muted"><i class="mdi mdi-minus mr-3"></i>Bandwidth: 1.5GB</li>
+                            <li class="text-muted"><i class="mdi mdi-minus mr-3"></i>Onlinespace: 500MB</li>
+                            <li class="text-muted"><i class="mdi mdi-minus mr-3"></i>Support: Yes</li>
+                            <li class="text-muted"><i class="mdi mdi-minus mr-3"></i>Domain: 10</li>
+                            <li class="text-muted"><i class="mdi mdi-minus mr-3"></i>Hidden Fees: Yes</li>
+                        </ul>
+                        <div class="text-center mt-3">
+                            <a href="#" class="btn active btn-block pricing-btn btn-outline">Buy</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="pricing-box list-grid-item p-4 mt-4">
+                    <h5 class="text-muted text-center text-uppercase">Deluxe</h5>
+                    <p class="text-muted text-center mb-0 price p-1"><span class="text-custom font-weight-normal"><sup>$</sup>95/</span>Month</p>
+                    <div class="pricing-plan-item text-center">
+                        <ul class="list-unstyled mb-4">
+                            <li class="text-muted"><i class="mdi mdi-minus mr-3"></i>Bandwidth: 2GB</li>
+                            <li class="text-muted"><i class="mdi mdi-minus mr-3"></i>Onlinespace: 1GB</li>
+                            <li class="text-muted"><i class="mdi mdi-minus mr-3"></i>Support: Yes</li>
+                            <li class="text-muted"><i class="mdi mdi-minus mr-3"></i>Domain: 15</li>
+                            <li class="text-muted"><i class="mdi mdi-minus mr-3"></i>Hidden Fees: No</li>
+                        </ul>
+                        <div class="text-center mt-3">
+                            <a href="#" class="btn btn-block pricing-btn btn-outline">Buy</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- PRICING END -->
+<!-- CTA START -->
+<section class="section cta-bg">
+    <div class="bg-overlay"></div>
+    <div class="container">
+        <div class="row justify-content-center text-center">
+            <div class="col-lg-6 col-md-9">
+                <div class="cta">
+                    <h3 class="text-white font-weight-light mb-4">Become a part of Joobsey bussiness community today</h3>
+                    <p class="text-white-50">At vero at a accusamus dignissimos ducimus deleniticorrupti that at blanditiis praesentium deleniticorrupti quos dolores molesti excepturi occaecati similiquesunt culpa officia at deserunt.</p>
+                </div>
+                <div class="mt-4">
+                    <a href="#" class="btn btn-outline-light">Get started</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- CTA END -->
+@section scripts{
+
+    <script src="~/Public/js/jquery.nice-select.min.js"></script>
+}

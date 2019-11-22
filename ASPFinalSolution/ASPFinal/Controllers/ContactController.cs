@@ -6,18 +6,10 @@ using System.Web.Mvc;
 
 namespace ASPFinal.Controllers
 {
-    public class JobController : Controller
+    public class ContactController : Controller
     {
-        // GET: Job
+        // GET: Contact
         public ActionResult Index()
-        {
-            return View();
-        }
-        public ActionResult Details()
-        {
-            return View();
-        }
-        public ActionResult Post()
         {
             return View();
         }

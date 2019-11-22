@@ -6,18 +6,14 @@ using System.Web.Mvc;
 
 namespace ASPFinal.Controllers
 {
-    public class JobController : Controller
+    public class UserController : Controller
     {
-        // GET: Job
-        public ActionResult Index()
+        // GET: User
+        public ActionResult Login()
         {
             return View();
         }
-        public ActionResult Details()
-        {
-            return View();
-        }
-        public ActionResult Post()
+        public ActionResult Register()
         {
             return View();
         }

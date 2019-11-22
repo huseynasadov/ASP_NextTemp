@@ -75,7 +75,7 @@
         <div class="container">
             <!-- Logo container-->
             <div>
-                <a href="index-2.html" class="logo">
+                <a href="@Url.Action("index","home")" class="logo">
                     <img src="~/Public/images/logo-light.png" alt="" class="logo-light" height="28" />
                     <img src="~/Public/images/logo-dark.png" alt="" class="logo-dark" height="28" />
                 </a>
@@ -163,19 +163,19 @@
                         <span class="menu-arrow"></span>
                         <ul class="submenu">
                             <li>
-                                <a href="about.html">About us</a>
+                                <a href="@Url.Action("about","page")">About us</a>
                             </li>
                             <li>
-                                <a href="services.html">Services</a>
+                                <a href="@Url.Action("service","page")">Services</a>
                             </li>
                             <li>
-                                <a href="team.html">Team</a>
+                                <a href="@Url.Action("team","page")">Team</a>
                             </li>
                             <li>
-                                <a href="faq.html">Faqs</a>
+                                <a href="@Url.Action("faq","page")">Faqs</a>
                             </li>
                             <li>
-                                <a href="pricing.html">Pricing plans</a>
+                                <a href="@Url.Action("pricing","page")">Pricing plans</a>
                             </li>
                             <li>
                                 <a href="#ModalCenter" class="nav-link" data-toggle="modal" data-target="#ModalCenter">Log in</a>
@@ -187,9 +187,9 @@
                     </li>
 
                     <li class="has-submenu">
-                        <a href="contact.html">contact</a>
+                        <a href="@Url.Action("index","Contact")">contact</a>
                     </li>
-                    <a href="post-a-job.html" class="btn btn-custom btn-sm"><i class="mdi mdi-cloud-upload"></i> Post a Job</a>
+                    <a href="@Url.Action("post","job")" class="btn btn-custom btn-sm"><i class="mdi mdi-cloud-upload"></i> Post a Job</a>
 
                 </ul>
                 <!-- End navigation menu-->

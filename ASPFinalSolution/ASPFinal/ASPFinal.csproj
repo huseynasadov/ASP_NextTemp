@@ -133,12 +133,23 @@
     <Compile Include="Areas\Control\Controllers\HomeController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\CandidateController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\EmployerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobController.cs" />
+    <Compile Include="Controllers\PageController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CareerAdvice.cs" />
+    <Compile Include="Models\HowItWork.cs" />
+    <Compile Include="Models\Job.cs" />
+    <Compile Include="Models\JobCategory.cs" />
+    <Compile Include="Models\JobEduLevel.cs" />
+    <Compile Include="Models\Partner.cs" />
+    <Compile Include="Models\Setting.cs" />
+    <Compile Include="Models\SocialLink.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1380,7 +1391,7 @@
     <Folder Include="Areas\Control\Models\" />
     <Folder Include="Areas\Control\Views\Auth\" />
     <Folder Include="DAL\" />
-    <Folder Include="Models\" />
+    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Control\Views\web.config" />
@@ -1552,6 +1563,15 @@
     <Content Include="Views\Employer\Details.cshtml" />
     <Content Include="Views\Blog\Index.cshtml" />
     <Content Include="Views\Blog\Details.cshtml" />
+    <Content Include="Views\Page\About.cshtml" />
+    <Content Include="Views\Page\Service.cshtml" />
+    <Content Include="Views\Page\Team.cshtml" />
+    <Content Include="Views\Page\Faq.cshtml" />
+    <Content Include="Views\Page\Pricing.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\Shared\_Searching.cshtml" />
+    <Content Include="Views\Shared\_Breadcrumb.cshtml" />
+    <Content Include="Views\Job\Post.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
