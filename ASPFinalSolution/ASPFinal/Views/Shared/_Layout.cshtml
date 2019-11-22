@@ -1,209 +1,492 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
-    @Styles.Render("~/bundles/css")
-    @*<link rel="stylesheet" href="~/Public/css/mdb.min.css">
-        <link rel="stylesheet" href="~/Public/css/style.css">
-        <link rel="stylesheet" href="~/Public/css/responsive.css">*@
-    <title>@ViewBag.Title - Next Job</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Joobsy - Responsive Landing Page Tamplate</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="Themesdesign" />
+
+    <link rel="shortcut icon" href="~/Public/images/favicon.ico">
+
+    <!-- google font --> <!-- google font -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Rubik:300,400,500,700" rel="stylesheet">
+
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="~/Public/css/bootstrap.min.css" type="text/css">
+
+    <!--Material Icon -->
+    <link rel="stylesheet" type="text/css" href="~/Public/css/materialdesignicons.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="~/Public/css/fontawesome.css" />
+
+    <!-- selectize css -->
+    <link rel="stylesheet" type="text/css" href="~/Public/css/selectize.css" />
+    @RenderSection("style", false)
+
+    <link rel="stylesheet" type="text/css" href="~/Public/css/nice-select.css" />
+    <!--Slider-->
+    <link rel="stylesheet" href="~/Public/css/owl.carousel.css" />
+    <link rel="stylesheet" href="~/Public/css/owl.theme.css" />
+    <link rel="stylesheet" href="~/Public/css/owl.transitions.css" />
+
+    <!-- Custom  Css -->
+    <link rel="stylesheet" type="text/css" href="~/Public/css/style.css" />
+
 </head>
+
 <body>
-    <div id="preloader">
-        <div id="status">&nbsp;</div>
-    </div>
-    <div class="@(ViewBag.Page=="Home" ? "":"header")">
-       
-        <div class="container">
-            <div class="position-relative">
-                <nav class="navbar navbar-expand-lg navbar-light">
 
-                    <a class="navbar-brand" href="index.html"><img src="~/Public/img/global/@(ViewBag.Page=="Home" ? "logo.svg":"logo-black.svg")" alt="Logo"></a>
-                    @{
-                        ViewBag.Page = null;
-                    }
-                    <div class="searchWrap position-relative">
-                        <form action="explore.html" method="get">
-                            <input class="searchBar" type="text" name="search" id="search" placeholder="What are looking for?">
-                            <label for="seachBar"></label>
-                        </form>
+    <!-- Navigation Bar-->
+    <header id="topnav" class="defaultscroll scroll-active">
+        <div class="tagline">
+            <div class="container">
+                <div class="float-left">
+                    <div class="phone">
+                        <i class="mdi mdi-phone-classic"></i> +1 800 123 45 67
                     </div>
+                    <div class="email">
+                        <a href="#">
+                            <i class="mdi mdi-email"></i> Support@mail.com
+                        </a>
+                    </div>
+                </div>
+                <div class="float-right">
+                    <ul class="topbar-list list-unstyled d-flex" style="margin: 11px 0px;">
+                        <li class="list-inline-item"><a href="javascript:void(0);"><i class="mdi mdi-account mr-2"></i>Benny Simpson</a></li>
+                        <li class="list-inline-item">
+                            <a href="javascript:void(0);">
+                                <select id="select-lang" class="demo-default" placeholder="Language">
+                                    <option value="">Language</option>
+                                    <option value="4">English</option>
+                                    <option value="1">Spanish</option>
+                                    <option value="3">French</option>
+                                    <option value="5">Hindi</option>
+                                </select>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="container">
+            <!-- Logo container-->
+            <div>
+                <a href="index-2.html" class="logo">
+                    <img src="~/Public/images/logo-light.png" alt="" class="logo-light" height="28" />
+                    <img src="~/Public/images/logo-dark.png" alt="" class="logo-dark" height="28" />
+                </a>
+            </div>
+            <!-- End Logo container-->
+            <div class="menu-extras">
 
-                    <button class="navbar-toggler" type="button">
-                        <i class="fa fa-bars text-white"></i>
-                    </button>
+                <div class="menu-item">
+                    <!-- Mobile menu toggle-->
+                    <a class="navbar-toggle">
+                        <div class="lines">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </a>
+                    <!-- End mobile menu toggle-->
+                </div>
+            </div>
 
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ml-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="@Url.Action("index","home")">Home</a>
+            <div id="navigation">
+
+                <!-- Navigation Menu-->
+                <ul class="navigation-menu">
+
+                    <li class="has-submenu">
+                        <a href="@Url.Action("index","home")">Home</a>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="#">Jobs</a>
+                        <span class="menu-arrow"></span>
+                        <ul class="submenu">
+                            <li>
+                                <a href="@Url.Action("index","Job")">Job Grid</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("details","job")">Job Details</a>
                             </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link" href="@Url.Action("index","explore")">Explore</a>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="#">Candidates</a>
+                        <span class="menu-arrow"></span>
+                        <ul class="submenu">
+                            <li>
+                                <a href="@Url.Action("index","Candidate")">Candidates Listing</a>
                             </li>
+                            <li>
+                                <a href="@Url.Action("details","Candidate")">Candidates Profile</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("create","Candidate")">Create Resume</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="#">Employers</a>
+                        <span class="menu-arrow"></span>
+                        <ul class="submenu">
+                            <li>
+                                <a href="@Url.Action("index","employer")">Employers List</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("details","employer")">Company Detail</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="#">Blog</a>
+                        <span class="menu-arrow"></span>
+                        <ul class="submenu">
+                            <li>
+                                <a href="@Url.Action("index","blog")">Blog List</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("details","blog")">Blog Details</a>
+                            </li>
+                        </ul>
+                    </li>
 
-                            <li class="nav-item dropdown">
-                                <a class="nav-link" href="#">More</a>
+                    <li class="has-submenu">
+                        <a href="#">Pages</a>
+                        <span class="menu-arrow"></span>
+                        <ul class="submenu">
+                            <li>
+                                <a href="about.html">About us</a>
+                            </li>
+                            <li>
+                                <a href="services.html">Services</a>
+                            </li>
+                            <li>
+                                <a href="team.html">Team</a>
+                            </li>
+                            <li>
+                                <a href="faq.html">Faqs</a>
+                            </li>
+                            <li>
+                                <a href="pricing.html">Pricing plans</a>
+                            </li>
+                            <li>
+                                <a href="#ModalCenter" class="nav-link" data-toggle="modal" data-target="#ModalCenter">Log in</a>
+                            </li>
+                            <li>
+                                <a href="#ModalCenter1" class="nav-link" data-toggle="modal" data-target="#ModalCenter1">Register</a>
+                            </li>
+                        </ul>
+                    </li>
 
-                                <div class="dropInner">
-                                    <div class="dropItems">
-                                        <a href="@Url.Action("index","blog")">Blog</a>
-                                        <a href="@Url.Action("index","pricing")">Pricing plans</a>
-                                        <a href="@Url.Action("index","account")">Account</a>
-                                        <a href="@Url.Action("index","contact")">Contact</a>
+                    <li class="has-submenu">
+                        <a href="contact.html">contact</a>
+                    </li>
+                    <a href="post-a-job.html" class="btn btn-custom btn-sm"><i class="mdi mdi-cloud-upload"></i> Post a Job</a>
+
+                </ul>
+                <!-- End navigation menu-->
+            </div>
+        </div>
+    </header>
+    <!-- End Navigation Bar-->
+    <!-- LOG IN FORM START -->
+    <section class="form-bg">
+        <div class="modal fade" id="ModalCenter" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">LOG IN</h5>
+                        <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="custom-form mt-4">
+                            <form>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="form-group blog-details-form">
+                                            <i class="mdi mdi-account text-muted f-17"></i>
+                                            <input name="name" id="name" type="text" class="form-control blog-details f-15 pt-2" placeholder="Username" required="">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="form-group blog-details-form">
+                                            <i class="mdi mdi-lock text-muted f-17"></i>
+                                            <input name="Password" id="Password" type="Password" class="form-control blog-details f-15 pt-2" placeholder="Password" required="">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <ul class="list-inline mb-0">
+                                            <li class="list-inline-item">
+                                                <div class="custom-control custom-checkbox pl-0 mb-1 mt-1">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                                    <label class="custom-control-label ml-1 text-muted f-15" for="customCheck1">Remember Me</label>
+                                                </div>
+                                            </li>
+                                            <li class="list-inline-item float-right">
+                                                <p class="mb-0"><a href="#" class="text-dark">Lost your password?</a></p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-sm-12 text-right">
+                                        <input type="submit" id="submit2" name="submit" class="btn-block btn btn-custom" value="Log In">
+                                    </div>
+                                </div>
+                            </form>
+                            <!-- /form -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- LOG IN FORM END -->
+    <!-- SING IN FORM START -->
+    <section class="form-bg">
+        <div class="modal fade" id="ModalCenter1" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">REGISTER</h5>
+                        <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="text-center">
+                                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                        <label class="btn btn-primary">
+                                            <input type="radio" name="options" id="option2" autocomplete="off"> Candidate
+                                        </label>
+
+                                        <label class="btn btn-primary">
+                                            <input type="radio" name="options" id="option3" autocomplete="off"> Employer
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="custom-form mt-4">
+                            <form>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="form-group blog-details-form">
+                                            <i class="mdi mdi-account text-muted f-17"></i>
+                                            <input name="name1" id="name1" type="text" class="form-control blog-details f-15 pt-2" placeholder="User Name" required="">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="form-group blog-details-form">
+                                            <i class="mdi mdi-email text-muted f-17"></i>
+                                            <input name="email" id="email" type="text" class="form-control blog-details f-15 pt-2" placeholder="Email" required="">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="form-group blog-details-form">
+                                            <i class="mdi mdi-lock text-muted f-17"></i>
+                                            <input name="password1" id="password1" type="Password" class="form-control blog-details f-15 pt-2" placeholder="Password" required="">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="form-group blog-details-form">
+                                            <i class="mdi mdi-lock text-muted f-17"></i>
+                                            <input name="confirm-password" id="confirm-password" type="Password" class="form-control blog-details f-15 pt-2" placeholder="Confirm Password" required="">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <ul class="list-inline mb-0">
+                                            <li class="list-inline-item">
+                                                <div class="custom-control custom-checkbox pl-0 mb-1 mt-1">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck2">
+                                                    <label class="custom-control-label ml-1 text-muted f-15" for="customCheck2">Remember Me</label>
+                                                </div>
+                                            </li>
+                                            <li class="list-inline-item float-right">
+                                                <p class="mb-0"><a href="#" class="text-dark">Lost your password?</a></p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-sm-12 text-right">
+                                        <input type="submit" id="submit3" name="submit" class="btn-block btn btn-custom" value="Register Now">
                                     </div>
                                 </div>
 
-                            </li>
+                                <div class="job-single-or mt-4 mb-4 position-relative">
+                                    <h5 class="mb-0 text-dark text-center">OR</h5>
+                                </div>
+                                <ul class="list-inline text-center">
+                                    <li class="list-inline-item mr-1">
+                                        <a href="#" class="text-white">
+                                            <div class="sing-form-icon bg-primary rounded">
+                                                <h6 class="mb-0"><i class="mdi mdi-facebook mr-1"></i>Facebook</h6>
+                                            </div>
+                                        </a>
+                                    </li>
 
-                            <li class="nav-item addList">
-                                <a class="nav-link addList" href="@Url.Action("index","pricing")">+ Add listing</a>
-                            </li>
+                                    <li class="list-inline-item mr-1">
+                                        <a href="#" class="text-white">
+                                            <div class="sing-form-icon bg-info rounded">
+                                                <h6 class="mb-0"><i class="mdi mdi-twitter mr-1"></i>Twitter</h6>
+                                            </div>
+                                        </a>
+                                    </li>
 
-                            <li class="nav-item account">
-                                <svg id="Group_193" data-name="Group 193" xmlns="https://www.w3.org/2000/svg" width="16" height="17.753" viewBox="0 0 16 17.753">
-                                    <circle id="Ellipse_1" data-name="Ellipse 1" cx="4.44" cy="4.44" r="4.44" transform="translate(3.558 0)" fill="#fff" />
-                                    <path id="Path_20" data-name="Path 20" d="M16,197.2H0a8,8,0,0,1,16,0Z" transform="translate(0 -179.444)" fill="#fff" />
-                                </svg>
-                            </li>
-                        </ul>
+                                    <li class="list-inline-item mr-1">
+                                        <a href="#" class="text-white">
+                                            <div class="sing-form-icon bg-danger rounded">
+                                                <h6 class="mb-0"><i class="mdi mdi-google-plus mr-1"></i>Google</h6>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </form>
+                            <!-- /form -->
+                        </div>
                     </div>
-
-                    <!-- Login form start -->
-                    <div class="loginForm">
-
-                        <form action="account.html" method="get">
-                            <div class="md-form">
-                                <input type="text" id="username" class="form-control">
-                                <label for="username">Username</label>
-                            </div>
-
-                            <div class="md-form">
-                                <input type="text" id="pass" class="form-control">
-                                <label for="pass">Password</label>
-                            </div>
-
-                            <button class="btn btnLogin">Sign in</button>
-                        </form>
-
-                        <a href="#">Create new account</a>
-                    </div>
-                    <!-- Login form end -->
-
-                </nav>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
+    <!-- SING IN FORM END -->
+
     @RenderBody()
 
-    <!-- Footer section start -->
-    <footer>
+    <!-- subscribe start -->
+    <section class="section">
         <div class="container">
             <div class="row">
-                <div class="col-xl-2 col-md-4">
-                    <img src="~/Public/img/global/logo-black.svg" alt="Logo">
-
-                    <div class="socialIcons">
-                        <a href="#">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
+                <div class="col-lg-4">
+                    <div class="float-left position-relative notification-icon mr-2">
+                        <i class="mdi mdi-bell-outline text-custom h2"></i>
+                        <span class="badge badge-pill badge-danger">1</span>
                     </div>
-                    <p class="copyright"> &copy; 2019 Copyright NextCard.</p>
-                    <p class="copyright"> All right reserved.</p>
+                    <h5 class="mt-2 mb-0">Your Job Notification</h5>
                 </div>
-
-                <div class="col-xl-5 col-md-8">
-                    <p class="footeSecTitle">The news</p>
-
-                    <div class="news">
-                        <a href="@Url.Action("detail","Blog")">
-                            <div class="innerNews">
-                                <img src="~/Public/img/th-1.png" alt="Image">
-                                <div class="newsContent">
-                                    <p class="newsTitle">
-                                        Infiniti will exit western Europe to focus on U.S., China
-                                    </p>
-                                    <p class="newsDesc">
-                                        Infiniti will stop building the Q30 sedan and the QX30 crossover in the ...
-                                    </p>
+                <div class="col-lg-8">
+                    <div class="subscribe">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" placeholder="Enter your E-mail address">
+                                </div>
+                                <div class="col-md-3">
+                                    <button type="submit" class="btn btn-custom">Subscribe Us</button>
                                 </div>
                             </div>
-                        </a>
-
-                        <a href="@Url.Action("detail","Blog")">
-                            <div class="innerNews">
-                                <img src="~/Public/img/th-2.png" alt="Image">
-                                <div class="newsContent">
-                                    <p class="newsTitle">
-                                        Alfa Romeo will recall 60,000 vehicles worldwide
-                                    </p>
-                                    <p class="newsDesc">
-                                        The Alfa Romeo recall concerns about 19,100 vehicles in the United States, most of which are in the possession of dealerships.
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
-
-                        <a href="@Url.Action("detail","Blog")">
-                            <div class="innerNews">
-                                <img src="~/Public/img/th-2.png" alt="Image">
-                                <div class="newsContent">
-                                    <p class="newsTitle">
-                                        VW accelerates electric push with more models, more production
-                                    </p>
-                                    <p class="newsDesc">
-                                        VW Group increased the global production and product scope ...
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
+                        </form>
                     </div>
                 </div>
-
-                <div class="col-xl-3 col-lg-4 col-md-6">
-                    <p class="footeSecTitle">Some useful links</p>
-                    <div class="links">
-                        <a href="#">Home</a>
-                        <a href="#">Licences</a>
-                        <a href="#">About Us</a>
-                        <a href="#">Agreements</a>
-                        <a href="#">Pricing plans</a>
-                        <a href="#">Afiliate program</a>
-                        <a href="#">Terms of usage</a>
+            </div>
+        </div>
+    </section>
+    <!-- subscribe end -->
+    <!-- footer start -->
+    <footer class="footer pt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="text-dark">
+                        <h3 class="mb-4 footer-list-title text-white f-17">Joobsy</h3>
+                        <p class="footer-desc">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium</p>
+                        <ul class="footer-icons list-inline mb-4">
+                            <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-facebook"></i></a></li>
+                            <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-twitter"></i></a></li>
+                            <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-instagram"></i></a></li>
+                            <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-google"></i></a></li>
+                        </ul>
                     </div>
                 </div>
-
-                <div class="col-xl-2 col-lg-4 col-md-6">
-                    <p class="footeSecTitle">Contact</p>
-
-                    <p class="phone">
-                        +994 12 123 45 67 <br>
-                        +994 12 123 45 67 <br>
-                        info@nextcar.temp
-                    </p>
-
-                    <p class="address">
-                        232 Nizami district H.Javid 123
-                        Baku, Azerbaijan
-                    </p>
+                <div class="col-lg-9">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div>
+                                <p class="text-white mb-4 footer-list-title f-17">Company</p>
+                                <ul class="list-unstyled footer-list-menu">
+                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="#">Media & Press</a></li>
+                                    <li><a href="#">Career</a></li>
+                                    <li><a href="#">Blog</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div>
+                                <p class="text-white mb-4 footer-list-title f-17">Resources</p>
+                                <ul class="list-unstyled footer-list-menu">
+                                    <li><a href="#">Help & Support</a></li>
+                                    <li><a href="#">Privacy Policy</a></li>
+                                    <li><a href="#">Terms & Conditions</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div>
+                                <p class="text-white mb-4 footer-list-title f-17">More Info</p>
+                                <ul class="list-unstyled footer-list-menu">
+                                    <li><a href="#">Pricing</a></li>
+                                    <li><a href="#">For Marketing</a></li>
+                                    <li><a href="#">For CEOs </a></li>
+                                    <li><a href="#">For Agencies</a></li>
+                                    <li><a href="#">Our Apps</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div>
+                                <p class="text-white mb-4 footer-list-title f-17">Help center</p>
+                                <ul class="list-unstyled footer-list-menu">
+                                    <li><a href="#">Accounting </a></li>
+                                    <li><a href="#">Billing</a></li>
+                                    <li><a href="#">General Question</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </footer>
-    <!-- Footer section end -->
+    <!-- footer end -->
+    <!-- footer-alt start -->
+    <section class="footer-alt pt-3 pb-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <p class="copyright mb-0">2019 © Joobsy. Design By Themesdesign</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- footer-alt end -->
+    <!-- javascript -->
+    <script src="~/Public/js/jquery.min.js"></script>
+    <script src="~/Public/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Public/js/jquery.easing.min.js"></script>
+    <script src="~/Public/js/plugins.js"></script>
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- selectize js -->
+    <script src="~/Public/js/selectize.min.js"></script>
+    <script src="~/Public/js/jquery.nice-select.min.js"></script>
+
+    <script src="~/Public/js/owl.carousel.min.js"></script>
+
+    <script src="~/Public/js/app.js"></script>
+    <script src="~/Public/js/home.js"></script>
     @RenderSection("scripts", false)
-    @Scripts.Render("~/bundles/javascript")
 </body>
 </html>

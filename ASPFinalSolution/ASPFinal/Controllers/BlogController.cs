@@ -13,8 +13,7 @@ namespace ASPFinal.Controllers
         {
             return View();
         }
-
-        public ActionResult Detail()
+        public ActionResult Details()
         {
             return View();
         }
