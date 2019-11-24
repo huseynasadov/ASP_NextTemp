@@ -24,6 +24,6 @@ namespace ASPFinal.Models
         [Required, Column(TypeName ="ntext")]
         [Display(Name = "Description")]
         public string Desc { get; set; }
-        public List<SocialLink> SocialLinks { get; set; }
+        public List<SettingSocial> SettingSocials { get; set; }
     }
 }

@@ -7,20 +7,24 @@ using System.Web;
 
 namespace ASPFinal.Models
 {
-    public class CareerAdvice
+    public class Blog
     {
         public int Id { get; set; }
         [Required,MaxLength(150)]
         public string Title { get; set; }
-        [Required, MaxLength(250)]
+        [Required, MaxLength(200)]
+        public string Slug { get; set; }
+        [Required,Column(TypeName ="ntext")]
         public string Content { get; set; }
-        [Required, Column(TypeName = "date"), DataType(DataType.Date)]
-        public DateTime Date { get; set; }
         [MaxLength(250)]
-        public string Photo { get; set; }
-        [NotMapped,Display(Name ="Photo Upload")]
+        public string Photos { get; set; }
+        [NotMapped]
         public HttpPostedFileBase PhotoUpload { get; set; }
-        public int? OrderBy { get; set; }
+        [DataType(DataType.Date),Column(TypeName ="date")]
+        public DateTime CreatedAt { get; set; }
+        public ICollection<BlogReview> BlogReview { get; set; }
+        public JobCategory Category { get; set; }
+        public int CategoryId { get; set; }
         public bool Status { get; set; }
     }
 }

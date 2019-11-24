@@ -11,6 +11,7 @@ namespace ASPFinal.Models
         public int Id { get; set; }
         [Required,MaxLength(100)]
         public string Name { get; set; }
+        public bool Status { get; set; }
         public ICollection<Job> Job { get; set; }
     }
 }

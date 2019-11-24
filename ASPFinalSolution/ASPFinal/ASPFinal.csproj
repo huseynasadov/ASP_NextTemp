@@ -139,17 +139,94 @@
     <Compile Include="Controllers\JobController.cs" />
     <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="DAL\JoobsyDbContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\CareerAdvice.cs" />
+    <Compile Include="Migrations\201911240938308_allTablesCreated.cs" />
+    <Compile Include="Migrations\201911240938308_allTablesCreated.Designer.cs">
+      <DependentUpon>201911240938308_allTablesCreated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911241015205_TablesAddedSlug.cs" />
+    <Compile Include="Migrations\201911241015205_TablesAddedSlug.Designer.cs">
+      <DependentUpon>201911241015205_TablesAddedSlug.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911241127281_deletedCountrytable.cs" />
+    <Compile Include="Migrations\201911241127281_deletedCountrytable.Designer.cs">
+      <DependentUpon>201911241127281_deletedCountrytable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911241207046_CandidateTablesAttributeChanged.cs" />
+    <Compile Include="Migrations\201911241207046_CandidateTablesAttributeChanged.Designer.cs">
+      <DependentUpon>201911241207046_CandidateTablesAttributeChanged.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911241211541_CandidateWebsiteLenghtChanged.cs" />
+    <Compile Include="Migrations\201911241211541_CandidateWebsiteLenghtChanged.Designer.cs">
+      <DependentUpon>201911241211541_CandidateWebsiteLenghtChanged.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911241221283_JobEduLevelListChanged.cs" />
+    <Compile Include="Migrations\201911241221283_JobEduLevelListChanged.Designer.cs">
+      <DependentUpon>201911241221283_JobEduLevelListChanged.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911241317518_BlogViewDateAdded.cs" />
+    <Compile Include="Migrations\201911241317518_BlogViewDateAdded.Designer.cs">
+      <DependentUpon>201911241317518_BlogViewDateAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911241330265_CareerAdviceTabledeleted.cs" />
+    <Compile Include="Migrations\201911241330265_CareerAdviceTabledeleted.Designer.cs">
+      <DependentUpon>201911241330265_CareerAdviceTabledeleted.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911241358431_EducationGraduatedDeleted.cs" />
+    <Compile Include="Migrations\201911241358431_EducationGraduatedDeleted.Designer.cs">
+      <DependentUpon>201911241358431_EducationGraduatedDeleted.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911241414013_EducationAdditionLenghtChanged.cs" />
+    <Compile Include="Migrations\201911241414013_EducationAdditionLenghtChanged.Designer.cs">
+      <DependentUpon>201911241414013_EducationAdditionLenghtChanged.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911241627546_ResponsAndQualifTablesCreated.cs" />
+    <Compile Include="Migrations\201911241627546_ResponsAndQualifTablesCreated.Designer.cs">
+      <DependentUpon>201911241627546_ResponsAndQualifTablesCreated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911241630556_CompanyNameAddedJob.cs" />
+    <Compile Include="Migrations\201911241630556_CompanyNameAddedJob.Designer.cs">
+      <DependentUpon>201911241630556_CompanyNameAddedJob.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911241715226_ServiceContentLenghtChanged.cs" />
+    <Compile Include="Migrations\201911241715226_ServiceContentLenghtChanged.Designer.cs">
+      <DependentUpon>201911241715226_ServiceContentLenghtChanged.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911241741262_LogoChanged.cs" />
+    <Compile Include="Migrations\201911241741262_LogoChanged.Designer.cs">
+      <DependentUpon>201911241741262_LogoChanged.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AboutUs.cs" />
+    <Compile Include="Models\Blog.cs" />
+    <Compile Include="Models\BlogReview.cs" />
+    <Compile Include="Models\Candidate.cs" />
+    <Compile Include="Models\CandidateSocial.cs" />
+    <Compile Include="Models\CompanyPhoto.cs" />
+    <Compile Include="Models\Education.cs" />
+    <Compile Include="Models\Employer.cs" />
+    <Compile Include="Models\EmployerCategory.cs" />
+    <Compile Include="Models\EmployerReview.cs" />
+    <Compile Include="Models\Experience.cs" />
+    <Compile Include="Models\Faq.cs" />
     <Compile Include="Models\HowItWork.cs" />
     <Compile Include="Models\Job.cs" />
     <Compile Include="Models\JobCategory.cs" />
     <Compile Include="Models\JobEduLevel.cs" />
     <Compile Include="Models\Partner.cs" />
+    <Compile Include="Models\Pricing.cs" />
+    <Compile Include="Models\Qualification.cs" />
+    <Compile Include="Models\Responsibility.cs" />
+    <Compile Include="Models\Service.cs" />
     <Compile Include="Models\Setting.cs" />
+    <Compile Include="Models\SettingSocial.cs" />
+    <Compile Include="Models\Skill.cs" />
     <Compile Include="Models\SocialLink.cs" />
+    <Compile Include="Models\Team.cs" />
+    <Compile Include="Models\TeamSocial.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1390,7 +1467,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Control\Models\" />
     <Folder Include="Areas\Control\Views\Auth\" />
-    <Folder Include="DAL\" />
+    <Folder Include="Uploads\" />
     <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
@@ -1575,6 +1652,50 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201911240938308_allTablesCreated.resx">
+      <DependentUpon>201911240938308_allTablesCreated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911241015205_TablesAddedSlug.resx">
+      <DependentUpon>201911241015205_TablesAddedSlug.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911241127281_deletedCountrytable.resx">
+      <DependentUpon>201911241127281_deletedCountrytable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911241207046_CandidateTablesAttributeChanged.resx">
+      <DependentUpon>201911241207046_CandidateTablesAttributeChanged.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911241211541_CandidateWebsiteLenghtChanged.resx">
+      <DependentUpon>201911241211541_CandidateWebsiteLenghtChanged.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911241221283_JobEduLevelListChanged.resx">
+      <DependentUpon>201911241221283_JobEduLevelListChanged.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911241317518_BlogViewDateAdded.resx">
+      <DependentUpon>201911241317518_BlogViewDateAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911241330265_CareerAdviceTabledeleted.resx">
+      <DependentUpon>201911241330265_CareerAdviceTabledeleted.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911241358431_EducationGraduatedDeleted.resx">
+      <DependentUpon>201911241358431_EducationGraduatedDeleted.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911241414013_EducationAdditionLenghtChanged.resx">
+      <DependentUpon>201911241414013_EducationAdditionLenghtChanged.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911241627546_ResponsAndQualifTablesCreated.resx">
+      <DependentUpon>201911241627546_ResponsAndQualifTablesCreated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911241630556_CompanyNameAddedJob.resx">
+      <DependentUpon>201911241630556_CompanyNameAddedJob.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911241715226_ServiceContentLenghtChanged.resx">
+      <DependentUpon>201911241715226_ServiceContentLenghtChanged.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911241741262_LogoChanged.resx">
+      <DependentUpon>201911241741262_LogoChanged.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
