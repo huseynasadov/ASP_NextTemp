@@ -24,6 +24,8 @@ namespace ASPFinal.Models
         [Required, Column(TypeName ="ntext")]
         [Display(Name = "Description")]
         public string Desc { get; set; }
+        [MaxLength(50)]
+        public string HomeTitle { get; set; }
         public List<SettingSocial> SettingSocials { get; set; }
     }
 }

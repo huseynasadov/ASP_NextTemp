@@ -772,6 +772,7 @@ namespace ASPFinal.Migrations
                     LogoName="Joobsy",
                     Adress="2453 Clinton StreetLittle Rock, AR 72211",
                     Email="Support@mail.com",
+                    HomeTitle="Find your New Job Easiest Way With Joobsy",
                     Desc="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium"
                 }
             });
@@ -868,7 +869,37 @@ namespace ASPFinal.Migrations
 
             // Company Photo
             _db.CompanyPhoto.AddOrUpdate(c => c.Photo, new CompanyPhoto[] {
-                new CompanyPhoto{ EmployerId=1, Photo="blog-post/img-7.jpg"}
+                new CompanyPhoto{ EmployerId=1, Photo="blog-post/img-7.jpg"},
+                new CompanyPhoto{ EmployerId=1, Photo="blog-post/img-2.jpg"},
+                new CompanyPhoto{ EmployerId=1, Photo="blog-post/img-9.jpg"},
+                new CompanyPhoto{ EmployerId=2, Photo="blog-post/img-10.jpg"},
+                new CompanyPhoto{ EmployerId=2, Photo="blog-post/img-1.jpg"},
+                new CompanyPhoto{ EmployerId=3, Photo="blog-post/img-8.jpg"},
+                new CompanyPhoto{ EmployerId=3, Photo="blog-post/img-3.jpg"},
+                new CompanyPhoto{ EmployerId=4, Photo="blog-post/img-4.jpg"},
+                new CompanyPhoto{ EmployerId=4, Photo="blog-post/img-5.jpg"},
+                new CompanyPhoto{ EmployerId=4, Photo="blog-post/img-6.jpg"}
+            });
+
+            // HeaderSetting
+            _db.HeaderSetting.AddOrUpdate(h => h.Page, new HeaderSetting[] {
+                new HeaderSetting{Page=Page.Home,Photo="bg-home.jpg"},
+                new HeaderSetting{Page=Page.JobGrid,Photo="bg-page-header.jpg"},
+                new HeaderSetting{Page=Page.JobDetail,Photo="job-details-bg.jpg"},
+                new HeaderSetting{Page=Page.JobPost,Photo="post-a-job-bg.jpg"},
+                new HeaderSetting{Page=Page.CandidateList,Photo="candidates-profile-bg.jpg"},
+                new HeaderSetting{Page=Page.CandidateDetail,Photo="job-details-bg.jpg"},
+                new HeaderSetting{Page=Page.CandidateResume,Photo="create-resume-bg.jpg"},
+                new HeaderSetting{Page=Page.EmployerList,Photo="employers-list-bg.jpg"},
+                new HeaderSetting{Page=Page.EmlpoyerDetail,Photo="employers-details-bg.jpg"},
+                new HeaderSetting{Page=Page.BlogList,Photo="blog-list-bg.jpg"},
+                new HeaderSetting{Page=Page.BlogDetail,Photo="blog-details-bg.jpg"},
+                new HeaderSetting{Page=Page.AboutUs,Photo="about-bg.jpg"},
+                new HeaderSetting{Page=Page.Service,Photo="services-bg.jpg"},
+                new HeaderSetting{Page=Page.Faq,Photo="faq-bg.jpg"},
+                new HeaderSetting{Page=Page.Pricing,Photo="pricing-bg.jpg"},
+                new HeaderSetting{Page=Page.Team,Photo="cta-bg.jpg"},
+                new HeaderSetting{Page=Page.Contact,Photo="contact-bg.jpg"}
             });
             _db.SaveChanges();
         }

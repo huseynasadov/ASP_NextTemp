@@ -131,6 +131,7 @@
     <Compile Include="Areas\Control\ControlAreaRegistration.cs" />
     <Compile Include="Areas\Control\Controllers\AuthController.cs" />
     <Compile Include="Areas\Control\Controllers\HomeController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\CandidateController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
@@ -199,6 +200,14 @@
     <Compile Include="Migrations\201911241741262_LogoChanged.Designer.cs">
       <DependentUpon>201911241741262_LogoChanged.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911250453454_Header.cs" />
+    <Compile Include="Migrations\201911250453454_Header.Designer.cs">
+      <DependentUpon>201911250453454_Header.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911250458371_HomeTitleAddedSettingTable.cs" />
+    <Compile Include="Migrations\201911250458371_HomeTitleAddedSettingTable.Designer.cs">
+      <DependentUpon>201911250458371_HomeTitleAddedSettingTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AboutUs.cs" />
     <Compile Include="Models\Blog.cs" />
@@ -212,6 +221,7 @@
     <Compile Include="Models\EmployerReview.cs" />
     <Compile Include="Models\Experience.cs" />
     <Compile Include="Models\Faq.cs" />
+    <Compile Include="Models\HeaderSetting.cs" />
     <Compile Include="Models\HowItWork.cs" />
     <Compile Include="Models\Job.cs" />
     <Compile Include="Models\JobCategory.cs" />
@@ -228,6 +238,11 @@
     <Compile Include="Models\Team.cs" />
     <Compile Include="Models\TeamSocial.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\Breadcrumb.cs" />
+    <Compile Include="ViewModels\HomeVM.cs" />
+    <Compile Include="ViewModels\JobDetailVM.cs" />
+    <Compile Include="ViewModels\JobListVM.cs" />
+    <Compile Include="ViewModels\_SidebarVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Control\Public\css\fontawesome-all.min.css" />
@@ -1468,6 +1483,7 @@
     <Folder Include="Areas\Control\Models\" />
     <Folder Include="Areas\Control\Views\Auth\" />
     <Folder Include="Uploads\" />
+    <Folder Include="Views\Base\" />
     <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
@@ -1649,6 +1665,7 @@
     <Content Include="Views\Shared\_Searching.cshtml" />
     <Content Include="Views\Shared\_Breadcrumb.cshtml" />
     <Content Include="Views\Job\Post.cshtml" />
+    <Content Include="Views\Shared\_Sidebar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
@@ -1695,6 +1712,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911241741262_LogoChanged.resx">
       <DependentUpon>201911241741262_LogoChanged.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911250453454_Header.resx">
+      <DependentUpon>201911250453454_Header.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911250458371_HomeTitleAddedSettingTable.resx">
+      <DependentUpon>201911250458371_HomeTitleAddedSettingTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

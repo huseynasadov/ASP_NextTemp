@@ -1,9 +1,17 @@
-﻿
-<h1 class="font-weight-light">Blog Details</h1>
+﻿@model Breadcrumb
+<h1 class="font-weight-light">@Model.Title</h1>
 <div>
     <ol class="breadcrumb justify-content-center">
-        <li class="breadcrumb-item"><a href="#">Joobsy</a></li>
-        <li class="breadcrumb-item"><a href="#">Candidates</a></li>
-        <li class="breadcrumb-item active">Create Resume</li>
+        @foreach (var item in Model.Path)
+        {
+            if (item.Value != null)
+            {
+                <li class="breadcrumb-item"><a href="@item.Value">@item.Key</a></li>
+            }
+            else
+            {
+                <li><span>@item.Key</span></li>
+            }
+        }
     </ol>
 </div>

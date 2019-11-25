@@ -40,5 +40,6 @@ namespace ASPFinal.DAL
         public DbSet<TeamSocial> TeamSocial { get; set; }
         public DbSet<Qualification> Qualifications { get; set; }
         public DbSet<Responsibility> Responsibilities { get; set; }
+        public DbSet<HeaderSetting> HeaderSetting { get; set; }
     }
 }

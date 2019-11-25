@@ -7,7 +7,7 @@ using System.Web;
 
 namespace ASPFinal.Models
 {
-    public enum Gender { Male,Female}
+    public enum Gender {All,Male,Female}
     public enum Shift{ Morning, Evening }
     public enum JobExpYear {One,Two,Three}
     public enum JobType {Fulltime,Parttime }

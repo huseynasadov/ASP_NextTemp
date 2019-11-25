@@ -92,3 +92,6 @@ C:\Users\Huseyn\Desktop\Code Academy\ASP_NextTemp\ASPFinalSolution\ASPFinal\obj\
 C:\Users\Huseyn\Desktop\Code Academy\ASP_NextTemp\ASPFinalSolution\ASPFinal\obj\Debug\ASPFinal.Migrations.CompanyNameAddedJob.resources
 C:\Users\Huseyn\Desktop\Code Academy\ASP_NextTemp\ASPFinalSolution\ASPFinal\obj\Debug\ASPFinal.Migrations.ServiceContentLenghtChanged.resources
 C:\Users\Huseyn\Desktop\Code Academy\ASP_NextTemp\ASPFinalSolution\ASPFinal\obj\Debug\ASPFinal.Migrations.LogoChanged.resources
+C:\Users\Huseyn\Desktop\Code Academy\ASP_NextTemp\ASPFinalSolution\ASPFinal\obj\Debug\ASPFinal.csprojAssemblyReference.cache
+C:\Users\Huseyn\Desktop\Code Academy\ASP_NextTemp\ASPFinalSolution\ASPFinal\obj\Debug\ASPFinal.Migrations.Header.resources
+C:\Users\Huseyn\Desktop\Code Academy\ASP_NextTemp\ASPFinalSolution\ASPFinal\obj\Debug\ASPFinal.Migrations.HomeTitleAddedSettingTable.resources

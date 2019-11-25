@@ -1,0 +1,130 @@
+﻿@model _SidebarVM
+<div class="col-lg-3">
+    <div class="left-sidebar">
+        <div class="accordion" id="accordionExample">
+            <div class="card mt-4">
+                <a data-toggle="collapse" href="#collapseOne" class="job-list" aria-expanded="true" aria-controls="collapseOne">
+                    <div class="card-header" id="headingOne">
+                        <h6 class="mb-0 text-dark f-18">Date Posted</h6>
+                    </div>
+                </a>
+                @if (Model.Breadcrumb.Title.Contains("JOB") || Model.Breadcrumb.Title.Contains("Employer"))
+                {
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne">
+                        <div class="card-body p-0">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
+                                <label class="custom-control-label ml-1 text-muted f-15" for="customRadio1">Last Hour</label>
+                            </div>
+
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+                                <label class="custom-control-label ml-1 text-muted f-15" for="customRadio2">Last 24 hours</label>
+                            </div>
+
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="customRadio3" name="customRadio" class="custom-control-input">
+                                <label class="custom-control-label ml-1 text-muted f-15" for="customRadio3">Last 7 days</label>
+                            </div>
+
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="customRadio4" name="customRadio" class="custom-control-input">
+                                <label class="custom-control-label ml-1 text-muted f-15" for="customRadio4">Last 14 days</label>
+                            </div>
+
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="customRadio5" name="customRadio" class="custom-control-input">
+                                <label class="custom-control-label ml-1 text-muted f-15" for="customRadio5">Last 30 days</label>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <!-- collapse one end -->
+            <div class="card mt-4">
+                @if (Model.Breadcrumb.Title.Contains("JOB") || Model.Breadcrumb.Title.Contains("Blog"))
+                {
+                    <a data-toggle="collapse" href="#collapsetwo" class="job-list" aria-expanded="true" aria-controls="collapsetwo">
+                        <div class="card-header" id="headingtwo">
+                            <h6 class="mb-0 text-dark f-18">Categories</h6>
+                        </div>
+                    </a>
+                    <div id="collapsetwo" class="collapse show" aria-labelledby="headingtwo">
+                        <div class="card-body p-0">
+                            @foreach (var categ in Model.JobCategories)
+                            {
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" id="@categ.Id" name="customRadio1" class="custom-control-input">
+                                    <label class="custom-control-label ml-1 text-muted f-15" for="@categ.Id">@categ.Name</label>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <!-- collapse one end -->
+            <div class="card mt-4">
+                @if (Model.Breadcrumb.Title.Contains("JOB") || Model.Breadcrumb.Title.Contains("CANDIDATES"))
+                {
+                    <a data-toggle="collapse" href="#collapsethree" class="job-list" aria-expanded="true" aria-controls="collapsethree">
+                        <div class="card-header" id="headingthree">
+                            <h6 class="mb-0 text-dark f-18">Experince</h6>
+                        </div>
+                    </a>
+                    <div id="collapsethree" class="collapse show" aria-labelledby="headingthree">
+                        <div class="card-body p-0">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="customRadio13" name="customRadio2" class="custom-control-input">
+                                <label class="custom-control-label ml-1 text-muted f-15" for="customRadio13">@JobExpYear.One Year</label>
+                            </div>
+
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="customRadio14" name="customRadio2" class="custom-control-input">
+                                <label class="custom-control-label ml-1 text-muted f-15" for="customRadio14">@JobExpYear.Two Years</label>
+                            </div>
+
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="customRadio15" name="customRadio2" class="custom-control-input">
+                                <label class="custom-control-label ml-1 text-muted f-15" for="customRadio15">@JobExpYear.Three Tears</label>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+            </div>
+            <!-- collapse one end -->
+
+            <div class="card mt-4">
+                @if (Model.Breadcrumb.Title.Contains("JOB") || Model.Breadcrumb.Title.Contains("CANDIDATES") || Model.Breadcrumb.Title.Contains("Employer"))
+                {
+                    <a data-toggle="collapse" href="#collapsefour" class="job-list" aria-expanded="true" aria-controls="collapsefour">
+                        <div class="card-header" id="headingfour">
+                            <h6 class="mb-0 text-dark f-18">Gender</h6>
+                        </div>
+                    </a>
+                    <div id="collapsefour" class="collapse show" aria-labelledby="headingfour">
+                        <div class="card-body p-0">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="customRadio17" name="customRadio3" class="custom-control-input">
+                                <label class="custom-control-label ml-1 text-muted f-15" for="customRadio17">@Gender.All</label>
+                            </div>
+
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="customRadio18" name="customRadio3" class="custom-control-input">
+                                <label class="custom-control-label ml-1 text-muted f-15" for="customRadio18">@Gender.Male</label>
+                            </div>
+
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="customRadio19" name="customRadio3" class="custom-control-input">
+                                <label class="custom-control-label ml-1 text-muted f-15" for="customRadio19">@Gender.Female</label>
+                            </div>
+                        </div>
+                    </div>
+                }
+                </div>
+            <!-- collapse one end -->
+
+        </div>
+    </div>
+</div>

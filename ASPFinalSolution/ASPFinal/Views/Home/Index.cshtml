@@ -1,10 +1,10 @@
-﻿
+﻿@model  HomeVM
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<section class="bg-home">
+<section class="bg-home" style="background-image: url('/Uploads/images/@Model.HeaderSetting.Photo');">
     <div class="bg-overlay"></div>
     <div class="home-center">
         <div class="home-desc-center">
@@ -12,8 +12,8 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-9">
                         <div class="home-title text-center text-white">
-                            <h5 class="small-title text-uppercase f-17 text-white-50 mb-4">Discover Joobsy Today</h5>
-                            <h1 class="mb-4">Find your New Job Easiest Way With Joobsy</h1>
+                            <h5 class="small-title text-uppercase f-17 text-white-50 mb-4">Discover @Model.Setting.LogoName Today</h5>
+                            <h1 class="mb-4">@Model.Setting.HomeTitle</h1>
                         </div>
                     </div>
                 </div>
@@ -53,8 +53,8 @@
                         <i class="mdi mdi-account h2 text-custom"></i>
                     </div>
                     <div class="popu-category-content">
-                        <h5 class="f-18 mb-4"><a href="#" class="text-dark">Developer</a></h5>
-                        <p class="text-custom mb-0 rounded">780 Jobs</p>
+                        <h5 class="f-18 mb-4"><a href="@Url.Action("Index","Job")" class="text-dark">Developer</a></h5>
+                        <p class="text-custom mb-0 rounded">@Model.Jobs.Where(j => j.Category.Name.Contains("Develop")).Count() Jobs</p>
                     </div>
                 </div>
             </div>
@@ -64,8 +64,8 @@
                         <i class="mdi mdi-desktop-classic h2 text-custom"></i>
                     </div>
                     <div class="popu-category-content">
-                        <h5 class="f-18 mb-4"><a href="#" class="text-dark">Technology</a></h5>
-                        <p class="text-custom mb-0 rounded">1270 Jobs</p>
+                        <h5 class="f-18 mb-4"><a href="@Url.Action("Index","Job")" class="text-dark">Technology</a></h5>
+                        <p class="text-custom mb-0 rounded">@(Model.Jobs.Where(j => j.Category.Name.Contains("Develop")).Count() + @Model.Jobs.Where(j => j.Category.Name.Contains("Dsign")).Count()) Jobs</p>
                     </div>
                 </div>
             </div>
@@ -75,8 +75,8 @@
                         <i class="mdi mdi-bank h2 text-custom"></i>
                     </div>
                     <div class="popu-category-content">
-                        <h5 class="f-18 mb-4"><a href="#" class="text-dark">Government</a></h5>
-                        <p class="text-custom mb-0 rounded">2024 Jobs</p>
+                        <h5 class="f-18 mb-4"><a href="@Url.Action("Index","Job")" class="text-dark">Government</a></h5>
+                        <p class="text-custom mb-0 rounded">@Model.Jobs.Where(j => j.Category.Name.Contains("Gov")).Count() Jobs</p>
                     </div>
                 </div>
             </div>
@@ -86,8 +86,8 @@
                         <i class="mdi mdi-auto-fix h2 text-custom"></i>
                     </div>
                     <div class="popu-category-content">
-                        <h5 class="f-18 mb-4"><a href="#" class="text-dark">All Jobs</a></h5>
-                        <p class="text-custom mb-0 rounded">5000+ Jobs</p>
+                        <h5 class="f-18 mb-4"><a href="@Url.Action("Index","Job")" class="text-dark">All Jobs</a></h5>
+                        <p class="text-custom mb-0 rounded">@Model.Jobs.Count + Jobs</p>
                     </div>
                 </div>
             </div>
@@ -116,7 +116,7 @@
                         <a class="nav-link active" id="recent-job-tab" data-toggle="pill" href="#recent-job" role="tab" aria-controls="recent-job" aria-selected="true">Recent Jobs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="featured-job-tab" data-toggle="pill" href="#featured-job" role="tab" aria-controls="featured-job" aria-selected="false">Featured Jobs</a>
+                        <a class="nav-link" id="featured-job-tab" data-toggle="pill" href="#featured-job" role="tab" aria-controls="featured-job" aria-selected="false">Develop Jobs</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="part-job-tab" data-toggle="pill" href="#part-job" role="tab" aria-controls="part-job" aria-selected="false">Part Time</a>
@@ -129,205 +129,70 @@
                     <div class="tab-pane fade show active" id="recent-job" role="tabpanel" aria-labelledby="recent-job-tab">
                         <div class="row mb-5">
                             <div class="col-lg-12">
-
-                                <div class="job-box bg-white mt-4">
-                                    <div class="p-4">
-                                        <div class="row align-items-center">
-                                            <div class="col-md-2">
-                                                <div class="mo-mb-2">
-                                                    <img src="~/Public/images/featured-job/img-1.png" alt="" class="img-fluid mx-auto d-block">
+                                @foreach (var job in Model.Jobs)
+                                {
+                                    <div class="job-box bg-white mt-4">
+                                        <div class="p-4">
+                                            <div class="row align-items-center">
+                                                <div class="col-md-2">
+                                                    <div class="mo-mb-2">
+                                                        <img src="~/Uploads/images/@job.Photo" alt="" class="img-fluid mx-auto d-block">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div>
+                                                        <h5 class="f-18"><a href="#" class="text-dark">@job.Category.Name</a></h5>
+                                                        <p class="text-muted mb-0">@job.CompanyName</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div>
+                                                        <p class="text-muted mb-0"><i class="mdi mdi-map-marker text-custom mr-2"></i>@job.Address</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div>
+                                                        <p class="text-muted mb-0 mo-mb-2"><span class="text-custom">$</span>@(job.MinSalary?.ToString("#"))-@(job.MaxSalary?.ToString("#"))/m</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div>
+                                                        <p class="text-muted mb-0">@job.JobType</p>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-3">
-                                                <div>
-                                                    <h5 class="f-18"><a href="#" class="text-dark">Web Developer</a></h5>
-                                                    <p class="text-muted mb-0">Web Technology pvt.Ltd</p>
+                                        </div>
+                                        <div class="p-3 bg-light">
+                                            <div class="row d-flex justify-content-between">
+                                                <div class="col-md-4">
+                                                    <div>
+                                                        <p class="text-muted mb-0 mo-mb-2">
+                                                            <span class="text-dark">Experience :</span>
+                                                            @if (job.JobExpYear == JobExpYear.One)
+                                                            {
+                                                                <span>1</span>;
+                                                            }
+                                                            else if (job.JobExpYear == JobExpYear.Two)
+                                                            {
+                                                                <span>2</span>;
+                                                            }
+                                                            else
+                                                            {
+                                                                <span>2</span>;
+                                                            }
+                                                            years
+                                                        </p>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div>
-                                                    <p class="text-muted mb-0"><i class="mdi mdi-map-marker text-custom mr-2"></i>Oakridge Lane Richardson</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div>
-                                                    <p class="text-muted mb-0 mo-mb-2"><span class="text-custom">$</span>1000-1200/m</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div>
-                                                    <p class="text-muted mb-0">Full Time</p>
+                                                <div class="col-md-2">
+                                                    <div>
+                                                        <a href="@Url.Action("Details","Job",new { slug=job.Slug})" class="text-custom">Apply Now <i class="mdi mdi-chevron-double-right"></i></a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="p-3 bg-light">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div>
-                                                    <p class="text-muted mb-0 mo-mb-2"><span class="text-dark">Experience :</span> 1 - 2 years</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div>
-                                                    <p class="text-muted mb-0 mo-mb-2"><span class="text-dark">Notes :</span> languages only differ in their grammar. </p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div>
-                                                    <a href="#" class="text-custom">Apply Now <i class="mdi mdi-chevron-double-right"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="job-box bg-white mt-4">
-                                    <div class="p-4">
-                                        <div class="row align-items-center">
-                                            <div class="col-md-2">
-                                                <div class="mo-mb-2">
-                                                    <img src="~/Public/images/featured-job/img-2.png" alt="" class="img-fluid mx-auto d-block">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div>
-                                                    <h5 class="f-18"><a href="#" class="text-dark">Php Developer</a></h5>
-                                                    <p class="text-muted mb-0">Web Themes pvt.Ltd</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div>
-                                                    <p class="text-muted mb-0"><i class="mdi mdi-map-marker text-custom mr-2"></i>Berkshire Circle Knoxville</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div>
-                                                    <p class="text-muted mb-0 mo-mb-2"><span class="text-custom">$</span>900-1100/m</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div>
-                                                    <p class="text-muted mb-0">Full Time</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="p-3 bg-light">
-                                        <div class="row">
-                                            <div class="col-md-10">
-                                                <div>
-                                                    <p class="text-muted mb-0 mo-mb-2"><span class="text-dark">Experience :</span> 2 - 3 years</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div>
-                                                    <a href="#" class="text-custom">Apply Now <i class="mdi mdi-chevron-double-right"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="job-box bg-white mt-4">
-                                    <div class="p-4">
-                                        <div class="row align-items-center">
-                                            <div class="col-md-2">
-                                                <div class="mo-mb-2">
-                                                    <img src="~/Public/images/featured-job/img-3.png" alt="" class="img-fluid mx-auto d-block">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div>
-                                                    <h5 class="f-18"><a href="#" class="text-dark">Graphic Designer</a></h5>
-                                                    <p class="text-muted mb-0">Web Technology pvt.Ltd</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div>
-                                                    <p class="text-muted mb-0"><i class="mdi mdi-map-marker text-custom mr-2"></i>Sumner Street Anaheim</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div>
-                                                    <p class="text-muted mb-0 mo-mb-2"><span class="text-custom">$</span>800-1000/m</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div>
-                                                    <p class="text-muted mb-0">Part Time</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="p-3 bg-light">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div>
-                                                    <p class="text-muted mb-0 mo-mb-2"><span class="text-dark">Experience :</span> 0 - 1 years</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div>
-                                                    <p class="text-muted mb-0 mo-mb-2"><span class="text-dark">Notes :</span> languages only differ in their grammar. </p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div>
-                                                    <a href="#" class="text-custom">Apply Now <i class="mdi mdi-chevron-double-right"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="job-box bg-white mt-4">
-                                    <div class="p-4">
-                                        <div class="row align-items-center">
-                                            <div class="col-md-2">
-                                                <div class="mo-mb-2">
-                                                    <img src="~/Public/images/featured-job/img-4.png" alt="" class="img-fluid mx-auto d-block">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div>
-                                                    <h5 class="f-18"><a href="#" class="text-dark">UI/UX Designer</a></h5>
-                                                    <p class="text-muted mb-0">Web Themes pvt.Ltd</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div>
-                                                    <p class="text-muted mb-0"><i class="mdi mdi-map-marker text-custom mr-2"></i>Pinewood Drive Chicago</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div>
-                                                    <p class="text-muted mb-0 mo-mb-2"><span class="text-custom">$</span>1000-1200/m</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div>
-                                                    <p class="text-muted mb-0">Freelancer</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="p-3 bg-light">
-                                        <div class="row">
-                                            <div class="col-md-10">
-                                                <div>
-                                                    <p class="text-muted mb-0 mo-mb-2"><span class="text-dark">Experience :</span> 1 - 2 years</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div>
-                                                    <a href="#" class="text-custom">Apply Now <i class="mdi mdi-chevron-double-right"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
+                                }
                             </div>
                         </div>
                         <!-- end row -->
@@ -354,214 +219,73 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="tab-pane fade" id="featured-job" role="tabpanel" aria-labelledby="featured-job-tab">
                         <div class="row mb-5">
                             <div class="col-lg-12">
-
-                                <div class="job-box bg-white mt-4">
-                                    <div class="p-4">
-                                        <div class="row align-items-center">
-                                            <div class="col-md-2">
-                                                <div class="mo-mb-2">
-                                                    <img src="~/Public/images/featured-job/img-2.png" alt="" class="img-fluid mx-auto d-block">
+                                @foreach (var job in Model.Jobs.Where(j => j.Category.Name.Contains("Dev")))
+                                {
+                                    <div class="job-box bg-white mt-4">
+                                        <div class="p-4">
+                                            <div class="row align-items-center">
+                                                <div class="col-md-2">
+                                                    <div class="mo-mb-2">
+                                                        <img src="~/Uploads/images/@job.Photo" alt="" class="img-fluid mx-auto d-block">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div>
+                                                        <h5 class="f-18"><a href="#" class="text-dark">@job.Category.Name</a></h5>
+                                                        <p class="text-muted mb-0">@job.CompanyName</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div>
+                                                        <p class="text-muted mb-0"><i class="mdi mdi-map-marker text-custom mr-2"></i>@job.Address</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div>
+                                                        <p class="text-muted mb-0 mo-mb-2"><span class="text-custom">$</span>@(job.MinSalary?.ToString("#"))-@(job.MaxSalary?.ToString("#"))/m</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div>
+                                                        <p class="text-muted mb-0">@job.JobType</p>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-3">
-                                                <div>
-                                                    <h5 class="f-18"><a href="#" class="text-dark">Php Developer</a></h5>
-                                                    <p class="text-muted mb-0">Web Themes pvt.Ltd</p>
+                                        </div>
+                                        <div class="p-3 bg-light">
+                                            <div class="row d-flex justify-content-between">
+                                                <div class="col-md-4">
+                                                    <div>
+                                                        <p class="text-muted mb-0 mo-mb-2">
+                                                            <span class="text-dark">Experience :</span>
+                                                            @if (job.JobExpYear == JobExpYear.One)
+                                                            {
+                                                                <span>1</span>;
+                                                            }
+                                                            else if (job.JobExpYear == JobExpYear.Two)
+                                                            {
+                                                                <span>2</span>;
+                                                            }
+                                                            else
+                                                            {
+                                                                <span>2</span>;
+                                                            }
+                                                            years
+                                                        </p>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div>
-                                                    <p class="text-muted mb-0"><i class="mdi mdi-map-marker text-custom mr-2"></i>Berkshire Circle Knoxville</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div>
-                                                    <p class="text-muted mb-0 mo-mb-2"><span class="text-custom">$</span>900-1100/m</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div>
-                                                    <p class="text-muted mb-0">Full Time</p>
+                                                <div class="col-md-2">
+                                                    <div>
+                                                        <a href="@Url.Action("Details","Job",new { slug=job.Slug})" class="text-custom">Apply Now <i class="mdi mdi-chevron-double-right"></i></a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="p-3 bg-light">
-                                        <div class="row">
-                                            <div class="col-md-10">
-                                                <div class="mo-mb-2">
-                                                    <p class="text-muted mb-0 mo-mb-2"><span class="text-dark">Experience :</span> 2 - 3 years</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div>
-                                                    <a href="#" class="text-custom">Apply Now <i class="mdi mdi-chevron-double-right"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="job-box bg-white mt-4">
-                                    <div class="p-4">
-                                        <div class="row align-items-center">
-                                            <div class="col-md-2">
-                                                <div class="mo-mb-2">
-                                                    <img src="~/Public/images/featured-job/img-1.png" alt="" class="img-fluid mx-auto d-block">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div>
-                                                    <h5 class="f-18"><a href="#" class="text-dark">Web Developer</a></h5>
-                                                    <p class="text-muted mb-0">Web Technology pvt.Ltd</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div>
-                                                    <p class="text-muted mb-0"><i class="mdi mdi-map-marker text-custom mr-2"></i>Oakridge Lane Richardson</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div>
-                                                    <p class="text-muted mb-0 mo-mb-2"><span class="text-custom">$</span>1000-1200/m</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div>
-                                                    <p class="text-muted mb-0">Full Time</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="p-3 bg-light">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div>
-                                                    <p class="text-muted mb-0 mo-mb-2"><span class="text-dark">Experience :</span> 1 - 2 years</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div>
-                                                    <p class="text-muted mb-0 mo-mb-2"><span class="text-dark">Notes :</span> languages only differ in their grammar. </p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div>
-                                                    <a href="#" class="text-custom">Apply Now <i class="mdi mdi-chevron-double-right"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="job-box bg-white mt-4">
-                                    <div class="p-4">
-                                        <div class="row align-items-center">
-                                            <div class="col-md-2">
-                                                <div class="mo-mb-2">
-                                                    <img src="~/Public/images/featured-job/img-4.png" alt="" class="img-fluid mx-auto d-block">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div>
-                                                    <h5 class="f-18"><a href="#" class="text-dark">UI/UX Designer</a></h5>
-                                                    <p class="text-muted mb-0">Web Themes pvt.Ltd</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div>
-                                                    <p class="text-muted mb-0"><i class="mdi mdi-map-marker text-custom mr-2"></i>Pinewood Drive Chicago</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div>
-                                                    <p class="text-muted mb-0 mo-mb-2"><span class="text-custom">$</span>1000-1200/m</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div>
-                                                    <p class="text-muted mb-0">Freelancer</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="p-3 bg-light">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div>
-                                                    <p class="text-muted mb-0 mo-mb-2"><span class="text-dark">Experience :</span> 1 - 2 years</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div>
-                                                    <p class="text-muted mb-0 mo-mb-2"><span class="text-dark">Notes :</span> languages only differ in their grammar. </p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div>
-                                                    <a href="#" class="text-custom">Apply Now <i class="mdi mdi-chevron-double-right"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="job-box bg-white mt-4">
-                                    <div class="p-4">
-                                        <div class="row align-items-center">
-                                            <div class="col-md-2">
-                                                <div class="mo-mb-2">
-                                                    <img src="~/Public/images/featured-job/img-3.png" alt="" class="img-fluid mx-auto d-block">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div>
-                                                    <h5 class="f-18"><a href="#" class="text-dark">Graphic Designer</a></h5>
-                                                    <p class="text-muted mb-0">Web Technology pvt.Ltd</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div>
-                                                    <p class="text-muted mb-0"><i class="mdi mdi-map-marker text-custom mr-2"></i>Sumner Street Anaheim</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div>
-                                                    <p class="text-muted mb-0 mo-mb-2"><span class="text-custom">$</span>800-1000/m</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div>
-                                                    <p class="text-muted mb-0">Part Time</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="p-3 bg-light">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div>
-                                                    <p class="text-muted mb-0 mo-mb-2"><span class="text-dark">Experience :</span> 0 - 1 years</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div>
-                                                    <p class="text-muted mb-0 mo-mb-2"><span class="text-dark">Notes :</span> languages only differ in their grammar. </p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div>
-                                                    <a href="#" class="text-custom">Apply Now <i class="mdi mdi-chevron-double-right"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
+                                }
                             </div>
                         </div>
                         <!-- end row -->
@@ -591,212 +315,71 @@
                     <div class="tab-pane fade" id="part-job" role="tabpanel" aria-labelledby="part-job-tab">
                         <div class="row mb-5">
                             <div class="col-lg-12">
-
                                 <div class="col-lg-12">
-
-                                    <div class="job-box bg-white mt-4">
-                                        <div class="p-4">
-                                            <div class="row align-items-center">
-                                                <div class="col-md-2">
-                                                    <div class="mo-mb-2">
-                                                        <img src="~/Public/images/featured-job/img-1.png" alt="" class="img-fluid mx-auto d-block">
+                                    @foreach (var job in Model.Jobs.Where(j => j.JobType == JobType.Parttime))
+                                    {
+                                        <div class="job-box bg-white mt-4">
+                                            <div class="p-4">
+                                                <div class="row align-items-center">
+                                                    <div class="col-md-2">
+                                                        <div class="mo-mb-2">
+                                                            <img src="~/Uploads/images/@job.Photo" alt="" class="img-fluid mx-auto d-block">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div>
+                                                            <h5 class="f-18"><a href="#" class="text-dark">@job.Category.Name</a></h5>
+                                                            <p class="text-muted mb-0">@job.CompanyName</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div>
+                                                            <p class="text-muted mb-0"><i class="mdi mdi-map-marker text-custom mr-2"></i>@job.Address</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <div>
+                                                            <p class="text-muted mb-0 mo-mb-2"><span class="text-custom">$</span>@(job.MinSalary?.ToString("#"))-@(job.MaxSalary?.ToString("#"))/m</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <div>
+                                                            <p class="text-muted mb-0">@job.JobType</p>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3">
-                                                    <div>
-                                                        <h5 class="f-18"><a href="#" class="text-dark">Web Developer</a></h5>
-                                                        <p class="text-muted mb-0">Web Technology pvt.Ltd</p>
+                                            </div>
+                                            <div class="p-3 bg-light">
+                                                <div class="row d-flex justify-content-between">
+                                                    <div class="col-md-4">
+                                                        <div>
+                                                            <p class="text-muted mb-0 mo-mb-2">
+                                                                <span class="text-dark">Experience :</span>
+                                                                @if (job.JobExpYear == JobExpYear.One)
+                                                                {
+                                                                    <span>1</span>;
+                                                                }
+                                                                else if (job.JobExpYear == JobExpYear.Two)
+                                                                {
+                                                                    <span>2</span>;
+                                                                }
+                                                                else
+                                                                {
+                                                                    <span>2</span>;
+                                                                }
+                                                                years
+                                                            </p>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div>
-                                                        <p class="text-muted mb-0"><i class="mdi mdi-map-marker text-custom mr-2"></i>Oakridge Lane Richardson</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <div>
-                                                        <p class="text-muted mb-0 mo-mb-2"><span class="text-custom">$</span>1000-1200/m</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <div>
-                                                        <p class="text-muted mb-0">Full Time</p>
+                                                    <div class="col-md-2">
+                                                        <div>
+                                                            <a href="@Url.Action("Details","Job",new { slug=job.Slug})" class="text-custom">Apply Now <i class="mdi mdi-chevron-double-right"></i></a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="p-3 bg-light">
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <div>
-                                                        <p class="text-muted mb-0 mo-mb-2"><span class="text-dark">Experience :</span> 1 - 2 years</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div>
-                                                        <p class="text-muted mb-0 mo-mb-2"><span class="text-dark">Notes :</span> languages only differ in their grammar. </p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <div>
-                                                        <a href="#" class="text-custom">Apply Now <i class="mdi mdi-chevron-double-right"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="job-box bg-white mt-4">
-                                        <div class="p-4">
-                                            <div class="row align-items-center">
-                                                <div class="col-md-2">
-                                                    <div class="mo-mb-2">
-                                                        <img src="~/Public/images/featured-job/img-2.png" alt="" class="img-fluid mx-auto d-block">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div>
-                                                        <h5 class="f-18"><a href="#" class="text-dark">Php Developer</a></h5>
-                                                        <p class="text-muted mb-0">Web Themes pvt.Ltd</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div>
-                                                        <p class="text-muted mb-0"><i class="mdi mdi-map-marker text-custom mr-2"></i>Berkshire Circle Knoxville</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <div>
-                                                        <p class="text-muted mb-0 mo-mb-2"><span class="text-custom">$</span>900-1100/m</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <div>
-                                                        <p class="text-muted mb-0">Full Time</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="p-3 bg-light">
-                                            <div class="row">
-                                                <div class="col-md-10">
-                                                    <div>
-                                                        <p class="text-muted mb-0 mo-mb-2"><span class="text-dark">Experience :</span> 2 - 3 years</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <div>
-                                                        <a href="#" class="text-custom">Apply Now <i class="mdi mdi-chevron-double-right"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="job-box bg-white mt-4">
-                                        <div class="p-4">
-                                            <div class="row align-items-center">
-                                                <div class="col-md-2">
-                                                    <div class="mo-mb-2">
-                                                        <img src="~/Public/images/featured-job/img-3.png" alt="" class="img-fluid mx-auto d-block">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div>
-                                                        <h5 class="f-18"><a href="#" class="text-dark">Graphic Designer</a></h5>
-                                                        <p class="text-muted mb-0">Web Technology pvt.Ltd</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div>
-                                                        <p class="text-muted mb-0"><i class="mdi mdi-map-marker text-custom mr-2"></i>Sumner Street Anaheim</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <div>
-                                                        <p class="text-muted mb-0 mo-mb-2"><span class="text-custom">$</span>800-1000/m</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <div>
-                                                        <p class="text-muted mb-0">Part Time</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="p-3 bg-light">
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <div>
-                                                        <p class="text-muted mb-0 mo-mb-2"><span class="text-dark">Experience :</span> 0 - 1 years</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div>
-                                                        <p class="text-muted mb-0 mo-mb-2"><span class="text-dark">Notes :</span> languages only differ in their grammar. </p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <div>
-                                                        <a href="#" class="text-custom">Apply Now <i class="mdi mdi-chevron-double-right"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="job-box bg-white mt-4">
-                                        <div class="p-4">
-                                            <div class="row align-items-center">
-                                                <div class="col-md-2">
-                                                    <div class="mo-mb-2">
-                                                        <img src="~/Public/images/featured-job/img-4.png" alt="" class="img-fluid mx-auto d-block">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div>
-                                                        <h5 class="f-18"><a href="#" class="text-dark">UI/UX Designer</a></h5>
-                                                        <p class="text-muted mb-0">Web Themes pvt.Ltd</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div>
-                                                        <p class="text-muted mb-0"><i class="mdi mdi-map-marker text-custom mr-2"></i>Pinewood Drive Chicago</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <div>
-                                                        <p class="text-muted mb-0 mo-mb-2"><span class="text-custom">$</span>1000-1200/m</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <div>
-                                                        <p class="text-muted mb-0">Freelancer</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="p-3 bg-light">
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <div>
-                                                        <p class="text-muted mb-0 mo-mb-2"><span class="text-dark">Experience :</span> 1 - 2 years</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div>
-                                                        <p class="text-muted mb-0 mo-mb-2"><span class="text-dark">Notes :</span> languages only differ in their grammar. </p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <div>
-                                                        <a href="#" class="text-custom">Apply Now <i class="mdi mdi-chevron-double-right"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -827,209 +410,70 @@
                     <div class="tab-pane fade" id="full-job" role="tabpanel" aria-labelledby="full-job-tab">
                         <div class="row mb-5">
                             <div class="col-lg-12">
-
-                                <div class="job-box bg-white mt-4">
-                                    <div class="p-4">
-                                        <div class="row align-items-center">
-                                            <div class="col-md-2">
-                                                <div class="mo-mb-2">
-                                                    <img src="~/Public/images/featured-job/img-2.png" alt="" class="img-fluid mx-auto d-block">
+                                @foreach (var job in Model.Jobs.Where(j => j.JobType == JobType.Fulltime))
+                                {
+                                    <div class="job-box bg-white mt-4">
+                                        <div class="p-4">
+                                            <div class="row align-items-center">
+                                                <div class="col-md-2">
+                                                    <div class="mo-mb-2">
+                                                        <img src="~/Uploads/images/@job.Photo" alt="" class="img-fluid mx-auto d-block">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div>
+                                                        <h5 class="f-18"><a href="#" class="text-dark">@job.Category.Name</a></h5>
+                                                        <p class="text-muted mb-0">@job.CompanyName</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div>
+                                                        <p class="text-muted mb-0"><i class="mdi mdi-map-marker text-custom mr-2"></i>@job.Address</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div>
+                                                        <p class="text-muted mb-0 mo-mb-2"><span class="text-custom">$</span>@(job.MinSalary?.ToString("#"))-@(job.MaxSalary?.ToString("#"))/m</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div>
+                                                        <p class="text-muted mb-0">@job.JobType</p>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-3">
-                                                <div>
-                                                    <h5 class="f-18"><a href="#" class="text-dark">Php Developer</a></h5>
-                                                    <p class="text-muted mb-0">Web Themes pvt.Ltd</p>
+                                        </div>
+                                        <div class="p-3 bg-light">
+                                            <div class="row d-flex justify-content-between">
+                                                <div class="col-md-4">
+                                                    <div>
+                                                        <p class="text-muted mb-0 mo-mb-2">
+                                                            <span class="text-dark">Experience :</span>
+                                                            @if (job.JobExpYear == JobExpYear.One)
+                                                            {
+                                                                <span>1</span>;
+                                                            }
+                                                            else if (job.JobExpYear == JobExpYear.Two)
+                                                            {
+                                                                <span>2</span>;
+                                                            }
+                                                            else
+                                                            {
+                                                                <span>2</span>;
+                                                            }
+                                                            years
+                                                        </p>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div>
-                                                    <p class="text-muted mb-0"><i class="mdi mdi-map-marker text-custom mr-2"></i>Berkshire Circle Knoxville</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div>
-                                                    <p class="text-muted mb-0 mo-mb-2"><span class="text-custom">$</span>900-1100/m</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div>
-                                                    <p class="text-muted mb-0">Full Time</p>
+                                                <div class="col-md-2">
+                                                    <div>
+                                                        <a href="@Url.Action("Details","Job",new { slug=job.Slug})" class="text-custom">Apply Now <i class="mdi mdi-chevron-double-right"></i></a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="p-3 bg-light">
-                                        <div class="row">
-                                            <div class="col-md-10">
-                                                <div>
-                                                    <p class="text-muted mb-0 mo-mb-2"><span class="text-dark">Experience :</span> 2 - 3 years</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div>
-                                                    <a href="#" class="text-custom">Apply Now <i class="mdi mdi-chevron-double-right"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="job-box bg-white mt-4">
-                                    <div class="p-4">
-                                        <div class="row align-items-center">
-                                            <div class="col-md-2">
-                                                <div class="mo-mb-2">
-                                                    <img src="~/Public/images/featured-job/img-1.png" alt="" class="img-fluid mx-auto d-block">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div>
-                                                    <h5 class="f-18"><a href="#" class="text-dark">Web Developer</a></h5>
-                                                    <p class="text-muted mb-0">Web Technology pvt.Ltd</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div>
-                                                    <p class="text-muted mb-0"><i class="mdi mdi-map-marker text-custom mr-2"></i>Oakridge Lane Richardson</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div>
-                                                    <p class="text-muted mb-0 mo-mb-2"><span class="text-custom">$</span>1000-1200/m</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div>
-                                                    <p class="text-muted mb-0">Full Time</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="p-3 bg-light">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div>
-                                                    <p class="text-muted mb-0 mo-mb-2"><span class="text-dark">Experience :</span> 1 - 2 years</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div>
-                                                    <p class="text-muted mb-0 mo-mb-2"><span class="text-dark">Notes :</span> languages only differ in their grammar. </p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div>
-                                                    <a href="#" class="text-custom">Apply Now <i class="mdi mdi-chevron-double-right"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="job-box bg-white mt-4">
-                                    <div class="p-4">
-                                        <div class="row align-items-center">
-                                            <div class="col-md-2">
-                                                <div class="mo-mb-2">
-                                                    <img src="~/Public/images/featured-job/img-4.png" alt="" class="img-fluid mx-auto d-block">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div>
-                                                    <h5 class="f-18"><a href="#" class="text-dark">UI/UX Designer</a></h5>
-                                                    <p class="text-muted mb-0">Web Themes pvt.Ltd</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div>
-                                                    <p class="text-muted mb-0"><i class="mdi mdi-map-marker text-custom mr-2"></i>Pinewood Drive Chicago</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div>
-                                                    <p class="text-muted mb-0 mo-mb-2"><span class="text-custom">$</span>1000-1200/m</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div>
-                                                    <p class="text-muted mb-0">Freelancer</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="p-3 bg-light">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div>
-                                                    <p class="text-muted mb-0 mo-mb-2"><span class="text-dark">Experience :</span> 1 - 2 years</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div>
-                                                    <p class="text-muted mb-0 mo-mb-2"><span class="text-dark">Notes :</span> languages only differ in their grammar. </p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div>
-                                                    <a href="#" class="text-custom">Apply Now <i class="mdi mdi-chevron-double-right"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="job-box bg-white mt-4">
-                                    <div class="p-4">
-                                        <div class="row align-items-center">
-                                            <div class="col-md-2">
-                                                <div class="mo-mb-2">
-                                                    <img src="~/Public/images/featured-job/img-3.png" alt="" class="img-fluid mx-auto d-block">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div>
-                                                    <h5 class="f-18"><a href="#" class="text-dark">Graphic Designer</a></h5>
-                                                    <p class="text-muted mb-0">Web Technology pvt.Ltd</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div>
-                                                    <p class="text-muted mb-0"><i class="mdi mdi-map-marker text-custom mr-2"></i>Sumner Street Anaheim</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div>
-                                                    <p class="text-muted mb-0 mo-mb-2"><span class="text-custom">$</span>800-1000/m</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div>
-                                                    <p class="text-muted mb-0">Part Time</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="p-3 bg-light">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div>
-                                                    <p class="text-muted mb-0 mo-mb-2"><span class="text-dark">Experience :</span> 0 - 1 years</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div>
-                                                    <p class="text-muted mb-0 mo-mb-2"><span class="text-dark">Notes :</span> languages only differ in their grammar. </p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div>
-                                                    <a href="#" class="text-custom">Apply Now <i class="mdi mdi-chevron-double-right"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                }
 
                             </div>
                         </div>
@@ -1083,45 +527,22 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-4">
-                    <div class="how-it-work-box bg-light p-4 mt-4 text-center">
-                        <div class="how-it-work-img mb-4">
-                            <img src="~/Public/images/how-it-work/img-1.png" alt="" class="img-fluid mx-auto d-block">
-                            <p>1</p>
-                        </div>
-                        <div>
-                            <h5 class="f-18">Register an account</h5>
-                            <p class="f-14 text-muted">Donec pede justo fringilla vel aliquet nec vulputate eget arcu. In enim justo rhoncus ut a, venenatis vitae justo.</p>
-                            <a href="#" class="text-custom">Read more <i class="mdi mdi-chevron-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="how-it-work-box bg-light p-4 mt-4 text-center">
-                        <div class="how-it-work-img mb-4">
-                            <img src="~/Public/images/how-it-work/img-2.png" alt="" class="img-fluid mx-auto d-block">
-                            <p>2</p>
-                        </div>
-                        <div>
-                            <h5 class="f-18">Search your job</h5>
-                            <p class="f-14 text-muted">Aliquam lorem ante dapibus in, viverra feugiatquis a tellus. Phasellus viverra nulla ut metus varius Quisque rutrum.</p>
-                            <a href="#" class="text-custom">Read more <i class="mdi mdi-chevron-right"></i></a>
+                @foreach (var item in Model.HowItWorks)
+                {
+                    <div class="col-lg-4">
+                        <div class="how-it-work-box bg-light p-4 mt-4 text-center">
+                            <div class="how-it-work-img mb-4">
+                                <img src="~/Public/images/@item.Photo" alt="@item.Title" class="img-fluid mx-auto d-block">
+                                <p>@item.OrderBy</p>
+                            </div>
+                            <div>
+                                <h5 class="f-18">@item.Title</h5>
+                                <p class="f-14 text-muted">@item.Content</p>
+                                <a href="@Url.Action("About","Page")" class="text-custom">Read more <i class="mdi mdi-chevron-right"></i></a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="how-it-work-box bg-light p-4 mt-4 text-center">
-                        <div class="how-it-work-img mb-4">
-                            <img src="~/Public/images/how-it-work/img-3.png" alt="" class="img-fluid mx-auto d-block">
-                            <p>3</p>
-                        </div>
-                        <div>
-                            <h5 class="f-18">Apply for job</h5>
-                            <p class="f-14 text-muted">Nullam dictum felis eu pede mollis pretiumetus Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.</p>
-                            <a href="#" class="text-custom">Read more <i class="mdi mdi-chevron-right"></i></a>
-                        </div>
-                    </div>
-                </div>
+                }
             </div>
         </div>
     </div>
@@ -1138,7 +559,7 @@
                         <i class="mdi mdi-bank h1 text-white"></i>
                     </div>
                     <div class="counter-content">
-                        <h1 class="counter-value text-custom mb-1" data-count="120">10</h1>
+                        <h1 class="counter-value text-custom mb-1" data-count="@Model.Employers.Count()">10</h1>
                         <p class="counter-name text-white f-14 text-uppercase">Companies</p>
                     </div>
                 </div>
@@ -1150,8 +571,8 @@
                         <i class="mdi mdi-file-document-box h1 text-white"></i>
                     </div>
                     <div class="counter-content">
-                        <h1 class="counter-value text-custom mb-1" data-count="480">80</h1>
-                        <p class="counter-name text-white f-14 text-uppercase">Applications</p>
+                        <h1 class="counter-value text-custom mb-1" data-count="@Model.BlogCounts">80</h1>
+                        <p class="counter-name text-white f-14 text-uppercase">Blogs</p>
                     </div>
                 </div>
             </div>
@@ -1162,7 +583,7 @@
                         <i class="mdi mdi-calendar-multiple-check h1 text-white"></i>
                     </div>
                     <div class="counter-content">
-                        <h1 class="counter-value text-custom mb-1" data-count="120">10</h1>
+                        <h1 class="counter-value text-custom mb-1" data-count="@Model.Jobs.Count()">10</h1>
                         <p class="counter-name text-white f-14 text-uppercase">Job Posted</p>
                     </div>
                 </div>
@@ -1173,8 +594,8 @@
                         <i class="mdi mdi-account-multiple-plus h1 text-white"></i>
                     </div>
                     <div class="counter-content">
-                        <h1 class="counter-value text-custom mb-1" data-count="200">10</h1>
-                        <p class="counter-name text-white f-14 text-uppercase">Member</p>
+                        <h1 class="counter-value text-custom mb-1" data-count="@Model.Partners.Count()">10</h1>
+                        <p class="counter-name text-white f-14 text-uppercase">Partners</p>
                     </div>
                 </div>
             </div>
@@ -1200,47 +621,24 @@
         <div class="row pt-4">
             <div class="col-lg-12">
                 <div id="owl-testi" class="owl-carousel owl-theme">
-                    <div class="item testi-box p-4 mr-3 ml-2 mb-4 bg-light position-relative">
-                        <p class="text-muted mb-5">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet consecteturqui adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam</p>
-                        <div class="clearfix">
-                            <div class="testi-img float-left mr-3">
-                                <img src="~/Public/images/testi/img-1.png" alt="" class="rounded-circle">
-                            </div>
-                            <h5 class="f-18 pt-1">Kevin Stewart</h5>
-                            <p class="text-muted mb-0">Web Designer at xyz Company</p>
-                            <div class="testi-icon">
-                                <i class="mdi mdi-format-quote-open display-2"></i>
-                            </div>
-                        </div>
-                    </div>
+                    @foreach (var can in Model.Candidates)
+                    {
 
-                    <div class="item testi-box p-4 mr-3 ml-2 bg-light position-relative">
-                        <p class="text-muted mb-5">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo</p>
-                        <div class="clearfix">
-                            <div class="testi-img float-left mr-3">
-                                <img src="~/Public/images/testi/img-2.png" alt="" class="rounded-circle">
-                            </div>
-                            <h5 class="f-18 pt-1">Charles Garrett</h5>
-                            <p class="text-muted mb-0">Marketing manager at abc Company</p>
-                            <div class="testi-icon">
-                                <i class="mdi mdi-format-quote-open display-2"></i>
+                        <div class="item testi-box p-4 mr-3 ml-2 mb-4 bg-light position-relative">
+                            <p class="text-muted mb-5">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet consecteturqui adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam</p>
+                            <div class="clearfix">
+                                <div class="testi-img float-left mr-3">
+                                    <img src="~/Public/images/@can.Photo" alt="@can.Slug" class="rounded-circle">
+                                </div>
+                                <h5 class="f-18 pt-1">@can.Firstname @can.Lastname</h5>
+                                <p class="text-muted mb-0">@can.Profession</p>
+                                <div class="testi-icon">
+                                    <i class="mdi mdi-format-quote-open display-2"></i>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    }
 
-                    <div class="item testi-box p-4 mr-3 ml-2 bg-light position-relative">
-                        <p class="text-muted mb-5">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet consecteturqui adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam</p>
-                        <div class="clearfix">
-                            <div class="testi-img float-left mr-3">
-                                <img src="~/Public/images/testi/img-3.png" alt="" class="rounded-circle">
-                            </div>
-                            <h5 class="f-18 pt-1">Perry Martinez</h5>
-                            <p class="text-muted mb-0">Marketing manager at abc Company</p>
-                            <div class="testi-icon">
-                                <i class="mdi mdi-format-quote-open display-2"></i>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
             </div>
@@ -1256,26 +654,14 @@
         </div>
 
         <div class="row align-items-center">
-            <div class="col-md-3">
-                <div class="client-images">
-                    <img src="~/Public/images/clients/1.png" alt="logo-img" class="mx-auto img-fluid d-block">
+            @foreach (var par in Model.Partners)
+            {
+                <div class="col-md-3">
+                    <div class="client-images">
+                        <img src="~/Uploads/images/@par.Photo" alt="@par.Name" class="mx-auto img-fluid d-block">
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-3">
-                <div class="client-images">
-                    <img src="~/Public/images/clients/2.png" alt="logo-img" class="mx-auto img-fluid d-block">
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="client-images">
-                    <img src="~/Public/images/clients/3.png" alt="logo-img" class="mx-auto img-fluid d-block">
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="client-images">
-                    <img src="~/Public/images/clients/4.png" alt="logo-img" class="mx-auto img-fluid d-block">
-                </div>
-            </div>
+            }
         </div>
     </div>
 </section>
@@ -1295,64 +681,28 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-4">
-                <div class="blog-box bg-white mt-4">
-                    <div class="blog-img">
-                        <img src="~/Public/images/blog/img-1.jpg" alt="" class="img-fluid mx-auto d-block">
-                    </div>
-                    <div class="blog-content p-4">
-                        <h5 class="f-17 mb-3"><a href="#" class="text-dark">Aenean vulputate eleifend tellus</a></h5>
-                        <p class="text-muted f-14 mb-0">
-                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam</p>
-                    </div>
-                    <div class="clearfix pl-4 pr-4">
-                        <div class="float-left">
-                            <p class="text-muted f-14"><i class="mdi mdi-calendar-today text-custom"></i> 24 Sep, 2018</p>
+            @foreach (var emp in Model.Employers.Take(3))
+            {
+                <div class="col-lg-4">
+                    <div class="blog-box bg-white mt-4">
+                        <div class="blog-img">
+                            <img src="~/Uploads/images/@emp.CompanyPhotos.FirstOrDefault().Photo" alt="@emp.CompanyName" class="img-fluid mx-auto d-block">
                         </div>
-                        <div class="float-right">
-                            <a href="#" class="text-custom f-14">Read more..</a>
+                        <div class="blog-content p-4">
+                            <h5 class="f-17 mb-3"><a href="@Url.Action("Details","Employer",new {slug=emp.Slug })" class="text-dark">@emp.CompanyName</a></h5>
+                            @Html.Raw(emp.Services.Split('.').FirstOrDefault())
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="blog-box bg-white mt-4">
-                    <div class="blog-img">
-                        <img src="~/Public/images/blog/img-2.jpg" alt="" class="img-fluid mx-auto d-block">
-                    </div>
-                    <div class="blog-content p-4">
-                        <h5 class="f-17 mb-3"><a href="#" class="text-dark">Maecenas tempus tellus eget</a></h5>
-                        <p class="text-muted f-14 mb-0">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam</p>
-                    </div>
-                    <div class="clearfix pl-4 pr-4">
-                        <div class="float-left">
-                            <p class="text-muted f-14"><i class="mdi mdi-calendar-today text-custom"></i> 25 Sep, 2018</p>
-                        </div>
-                        <div class="float-right">
-                            <a href="#" class="text-custom f-14">Read more..</a>
+                        <div class="clearfix pl-4 pr-4">
+                            <div class="float-left">
+                                <p class="text-muted f-14"><i class="mdi mdi-calendar-today text-custom"></i>@emp.CreatedAt.ToString("dd MMM, yyyy")</p>
+                            </div>
+                            <div class="float-right">
+                                <a href="@Url.Action("Details","Employer",new {slug=emp.Slug })" class="text-custom f-14">Read more..</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="blog-box bg-white mt-4">
-                    <div class="blog-img">
-                        <img src="~/Public/images/blog/img-3.jpg" alt="" class="img-fluid mx-auto d-block">
-                    </div>
-                    <div class="blog-content p-4">
-                        <h5 class="f-17 mb-3"><a href="#" class="text-dark">Vestibulum ante ipsum primis</a></h5>
-                        <p class="text-muted f-14 mb-0">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam</p>
-                    </div>
-                    <div class="clearfix pl-4 pr-4">
-                        <div class="float-left">
-                            <p class="text-muted f-14"><i class="mdi mdi-calendar-today text-custom"></i> 26 Sep, 2018</p>
-                        </div>
-                        <div class="float-right">
-                            <a href="#" class="text-custom f-14">Read more..</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            }
         </div>
     </div>
 </section>
