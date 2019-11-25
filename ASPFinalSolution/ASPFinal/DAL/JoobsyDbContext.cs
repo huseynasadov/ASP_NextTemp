@@ -41,5 +41,6 @@ namespace ASPFinal.DAL
         public DbSet<Qualification> Qualifications { get; set; }
         public DbSet<Responsibility> Responsibilities { get; set; }
         public DbSet<HeaderSetting> HeaderSetting { get; set; }
+        public DbSet<OpeningHour> OpeningHours { get; set; }
     }
 }

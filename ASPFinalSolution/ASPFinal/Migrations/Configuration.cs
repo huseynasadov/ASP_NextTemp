@@ -901,6 +901,17 @@ namespace ASPFinal.Migrations
                 new HeaderSetting{Page=Page.Team,Photo="cta-bg.jpg"},
                 new HeaderSetting{Page=Page.Contact,Photo="contact-bg.jpg"}
             });
+
+            // OpeningHours
+            _db.OpeningHours.AddOrUpdate(o => o.Days, new OpeningHour[] {
+                new OpeningHour{ Days= Days.Monday, JobId=1,BeginHour="9",EndHour="7"},
+                new OpeningHour{ Days= Days.Tuesday, JobId=1,BeginHour="9",EndHour="7"},
+                new OpeningHour{ Days= Days.Wednesday, JobId=1,BeginHour="9",EndHour="7"},
+                new OpeningHour{ Days= Days.Thursday, JobId=1,BeginHour="9",EndHour="7"},
+                new OpeningHour{ Days= Days.Friday, JobId=1,BeginHour="9",EndHour="7"},
+                new OpeningHour{ Days= Days.Saturday, JobId=1,BeginHour="6:30",EndHour="1"},
+                new OpeningHour{ Days= Days.Sunday, JobId=1,BeginHour="",EndHour=""},
+            });
             _db.SaveChanges();
         }
     }

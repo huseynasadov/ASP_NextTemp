@@ -42,6 +42,7 @@ namespace ASPFinal.Models
         public string Desc { get; set; }
         public ICollection<Qualification> Qualifications { get; set; }
         public ICollection<Responsibility> Responsibilities { get; set; }
+        public ICollection<OpeningHour> OpeningHours { get; set; }
         [MaxLength(250)]
         public string Photo { get; set; }
         [NotMapped,Display(Name ="Photo Upload")]

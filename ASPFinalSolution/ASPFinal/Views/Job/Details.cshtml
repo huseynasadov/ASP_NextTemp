@@ -190,54 +190,26 @@
 
                     <div class="job-detail-time p-2">
                         <ul class="list-inline mb-0">
-                            <li class="clearfix text-muted">
-                                <div class="float-left f-14">Monday</div>
-                                <div class="float-right">
-                                    <h5 class="f-13 mb-0">9AM - 7PM</h5>
-                                </div>
-                            </li>
+                            @if (Model.Job.OpeningHours!=null)
+                            {
+                                foreach(var hour in Model.Job.OpeningHours)
+                                {
+                                    <li class="clearfix text-muted">
+                                        <div class="float-left f-14">@hour.Days</div>
+                                        <div class="float-right">
+                                            @if (hour.BeginHour == "" && hour.EndHour == "")
+                                            {
+                                                <h5 class="f-13 mb-0">Closed</h5>
+                                            }
+                                            else
+                                            {
+                                                <h5 class="f-13 mb-0">@hour.BeginHour AM - @hour.EndHour PM</h5>
+                                            }
+                                        </div>
+                                    </li>
+                                }
+                            }
 
-                            <li class="clearfix text-muted">
-                                <div class="float-left f-14">Tuesday</div>
-                                <div class="float-right">
-                                    <h5 class="f-13 mb-0">9AM - 7PM</h5>
-                                </div>
-                            </li>
-
-                            <li class="clearfix text-muted">
-                                <div class="float-left f-14">Wednesday</div>
-                                <div class="float-right">
-                                    <h5 class="f-13 mb-0">9AM - 7PM</h5>
-                                </div>
-                            </li>
-
-                            <li class="clearfix text-muted">
-                                <div class="float-left f-14">Thursday</div>
-                                <div class="float-right">
-                                    <h5 class="f-13 mb-0">9AM - 7PM</h5>
-                                </div>
-                            </li>
-
-                            <li class="clearfix text-muted">
-                                <div class="float-left f-14">Friday</div>
-                                <div class="float-right">
-                                    <h5 class="f-13 mb-0">9AM - 7PM</h5>
-                                </div>
-                            </li>
-
-                            <li class="clearfix text-muted">
-                                <div class="float-left f-14">Saturday</div>
-                                <div class="float-right">
-                                    <h5 class="f-13 mb-0">6:30AM - 1PM</h5>
-                                </div>
-                            </li>
-
-                            <li class="clearfix text-muted pb-0">
-                                <div class="float-left f-14">Sunday</div>
-                                <div class="float-right">
-                                    <h5 class="f-13 mb-0">Closed</h5>
-                                </div>
-                            </li>
                         </ul>
                     </div>
                 </div>

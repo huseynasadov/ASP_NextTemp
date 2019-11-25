@@ -47,7 +47,7 @@ namespace ASPFinal.Controllers
                         { "JOB DETAILS", null }
                     }
                 },
-                Job = _db.Jobs.Include("Category").Include("Qualifications").Include("Responsibilities").FirstOrDefault(j => j.Slug == slug),
+                Job = _db.Jobs.Include("OpeningHours").Include("Category").Include("Qualifications").Include("Responsibilities").FirstOrDefault(j => j.Slug == slug),
                 HeaderSetting = _db.HeaderSetting.FirstOrDefault(h => h.Page == Models.Page.JobDetail),
             };
 

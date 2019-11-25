@@ -8,18 +8,13 @@ using System.Web.Mvc;
 
 namespace ASPFinal.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
-        private readonly JoobsyDbContext _db;
-        public HomeController()
-        {
-            _db = new JoobsyDbContext();
-        }
         // GET: Home
         public ActionResult Index()
         {
             HomeVM model = new HomeVM {
-                Setting = _db.Settings.FirstOrDefault(),
+                Setting = ViewBag.Setting,
                 HeaderSetting = _db.HeaderSetting.FirstOrDefault(h => h.Page == Models.Page.Home),
                 Jobs = _db.Jobs.Include("Category").OrderByDescending(j => j.CreatedAt).ToList(),
                 HowItWorks = _db.HowItWorks.Where(e => e.Status == true).OrderBy(h => h.OrderBy).ToList(),
