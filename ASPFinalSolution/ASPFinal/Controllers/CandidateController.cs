@@ -33,7 +33,22 @@ namespace ASPFinal.Controllers
         }
         public ActionResult Details(string slug)
         {
-            return View();
+            if (slug == null)
+            {
+                return HttpNotFound();
+            }
+            CandidateDetailVM model = new CandidateDetailVM
+            {
+               
+                Candidate = _db.Candidates.Include("CandidateSocials.SocialLink").Include("Educations").Include("Experiences.Category").Include("Skils").Where(c=>c.Status==true).FirstOrDefault(j => j.Slug == slug),
+                HeaderSetting = _db.HeaderSetting.FirstOrDefault(h => h.Page == Models.Page.CandidateDetail),
+            };
+
+            if (model.Candidate == null)
+            {
+                return HttpNotFound();
+            }
+            return View(model);
         }
         public ActionResult Create()
         {

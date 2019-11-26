@@ -60,7 +60,16 @@ namespace ASPFinal.Controllers
         }
         public ActionResult Post()
         {
-            return View();
+            Breadcrumb Breadcrumb = new Breadcrumb
+            {
+                Title = "Post a JOB",
+                Path = new Dictionary<string, string> {
+                        { ViewBag.Setting.LogoName, Url.Action("index", "home") },
+                        { "Jobs", Url.Action("index", "job") },
+                        { "Post a JOB", null }
+                    }
+            };
+            return View(Breadcrumb);
         }
     }
 }

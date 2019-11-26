@@ -1487,7 +1487,6 @@ a.job-list[data-toggle=collapse].collapsed:before {
 *********************/
 .candidates-listing-bg {
   padding: 210px 0px 60px 0px;
-  background-image: url("../images/candidates-listing-bg.jpg");
   background-size: cover;
   position: relative;
   background-position: center center;
@@ -1536,7 +1535,6 @@ a.job-list[data-toggle=collapse].collapsed:before {
 *********************/
 .candidates-profile-bg {
   padding: 180px 0px 80px 0px;
-  background-image: url("../images/candidates-profile-bg.jpg");
   background-size: cover;
   position: relative;
   background-position: center center;
@@ -1722,7 +1720,6 @@ a.job-list[data-toggle=collapse].collapsed:before {
 *********************/
 .employers-list-bg {
   padding: 180px 0px 80px 0px;
-  background-image: url("../images/employers-list-bg.jpg");
   background-size: cover;
   position: relative;
   background-position: center center;
@@ -1743,7 +1740,6 @@ a.job-list[data-toggle=collapse].collapsed:before {
 *********************/
 .employers-details-bg {
   padding: 180px 0px 80px 0px;
-  background-image: url("../images/employers-details-bg.jpg");
   background-size: cover;
   position: relative;
   background-position: center center;

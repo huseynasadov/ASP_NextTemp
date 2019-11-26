@@ -1,7 +1,16 @@
 ﻿@model _SidebarVM
-<div class="col-lg-3">
+<div class="@(Model.Breadcrumb.Title.Contains("Blog")?"col-lg-4":"col-lg-3")">
     <div class="left-sidebar">
         <div class="accordion" id="accordionExample">
+
+            @if (Model.Breadcrumb.Title.Contains("Blog"))
+            {
+                <form>
+                    <input class="form-control search-form mt-4" type="search" placeholder="Search...">
+                    <button class="search-button" type="submit"><a href="#" class="text-dark"><span class="mdi mdi-magnify"></span></a></button>
+                </form>
+            }
+
             <div class="card mt-4">
 
                 @if (Model.Breadcrumb.Title.Contains("JOB") || Model.Breadcrumb.Title.Contains("Employer"))
@@ -67,7 +76,8 @@
             </div>
             <!-- collapse one end -->
             <div class="card mt-4">
-                @if (Model.Breadcrumb.Title.Contains("JOB") || Model.Breadcrumb.Title.Contains("Blog"))
+
+                @if (Model.Breadcrumb.Title.Contains("JOB") || Model.Breadcrumb.Title.Contains("Blog") || Model.Breadcrumb.Title.Contains("Employer"))
                 {
                     <a data-toggle="collapse" href="#collapsetwo" class="job-list" aria-expanded="true" aria-controls="collapsetwo">
                         <div class="card-header" id="headingtwo">
@@ -88,6 +98,37 @@
                 }
 
             </div>
+            @if (Model.Breadcrumb.Title.Contains("Blog"))
+            {
+                foreach (var blog in Model.ArchiveBlogs)
+                {
+                    <div class="job-detail mt-4">
+                        <h5 class="text-dark text-center p-2 mb-0">Archives</h5>
+                        <hr class="m-0">
+                        <div class=" p-3">
+                            <div class="media">
+                                <div class="blog-list-img mr-2">
+                                    <img src="~/Uploads/images/@blog.Photos" alt="@blog.Title" class="img-fluid mx-auto d-block rounded">
+                                </div>
+                                <div class="media-body ml-2">
+                                    <p class="mb-0 text-muted mb-0 f-13"><a href="#" class="text-dark">@blog.Title</a></p>
+                                    <ul class="list-inline mb-0">
+                                        <li class="list-inline-item">
+                                            <a href="@Url.Action("details","blog",new { slug=blog.Slug})" class="text-dark">
+                                                <p class="mb-0">View all</p>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item float-right">
+                                            <p class="text-dark mb-0">@blog.CreatedAt.ToString("dd-MMM-yyyy")</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                }
+            }
             <div class="card mt-4">
                 @if (Model.Breadcrumb.Title.Contains("Candidates"))
                 {
@@ -108,7 +149,6 @@
 
                         </div>
                     </div>
-
                 }
             </div>
             <!-- collapse one end -->
@@ -138,7 +178,6 @@
                             </div>
                         </div>
                     </div>
-
                 }
             </div>
             <!-- collapse one end -->
@@ -172,7 +211,6 @@
                 }
             </div>
             <!-- collapse one end -->
-
         </div>
     </div>
 </div>

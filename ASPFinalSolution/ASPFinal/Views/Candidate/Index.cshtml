@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<section class="candidates-listing-bg">
+<section class="candidates-listing-bg" style="background-image: url('/Uploads/images/@Model.HeaderSetting.Photo')">
     <div class="bg-overlay"></div>
     <div class="home-center">
         <div class="home-desc-center">
@@ -40,28 +40,8 @@
                     <div class="float-left">
                         <h5 class="text-dark mb-0 pt-2">Showing  Results : @Model.Candidates.Count</h5>
                     </div>
-                    <div class="sort-button float-right">
-                        <ul class="list-inline mb-0">
-                            <li class="list-inline-item mr-3">
-                                <select class="nice-select">
-                                    <option data-display="Sort By">Nothing</option>
-                                    @foreach (var cat in Model._SidebarVM.JobCategories)
-                                    {
-                                        <option value="@cat.Id">@cat.Name</option>
-                                    }
-                                </select>
-                            </li>
-                            <li class="list-inline-item">
-                                <select class="nice-select">
-                                    <option data-display="Default">Nothing</option>
-                                    @foreach (var cat in Model._SidebarVM.JobCategories)
-                                    {
-                                        <option value="@cat.Id">@cat.Name</option>
-                                    }
-                                </select>
-                            </li>
-                        </ul>
-                    </div>
+                    @{Html.RenderPartial("~/Views/Shared/_NiceSelect.cshtml",model:Model._SidebarVM.JobCategories); }
+                   
                 </div>
             </div>
         </div>

@@ -96,3 +96,5 @@ C:\Users\Huseyn\Desktop\Code Academy\ASP_NextTemp\ASPFinalSolution\ASPFinal\obj\
 C:\Users\Huseyn\Desktop\Code Academy\ASP_NextTemp\ASPFinalSolution\ASPFinal\obj\Debug\ASPFinal.Migrations.Header.resources
 C:\Users\Huseyn\Desktop\Code Academy\ASP_NextTemp\ASPFinalSolution\ASPFinal\obj\Debug\ASPFinal.Migrations.HomeTitleAddedSettingTable.resources
 C:\Users\Huseyn\Desktop\Code Academy\ASP_NextTemp\ASPFinalSolution\ASPFinal\obj\Debug\ASPFinal.Migrations.OpeningHoursTableCreated.resources
+C:\Users\Huseyn\Desktop\Code Academy\ASP_NextTemp\ASPFinalSolution\ASPFinal\obj\Debug\ASPFinal.Migrations.ExperienceSalaryPropAdded.resources
+C:\Users\Huseyn\Desktop\Code Academy\ASP_NextTemp\ASPFinalSolution\ASPFinal\obj\Debug\ASPFinal.Migrations.PhoneAddedSetting.resources

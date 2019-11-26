@@ -1,16 +1,16 @@
-﻿
+﻿@model ContactVM
 @{
     ViewBag.Title = "Contact";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<section class="contact-bg">
+<section class="contact-bg" style="background-image: url('/Uploads/images/@Model.HeaderSetting.Photo')">
     <div class="bg-overlay"></div>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="page-header-title text-center text-white">
-                    @{Html.RenderPartial("~/Views/Shared/_Breadcrumb.cshtml");}
+                    @{Html.RenderPartial("~/Views/Shared/_Breadcrumb.cshtml",model:Model.breadcrumb);}
                 </div>
             </div>
         </div>
@@ -43,8 +43,7 @@
                     </div>
                     <div class="contact-details">
                         <h4 class="text-dark mb-1">Website</h4>
-                        <p class="mb-0 text-muted">Brandcode Pvt.Ltd.co.in</p>
-                        <p class="mb-0 text-muted">Themescode Pvt.Ltd.co.in</p>
+                        <p class="mb-0 text-muted">@Model.Setting.Website</p>
                     </div>
                 </div>
             </div>
@@ -58,8 +57,7 @@
                     </div>
                     <div class="contact-details">
                         <h4 class="text-dark mb-1">Call us</h4>
-                        <p class="mb-0 text-muted">123 456 7890</p>
-                        <p class="mb-0 text-muted">123 456 7890</p>
+                        <p class="mb-0 text-muted">@Model.Setting.Phone</p>
                     </div>
                 </div>
             </div>
@@ -73,8 +71,7 @@
                     </div>
                     <div class="contact-details">
                         <h4 class="text-dark mb-1">Email</h4>
-                        <p class="mb-0 text-muted">Themescodeltd@gmail.com</p>
-                        <p class="mb-0 text-muted">Brandcodeltd@gmail.com</p>
+                        <p class="mb-0 text-muted">@Model.Setting.Email</p>
                     </div>
                 </div>
             </div>
@@ -141,15 +138,14 @@
                         <div class="contact-location-icon">
                             <i class="mdi mdi-map-marker"></i>
                         </div>
-                        <p class="text-muted pt-4 f-20 mb-0">2453 Clinton StreetLittle Rock, AR 72211</p>
+                        <p class="text-muted pt-4 f-20 mb-0">@Model.Setting.Adress</p>
                     </div>
                     <h5 class="text-muted mt-4 mb-0">Share</h5>
                     <ul class="blog-details-icons contact-social-icon list-inline mt-2 mb-0">
-                        <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-facebook"></i></a></li>
-                        <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-twitter"></i></a></li>
-                        <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-whatsapp"></i></a></li>
-                        <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-instagram"></i></a></li>
-                        <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-linkedin"></i></a></li>
+                        @foreach (var social in Model.Setting.SettingSocials)
+                        {
+                            <li class="list-inline-item"><a target="_blank" href="@social.Link" class=""><i class="mdi mdi-@social.SocialLink.Name"></i></a></li>
+                        }
                     </ul>
                 </div>
             </div>

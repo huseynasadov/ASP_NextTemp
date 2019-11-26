@@ -1,6 +1,6 @@
 ﻿@model  HomeVM
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Responsive Landing Page Tamplate";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -46,52 +46,8 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-3 col-md-6">
-                <div class="popu-category-box bg-light rounded text-center mt-4 p-4">
-                    <div class="popu-category-icon mb-3">
-                        <i class="mdi mdi-account h2 text-custom"></i>
-                    </div>
-                    <div class="popu-category-content">
-                        <h5 class="f-18 mb-4"><a href="@Url.Action("Index","Job")" class="text-dark">Developer</a></h5>
-                        <p class="text-custom mb-0 rounded">@Model.Jobs.Where(j => j.Category.Name.Contains("Develop")).Count() Jobs</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="popu-category-box bg-light rounded text-center mt-4 p-4">
-                    <div class="popu-category-icon mb-3">
-                        <i class="mdi mdi-desktop-classic h2 text-custom"></i>
-                    </div>
-                    <div class="popu-category-content">
-                        <h5 class="f-18 mb-4"><a href="@Url.Action("Index","Job")" class="text-dark">Technology</a></h5>
-                        <p class="text-custom mb-0 rounded">@(Model.Jobs.Where(j => j.Category.Name.Contains("Develop")).Count() + @Model.Jobs.Where(j => j.Category.Name.Contains("Dsign")).Count()) Jobs</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="popu-category-box bg-light rounded text-center mt-4 p-4">
-                    <div class="popu-category-icon mb-3">
-                        <i class="mdi mdi-bank h2 text-custom"></i>
-                    </div>
-                    <div class="popu-category-content">
-                        <h5 class="f-18 mb-4"><a href="@Url.Action("Index","Job")" class="text-dark">Government</a></h5>
-                        <p class="text-custom mb-0 rounded">@Model.Jobs.Where(j => j.Category.Name.Contains("Gov")).Count() Jobs</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="popu-category-box bg-light rounded text-center mt-4 p-4">
-                    <div class="popu-category-icon mb-3">
-                        <i class="mdi mdi-auto-fix h2 text-custom"></i>
-                    </div>
-                    <div class="popu-category-content">
-                        <h5 class="f-18 mb-4"><a href="@Url.Action("Index","Job")" class="text-dark">All Jobs</a></h5>
-                        <p class="text-custom mb-0 rounded">@Model.Jobs.Count + Jobs</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @{Html.RenderPartial("~/Views/Shared/_AllInfoCounter.cshtml",model:Model.Jobs); }
+        
     </div>
 </section>
 <!-- popular category end -->
@@ -186,7 +142,7 @@
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div>
-                                                        <a href="@Url.Action("Details","Job",new { slug=job.Slug})" class="text-custom">Apply Now <i class="mdi mdi-chevron-double-right"></i></a>
+                                                        <a href="@Url.Action("Details", "Job", new { slug = job.Slug })" class="text-custom">Apply Now <i class="mdi mdi-chevron-double-right"></i></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -279,7 +235,7 @@
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div>
-                                                        <a href="@Url.Action("Details","Job",new { slug=job.Slug})" class="text-custom">Apply Now <i class="mdi mdi-chevron-double-right"></i></a>
+                                                        <a href="@Url.Action("Details", "Job", new { slug = job.Slug })" class="text-custom">Apply Now <i class="mdi mdi-chevron-double-right"></i></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -373,7 +329,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div>
-                                                            <a href="@Url.Action("Details","Job",new { slug=job.Slug})" class="text-custom">Apply Now <i class="mdi mdi-chevron-double-right"></i></a>
+                                                            <a href="@Url.Action("Details", "Job", new { slug = job.Slug })" class="text-custom">Apply Now <i class="mdi mdi-chevron-double-right"></i></a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -467,7 +423,7 @@
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div>
-                                                        <a href="@Url.Action("Details","Job",new { slug=job.Slug})" class="text-custom">Apply Now <i class="mdi mdi-chevron-double-right"></i></a>
+                                                        <a href="@Url.Action("Details", "Job", new { slug = job.Slug })" class="text-custom">Apply Now <i class="mdi mdi-chevron-double-right"></i></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -538,7 +494,7 @@
                             <div>
                                 <h5 class="f-18">@item.Title</h5>
                                 <p class="f-14 text-muted">@item.Content</p>
-                                <a href="@Url.Action("About","Page")" class="text-custom">Read more <i class="mdi mdi-chevron-right"></i></a>
+                                <a href="@Url.Action("About", "Page")" class="text-custom">Read more <i class="mdi mdi-chevron-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -644,25 +600,8 @@
             </div>
         </div>
 
-        <div class="row justify-content-center mt-5 pt-4">
-            <div class="col-lg-8">
-                <div class="text-center mb-4">
-                    <h4>Our Client's</h4>
-                    <p class="text-muted">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque totam rem aperiam eaque ipsa quae ab illo inventore veritatis et</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="row align-items-center">
-            @foreach (var par in Model.Partners)
-            {
-                <div class="col-md-3">
-                    <div class="client-images">
-                        <img src="~/Uploads/images/@par.Photo" alt="@par.Name" class="mx-auto img-fluid d-block">
-                    </div>
-                </div>
-            }
-        </div>
+        @{Html.RenderPartial("~/Views/Shared/_Partners.cshtml",model:Model.Partners); }
+        
     </div>
 </section>
 <!-- testimonial end -->

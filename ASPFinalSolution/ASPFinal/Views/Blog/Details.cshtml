@@ -1,16 +1,16 @@
-﻿
+﻿@model BlogDetailVM
 @{
     ViewBag.Title = "Blog-Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<section class="blog-details-bg">
+<section class="blog-details-bg" style="background-image: url('/Uploads/images/@Model.HeaderSetting.Photo')">
     <div class="bg-overlay"></div>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="page-header-title text-center text-white">
-                    @{Html.RenderPartial("~/Views/Shared/_Breadcrumb.cshtml");}
+                    @{Html.RenderPartial("~/Views/Shared/_Breadcrumb.cshtml",model:Model._Sidebar.Breadcrumb);}
                 </div>
             </div>
         </div>
@@ -21,241 +21,54 @@
 <section class="section">
     <div class="container">
         <div class="row">
-            <div class="col-lg-4">
-                <form class="mt-4">
-                    <input class="form-control search-form" type="search" placeholder="Search...">
-                    <button class="search-button" type="submit"><a href="#" class="text-dark"><span class="mdi mdi-magnify"></span></a></button>
-                </form>
-
-                <div class="job-detail mt-4">
-                    <h5 class="text-dark text-center p-2 mb-0">Categories</h5>
-                    <hr class="m-0">
-                    <div class="blog-datails-item p-3">
-                        <ul class="list-inline mb-0">
-                            <li class="mb-2"><a href="#" class="text-muted"><i class="mdi mdi-chevron-right mr-2"></i>Software Developer</a></li>
-                            <li class="mb-2"><a href="#" class="text-muted"><i class="mdi mdi-chevron-right mr-2"></i>Accounting</a></li>
-                            <li class="mb-2"><a href="#" class="text-muted"><i class="mdi mdi-chevron-right mr-2"></i>Marketing Job</a></li>
-                            <li class="mb-2"><a href="#" class="text-muted"><i class="mdi mdi-chevron-right mr-2"></i>Graphic Dsigner</a></li>
-                            <li class="mb-2"><a href="#" class="text-muted"><i class="mdi mdi-chevron-right mr-2"></i>Web Developer</a></li>
-                            <li class="mb-2"><a href="#" class="text-muted"><i class="mdi mdi-chevron-right mr-2"></i>Web Designer</a></li>
-                            <li class="mb-2"><a href="#" class="text-muted"><i class="mdi mdi-chevron-right mr-2"></i>Digital Marketing</a></li>
-                            <li class="mb-2"><a href="#" class="text-muted"><i class="mdi mdi-chevron-right mr-2"></i>Education & Training</a></li>
-                            <li class="mb-2"><a href="#" class="text-muted"><i class="mdi mdi-chevron-right mr-2"></i>Engineering Jobs</a></li>
-                            <li class="mb-0"><a href="#" class="text-muted"><i class="mdi mdi-chevron-right mr-2"></i>Government Jobs</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="job-detail mt-4">
-                    <h5 class="text-dark text-center p-2 mb-0">Archives</h5>
-                    <hr class="m-0">
-                    <div class="blog-datails-item p-3">
-                        <ul class="list-inline mb-0">
-                            <li class="mb-2"><a href="#" class="text-muted"><i class="mdi mdi-chevron-right mr-2"></i>08 January 2018</a></li>
-                            <li class="mb-2"><a href="#" class="text-muted"><i class="mdi mdi-chevron-right mr-2"></i>13 February 2018</a></li>
-                            <li class="mb-2"><a href="#" class="text-muted"><i class="mdi mdi-chevron-right mr-2"></i>10 March 2018</a></li>
-                            <li class="mb-2"><a href="#" class="text-muted"><i class="mdi mdi-chevron-right mr-2"></i>06 April 2018</a></li>
-                            <li class="mb-2"><a href="#" class="text-muted"><i class="mdi mdi-chevron-right mr-2"></i>12 May 2018</a></li>
-                            <li class="mb-2"><a href="#" class="text-muted"><i class="mdi mdi-chevron-right mr-2"></i>27 June 2018</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="job-detail mt-4">
-                    <h5 class="text-dark text-center p-2 mb-0">Archives</h5>
-                    <hr class="m-0">
-                    <div class=" p-3">
-                        <div class="media">
-                            <div class="blog-list-img mr-2">
-                                <img src="~/Public/images/employers/img-1.jpg" alt="" class="img-fluid mx-auto d-block rounded">
-                            </div>
-                            <div class="media-body ml-2">
-                                <p class="mb-0 text-muted mb-0 f-13"><a href="#" class="text-dark">In enime justo rhoncuse ut imperdiete as vitae justo niti nullam.</a></p>
-                                <ul class="list-inline mb-0">
-                                    <li class="list-inline-item">
-                                        <a href="#" class="text-dark">
-                                            <p class="mb-0">View all</p>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item float-right">
-                                        <p class="text-dark mb-0">15-Dec-2018</p>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <hr>
-
-                        <div class="media">
-                            <div class="blog-list-img mr-2">
-                                <img src="~/Public/images/employers/img-2.jpg" alt="" class="img-fluid mx-auto d-block rounded">
-                            </div>
-                            <div class="media-body ml-2">
-                                <p class="mb-0 text-muted mb-0 f-13"><a href="#" class="text-dark">Integer tincidunte dapibus that Vivamus semper as vulputate.</a></p>
-                                <ul class="list-inline mb-0">
-                                    <li class="list-inline-item">
-                                        <a href="#" class="text-dark">
-                                            <p class="mb-0">View all</p>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item float-right">
-                                        <p class="text-dark mb-0">22-Jan-2018</p>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <hr>
-
-                        <div class="media">
-                            <div class="blog-list-img mr-2">
-                                <img src="~/Public/images/employers/img-3.jpg" alt="" class="img-fluid mx-auto d-block rounded">
-                            </div>
-                            <div class="media-body ml-2">
-                                <p class="mb-0 text-muted mb-0 f-13"><a href="#" class="text-dark">Aliquam lorem dapibus a in viverra quis feugiat metus.</a></p>
-                                <ul class="list-inline mb-0">
-                                    <li class="list-inline-item">
-                                        <a href="#" class="text-dark">
-                                            <p class="mb-0">View all</p>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item float-right">
-                                        <p class="text-dark mb-0">05-Sep-2018</p>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="job-detail mt-4 mb-5">
-                    <h5 class="text-dark text-center p-2 mb-0">Tags</h5>
-                    <hr class="m-0">
-                    <div class=" p-3">
-                        <div class="blog-tages text-center">
-
-                            <a href="#">Creative</a>
-                            <a href="#">Developer</a>
-                            <a href="#">Wordpress</a>
-                            <a href="#">Design</a>
-                            <a href="#">Google</a>
-                            <a href="#">Traffic</a>
-                            <a href="#">ISO</a>
-                            <a href="#">Blog</a>
-                            <a href="#">Resume</a>
-                            <a href="#">Themes</a>
-                            <a href="#">Job</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @{Html.RenderPartial("~/Views/Shared/_Sidebar.cshtml", model: Model._Sidebar); }
 
             <div class="col-lg-8">
                 <div class="job-detail mt-4 p-2">
                     <div class="blog-details-img">
-                        <img src="~/Public/images/blog-details-img.jpg" alt="" class="img-fluid mx-auto d-block">
+                        <img src="~/Uploads/images/@Model.Blog.Photos" alt="" class="img-fluid mx-auto d-block">
                     </div>
                     <div class="blog-details meta mt-2">
                         <ul class="list-inline mb-1">
                             <li class="list-inline-item mr-4">
-                                <p class="text-muted mb-0"><i class="mdi mdi-calendar-range mr-1"></i>01-January-2018</p>
+                                <p class="text-muted mb-0"><i class="mdi mdi-calendar-range mr-1"></i>@Model.Blog.CreatedAt.ToString("dd-MMMM-yyyy")</p>
                             </li>
 
                             <li class="list-inline-item mr-4">
-                                <p class="text-muted mb-0"><i class="mdi mdi-message-reply-text mr-1"></i>4 Comments</p>
+                                <p class="text-muted mb-0"><i class="mdi mdi-message-reply-text mr-1"></i>@Model.Blog.BlogReview.Count Comments</p>
                             </li>
 
                             <li class="list-inline-item">
-                                <p class="text-muted mb-0"><i class="mdi mdi-layers mr-1"></i>IT Jobs</p>
+                                <p class="text-muted mb-0"><i class="mdi mdi-layers mr-1"></i>@Model.Blog.Category.Name</p>
                             </li>
                         </ul>
                     </div>
                     <div class="blog-details-desc p-2">
-                        <h6 class="mb-3 f-18"><a href="#" class="text-dark">A small river named Duden flows by their place and supplies regelialia.</a></h6>
-
-                        <p class="text-muted mb-3 f-13">The Big Oxmox advised her not to do so because there were thousands of bad Commas as wild Question Marks and devious Semikoli, but the Little Blind Text didn’t listen. She packed her seven versalia, put her initial into the belt and made herself on the way But nothing the copy said could convince her and s didn’t take long until a few insidious Copy Writers ambushed made her drunk with Longe and Parole and dragged a into their agency where they abused her for their projects again and again. And if hasn’t been rewritten.</p>
-
-                        <p class="text-muted f-13">The copy warned the Little Blind Text that where it came from would have rewritten thousand times and everything that was left from its origin would be the word and the Little Blind Text should turn around and return its own, safe country But nothing the copy said could convince.</p>
-
-                        <div class="blog-blockquote-desc mb-5 mt-4">
-                            <blockquote class="blockquote position-relative">
-                                <i class="fas fa-quote-left text-custom"></i>
-                                <p class="mb-2 font-italic f-14 text-dark">It is a paradisematic country in which roasted parts of sentences fly into your mouth Even the all-powerful Pointing has control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name as of Lorem Ipsum decided to leave.</p>
-                                <h6 class="mb-0"><a href="#" class="text-dark">By : Maude J. McDowell</a></h6>
-                            </blockquote>
-                        </div>
-
-                        <hr class="mb-2">
-                        <ul class="list-inline mb-0">
-                            <li class="list-inline-item mt-1">
-                                <a href="#" class="text-dark">
-                                    <p class="mb-0 f-17"><i class="mdi mdi-heart-outline mr-1 text-custom"></i>Like</p>
-                                </a>
-                            </li>
-                            <li class="list-inline-item float-right">
-                                <ul class="blog-details-icons list-inline">
-                                    <li class="list-inline-item f-16">Share :</li>
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-facebook"></i></a></li>
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-twitter"></i></a></li>
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-whatsapp"></i></a></li>
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-instagram"></i></a></li>
-                                </ul>
-                            </li>
-                        </ul>
+                        <h6 class="mb-3 f-18"><a href="#" class="text-dark">@Model.Blog.Title</a></h6>
+                        @Html.Raw(Model.Blog.Content)
                         <hr class="mt-2 mb-2">
                     </div>
                 </div>
 
-                <h5 class="text-dark mt-4"><i class="mdi mdi-comment-multiple mr-2"></i>4 Comments</h5>
+                <h5 class="text-dark mt-4"><i class="mdi mdi-comment-multiple mr-2"></i>@Model.Blog.BlogReview.Count Comments</h5>
 
                 <div class="job-detail p-4">
-                    <div class="media">
-                        <div class="blog-comment-img">
-                            <img class="img-fluid d-block mx-auto rounded-circle" alt="" src="~/Public/images/employers/img-6.jpg">
-                        </div>
-                        <div class="media-body ml-3">
-                            <h6 class="mb-0"><a href="#" class="text-dark">Kathleen Manuel</a></h6>
-                            <p class="text-muted mb-0">08-Sep-2018 at 02:15 pm</p>
-                            <p class="text-muted f-14 mb-2">The Big Oxmox advised her not to do so, because there were thousands of bad a Commas wild Question Marks and devious Semikoli.</p>
-                            <p class="mb-0"><a href="#" class="text-muted"><i class="mdi mdi-reply-all mr-2"></i>Reply</a></p>
-                            <hr>
-
-                            <div class="media mt-4">
-                                <div class="blog-comment-img">
-                                    <img class="img-fluid d-block mx-auto rounded-circle" alt="" src="~/Public/images/employers/img-7.jpg">
-                                </div>
-                                <div class="media-body ml-3">
-                                    <h6 class="mb-0"><a href="#" class="text-dark">John Newton</a></h6>
-                                    <p class="text-muted mb-0">03, Oct, 2018 At 06.05pm</p>
-                                    <p class="text-muted f-14 mb-2">Nam libero tempore, cum soluta nobis est at eligendi optio cumque nihil impedit quo minus id quod maxime placeat.</p>
-                                    <p class="mb-0"><a href="#" class="text-muted"><i class="mdi mdi-reply-all mr-2"></i>Reply</a></p>
-                                </div>
+                    @foreach (var rev in Model.Blog.BlogReview)
+                    {
+                        <div class="media mt-4">
+                            <div class="blog-comment-img">
+                                <img class="img-fluid d-block mx-auto rounded-circle" alt="" src="~/Uploads/images/@rev.Candidate.Photo">
+                            </div>
+                            <div class="media-body ml-3">
+                                <h6 class="mb-0"><a href="#" class="text-dark">@rev.Candidate.Firstname @rev.Candidate.Lastname</a></h6>
+                                <p class="text-muted mb-0">@rev.Date.ToString("dd, MMM, yyyy 'at' HH:mm tt")</p>
+                                <p class="text-muted mb-2">When she reached the first hills of the Italic Mountains, she had a last view on the skyline her hometown the headline.</p>
+                                <p class="mb-0"><a href="#" class="text-muted"><i class="mdi mdi-reply-all mr-2"></i>Reply</a></p>
                             </div>
                         </div>
-                    </div>
-                    <hr>
-                    <div class="media mt-4">
-                        <div class="blog-comment-img">
-                            <img class="img-fluid d-block mx-auto rounded-circle" alt="" src="~/Public/images/employers/img-8.jpg">
-                        </div>
-                        <div class="media-body ml-3">
-                            <h6 class="mb-0"><a href="#" class="text-dark">Ruby Poe</a></h6>
-                            <p class="text-muted mb-0">04, Oct, 2018 At 09:35am</p>
-                            <p class="text-muted mb-2">Similique sunt in culpa qui officia deserunt mollitia animi id est laborum et dolorum fuga et harum quidem rerum.</p>
-                            <p class="mb-0"><a href="#" class="text-muted"><i class="mdi mdi-reply-all mr-2"></i>Reply</a></p>
-                        </div>
-                    </div>
+                        <hr />
+                    }
 
-                    <hr>
-                    <div class="media mt-4">
-                        <div class="blog-comment-img">
-                            <img class="img-fluid d-block mx-auto rounded-circle" alt="" src="~/Public/images/employers/img-9.jpg">
-                        </div>
-                        <div class="media-body ml-3">
-                            <h6 class="mb-0"><a href="#" class="text-dark">Robert Booker</a></h6>
-                            <p class="text-muted mb-0">04, Oct, 2018 at 04:16 pm</p>
-                            <p class="text-muted mb-2">When she reached the first hills of the Italic Mountains, she had a last view on the skyline her hometown the headline.</p>
-                            <p class="mb-0"><a href="#" class="text-muted"><i class="mdi mdi-reply-all mr-2"></i>Reply</a></p>
-                        </div>
-                    </div>
                 </div>
 
                 <h5 class="text-dark mt-4"><i class="mdi mdi-pencil mr-2"></i>Leave Your Comments</h5>

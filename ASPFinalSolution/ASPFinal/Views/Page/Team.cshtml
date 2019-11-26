@@ -1,16 +1,16 @@
-﻿
+﻿@model TeamVM
 @{
     ViewBag.Title = "Team";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<section class="team-bg">
+<section class="team-bg" style="background-image: url('/Uploads/images/@Model.HeaderSetting.Photo')">
     <div class="bg-overlay"></div>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="page-header-title text-center text-white">
-                    @{Html.RenderPartial("~/Views/Shared/_Breadcrumb.cshtml");}
+                    @{Html.RenderPartial("~/Views/Shared/_Breadcrumb.cshtml",model:Model.breadcrumb);}
                 </div>
             </div>
         </div>
@@ -27,309 +27,33 @@
         </div>
 
         <div class="row">
-            <div class="col-lg-3 col-md-6">
-                <div class="team-box text-center bg-white mt-4">
-                    <div class="team-img">
-                        <img src="~/Public/images/candidates/img-1.jpg" alt="" class="img-fluid d-block rounded">
-                        <div class="team-name">
-                            <h5 class="text-white f-18 font-weight-light mb-0">Stormy Bush</h5>
+            @foreach (var team in Model.Teams)
+            {
+                <div class="col-lg-3 col-md-6">
+                    <div class="team-box text-center bg-white mt-4">
+                        <div class="team-img">
+                            <img src="~/Uploads/images/@team.Photo" alt="@team.Firstname" class="img-fluid d-block rounded">
+                            <div class="team-name">
+                                <h5 class="text-white f-18 font-weight-light mb-0">@team.Firstname @team.Lastname</h5>
+                            </div>
                         </div>
-                    </div>
-                    <div class="team-content text-center p-3">
-                        <div class="">
-                            <p class="f-17 mb-0"><a href="#" class="text-dark">Web Developer</a></p>
-                            <p class="text-muted f-14 mb-0">Maecenas tellus eget condimentum sem quam semper.</p>
-                            <div class="team-social-icon p-2">
-                                <ul class="blog-details-icons list-inline mb-0">
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-facebook"></i></a></li>
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-twitter"></i></a></li>
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-whatsapp"></i></a></li>
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-instagram"></i></a></li>
-                                </ul>
+                        <div class="team-content text-center p-3">
+                            <div class="">
+                                <p class="f-17 mb-0"><a href="#" class="text-dark">@team.Category.Name</a></p>
+                                <p class="text-muted f-14 mb-0">@team.ShortInfo</p>
+                                <div class="team-social-icon p-2">
+                                    <ul class="blog-details-icons list-inline mb-0">
+                                        @foreach (var soc in team.TeamSocials)
+                                        {
+                                            <li class="list-inline-item"><a href="@soc.Link" class=""><i class="mdi mdi-@soc.Social.Name"></i></a></li>
+                                        }
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6">
-                <div class="team-box text-center bg-white mt-4">
-                    <div class="team-img">
-                        <img src="~/Public/images/candidates/img-2.jpg" alt="" class="img-fluid d-block rounded">
-                        <div class="team-name">
-                            <h5 class="text-white f-18 font-weight-light mb-0">Darryl Abell</h5>
-                        </div>
-                    </div>
-                    <div class="team-content text-center p-3">
-                        <div class="">
-                            <p class="f-17 mb-0"><a href="#" class="text-dark">Graphic Designer</a></p>
-                            <p class="text-muted f-14 mb-0">Phasellus ullamcorper ipsum nunc nunc nonummy metus.</p>
-                            <div class="team-social-icon p-2">
-                                <ul class="blog-details-icons list-inline mb-0">
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-facebook"></i></a></li>
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-twitter"></i></a></li>
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-whatsapp"></i></a></li>
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-instagram"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6">
-                <div class="team-box text-center bg-white mt-4">
-                    <div class="team-img">
-                        <img src="~/Public/images/candidates/img-3.jpg" alt="" class="img-fluid d-block rounded">
-                        <div class="team-name">
-                            <h5 class="text-white f-18 font-weight-light mb-0">Roger Utz</h5>
-                        </div>
-                    </div>
-                    <div class="team-content text-center p-3">
-                        <div class="">
-                            <p class="f-17 mb-0"><a href="#" class="text-dark">Web Designer</a></p>
-                            <p class="text-muted f-14 mb-0">Etiam ultricies nisi augue Curabitur ullamcorper ultricies.</p>
-                            <div class="team-social-icon p-2">
-                                <ul class="blog-details-icons list-inline mb-0">
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-facebook"></i></a></li>
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-twitter"></i></a></li>
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-whatsapp"></i></a></li>
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-instagram"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6">
-                <div class="team-box text-center bg-white mt-4">
-                    <div class="team-img">
-                        <img src="~/Public/images/candidates/img-4.jpg" alt="" class="img-fluid d-block rounded">
-                        <div class="team-name">
-                            <h5 class="text-white f-18 font-weight-light mb-0">Sylvia Mace</h5>
-                        </div>
-                    </div>
-                    <div class="team-content text-center p-3">
-                        <div class="">
-                            <p class="f-17 mb-0"><a href="#" class="text-dark">UI/UX Designer</a></p>
-                            <p class="text-muted f-14 mb-0">Nunc nec neque a leo dolor tempus non hendrerit nisi.</p>
-                            <div class="team-social-icon p-2">
-                                <ul class="blog-details-icons list-inline mb-0">
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-facebook"></i></a></li>
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-twitter"></i></a></li>
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-whatsapp"></i></a></li>
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-instagram"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-3 col-md-6">
-                <div class="team-box text-center bg-white mt-4">
-                    <div class="team-img">
-                        <img src="~/Public/images/candidates/img-5.jpg" alt="" class="img-fluid d-block rounded">
-                        <div class="team-name">
-                            <h5 class="text-white f-18 font-weight-light mb-0">Mark Mitchell</h5>
-                        </div>
-                    </div>
-                    <div class="team-content text-center p-3">
-                        <div class="">
-                            <p class="f-17 mb-0"><a href="#" class="text-dark">PHP Developer</a></p>
-                            <p class="text-muted f-14 mb-0">Phasellus ullamcorper ipsum nunc nunc nonummy metus.</p>
-                            <div class="team-social-icon p-2">
-                                <ul class="blog-details-icons list-inline mb-0">
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-facebook"></i></a></li>
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-twitter"></i></a></li>
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-whatsapp"></i></a></li>
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-instagram"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6">
-                <div class="team-box text-center bg-white mt-4">
-                    <div class="team-img">
-                        <img src="~/Public/images/candidates/img-6.jpg" alt="" class="img-fluid d-block rounded">
-                        <div class="team-name">
-                            <h5 class="text-white f-18 font-weight-light mb-0">Juan Bluford</h5>
-                        </div>
-                    </div>
-                    <div class="team-content text-center p-3">
-                        <div class="">
-                            <p class="f-17 mb-0"><a href="#" class="text-dark">Web Designer</a></p>
-                            <p class="text-muted f-14 mb-0">Nunc nec neque a leo dolor tempus non hendrerit nisi.</p>
-                            <div class="team-social-icon p-2">
-                                <ul class="blog-details-icons list-inline mb-0">
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-facebook"></i></a></li>
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-twitter"></i></a></li>
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-whatsapp"></i></a></li>
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-instagram"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6">
-                <div class="team-box text-center bg-white mt-4">
-                    <div class="team-img">
-                        <img src="~/Public/images/candidates/img-7.jpg" alt="" class="img-fluid d-block rounded">
-                        <div class="team-name">
-                            <h5 class="text-white f-18 font-weight-light mb-0">Robin Douglas</h5>
-                        </div>
-                    </div>
-                    <div class="team-content text-center p-3">
-                        <div class="">
-                            <p class="f-17 mb-0"><a href="#" class="text-dark">Web Developer</a></p>
-                            <p class="text-muted f-14 mb-0">Maecenas tellus eget condimentum sem quam semper.</p>
-                            <div class="team-social-icon p-2">
-                                <ul class="blog-details-icons list-inline mb-0">
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-facebook"></i></a></li>
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-twitter"></i></a></li>
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-whatsapp"></i></a></li>
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-instagram"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6">
-                <div class="team-box text-center bg-white mt-4">
-                    <div class="team-img">
-                        <img src="~/Public/images/candidates/img-8.jpg" alt="" class="img-fluid d-block rounded">
-                        <div class="team-name">
-                            <h5 class="text-white f-18 font-weight-light mb-0">John Nixon</h5>
-                        </div>
-                    </div>
-                    <div class="team-content text-center p-3">
-                        <div class="">
-                            <p class="f-17 mb-0"><a href="#" class="text-dark">Graphic Designer</a></p>
-                            <p class="text-muted f-14 mb-0">Etiam ultricies nisi augue Curabitur ullamcorper ultricies.</p>
-                            <div class="team-social-icon p-2">
-                                <ul class="blog-details-icons list-inline mb-0">
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-facebook"></i></a></li>
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-twitter"></i></a></li>
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-whatsapp"></i></a></li>
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-instagram"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-3 col-md-6">
-                <div class="team-box text-center bg-white mt-4">
-                    <div class="team-img">
-                        <img src="~/Public/images/candidates/img-9.jpg" alt="" class="img-fluid d-block rounded">
-                        <div class="team-name">
-                            <h5 class="text-white f-18 font-weight-light mb-0">Nia Griffith</h5>
-                        </div>
-                    </div>
-                    <div class="team-content text-center p-3">
-                        <div class="">
-                            <p class="f-17 mb-0"><a href="#" class="text-dark">Graphic Designer</a></p>
-                            <p class="text-muted f-14 mb-0">Etiam ultricies nisi augue Curabitur ullamcorper ultricies.</p>
-                            <div class="team-social-icon p-2">
-                                <ul class="blog-details-icons list-inline mb-0">
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-facebook"></i></a></li>
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-twitter"></i></a></li>
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-whatsapp"></i></a></li>
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-instagram"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6">
-                <div class="team-box text-center bg-white mt-4">
-                    <div class="team-img">
-                        <img src="~/Public/images/candidates/img-10.jpg" alt="" class="img-fluid d-block rounded">
-                        <div class="team-name">
-                            <h5 class="text-white f-18 font-weight-light mb-0">John Stuber</h5>
-                        </div>
-                    </div>
-                    <div class="team-content text-center p-3">
-                        <div class="">
-                            <p class="f-17 mb-0"><a href="#" class="text-dark">UI/UX Designer</a></p>
-                            <p class="text-muted f-14 mb-0">Phasellus ullamcorper ipsum nunc nunc nonummy metus.</p>
-                            <div class="team-social-icon p-2">
-                                <ul class="blog-details-icons list-inline mb-0">
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-facebook"></i></a></li>
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-twitter"></i></a></li>
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-whatsapp"></i></a></li>
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-instagram"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6">
-                <div class="team-box text-center bg-white mt-4">
-                    <div class="team-img">
-                        <img src="~/Public/images/candidates/img-11.jpg" alt="" class="img-fluid d-block rounded">
-                        <div class="team-name">
-                            <h5 class="text-white f-18 font-weight-light mb-0">Alma Ramirez</h5>
-                        </div>
-                    </div>
-                    <div class="team-content text-center p-3">
-                        <div class="">
-                            <p class="f-17 mb-0"><a href="#" class="text-dark">Web Designer</a></p>
-                            <p class="text-muted f-14 mb-0">Nunc nec neque a leo dolor tempus non hendrerit nisi.</p>
-                            <div class="team-social-icon p-2">
-                                <ul class="blog-details-icons list-inline mb-0">
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-facebook"></i></a></li>
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-twitter"></i></a></li>
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-whatsapp"></i></a></li>
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-instagram"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6">
-                <div class="team-box text-center bg-white mt-4">
-                    <div class="team-img">
-                        <img src="~/Public/images/candidates/img-12.jpg" alt="" class="img-fluid d-block rounded">
-                        <div class="team-name">
-                            <h5 class="text-white f-18 font-weight-light mb-0">Alan Lee</h5>
-                        </div>
-                    </div>
-                    <div class="team-content text-center p-3">
-                        <div class="">
-                            <p class="f-17 mb-0"><a href="#" class="text-dark">PHP Developer</a></p>
-                            <p class="text-muted f-14 mb-0">Maecenas tellus eget condimentum sem quam semper.</p>
-                            <div class="team-social-icon p-2">
-                                <ul class="blog-details-icons list-inline mb-0">
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-facebook"></i></a></li>
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-twitter"></i></a></li>
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-whatsapp"></i></a></li>
-                                    <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-instagram"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            }
         </div>
     </div>
 </section>

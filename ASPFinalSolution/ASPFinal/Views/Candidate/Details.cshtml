@@ -1,21 +1,21 @@
-﻿
+﻿@model CandidateDetailVM
 @{
     ViewBag.Title = "Candidate - Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
-<section class="candidates-profile-bg">
+<section class="candidates-profile-bg" style="background-image: url('/Uploads/images/@Model.HeaderSetting.Photo')">
     <div class="bg-overlay"></div>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="candidates-profile-details text-center">
-                    <img src="~/Public/images/candidates-profile-img.jpg" class="img-fluid d-block mx-auto rounded-circle img-thumbnail mb-4">
-                    <h4 class="text-white candidates-profile-name mb-2">Michael Brown</h4>
-                    <p class="text-white-50 mb-2"><i class="mdi mdi-bank mr-2"></i>Web Themes.pvt.Ltd</p>
+                    <img src="~/Uploads/images/@Model.Candidate.Photo" class="img-fluid d-block mx-auto rounded-circle img-thumbnail mb-4">
+                    <h4 class="text-white candidates-profile-name mb-2">@(Model.Candidate.Firstname + " " + Model.Candidate.Lastname)</h4>
+                    <p class="text-white-50 mb-2"><i class="mdi mdi-bank mr-2"></i>@(Model.Candidate.Experiences.OrderByDescending(c => c.BeginDate).FirstOrDefault()?.Company)</p>
                     <ul class="candidates-profile-icons list-inline mb-3">
-                        <li class="list-inline-item text-white-50 pr-2 f-16">PHP Developer</li>
+                        <li class="list-inline-item text-white-50 pr-2 f-16">@Model.Candidate.Profession</li>
                         <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star"></i></a></li>
                         <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star"></i></a></li>
                         <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star"></i></a></li>
@@ -24,10 +24,10 @@
                     </ul>
 
                     <ul class="candidates-profile-social-icons list-inline mb-0">
-                        <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-facebook"></i></a></li>
-                        <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-twitter"></i></a></li>
-                        <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-instagram"></i></a></li>
-                        <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-google-plus"></i></a></li>
+                        @foreach (var social in Model.Candidate.CandidateSocials)
+                        {
+                            <li class="list-inline-item"><a href="@social.Link" class="" target="_blank"><i class="mdi mdi-@social.SocialLink.Name"></i></a></li>
+                        }
                     </ul>
                 </div>
             </div>
@@ -48,26 +48,24 @@
             <div class="col-lg-12">
                 <div class="job-detail mt-2 p-4">
                     <div class="job-detail-desc">
-                        <p class="text-muted f-14 mb-3">Aliquam erat volutpat Etiam vitae tortor Morbi vestibulum volutpat enim Aliquam nunc Nunc sed turpis sed mollis eros et ultrices tempus mauris ipsum aliquam libero non adipiscing dolor urna a orci Nulla porta dolor. Class aptent taciti sociosqu ad litora torquent per conubia nostra inceptos hymenaeos pellentesque dapibus hendrerit tortor Praesent egestas tristique nibh sed a libero cras us varius donec vitae orci sed dolor rutrum auctor fusce egestas elit eget lorem.</p>
-
-                        <p class="text-muted f-14 mb-0">Libero venenatis faucibus ullam quis ante tiam sit amet orci eget eros faucibus tincidunt ed fringilla mauris sit amet nibh Donec sodales sagittis magna ed consequat leo eget bibendum sodales augue velit cursus nunc quis gravida magna mi libero usce vulputate eleifend sapien estibulum purus qua scelerisque ut mollis sed nonummy id metus ullam accumsan lorem Vivamus elementum semper enean vulputate eleifend tellus enean leo ligula porttitor.</p>
+                        @Html.Raw(Model.Candidate.AboutMe)
                     </div>
                     <hr>
                     <ul class="list-inline mt-3 mb-0">
                         <li class="list-inline-item mr-3">
-                            <a href="#" class="text-muted f-15 mb-0"><i class="mdi mdi-map-marker mr-2"></i>3659 Turkey Pen Road Manhattan, NY 10016</a>
+                            <a href="#" class="text-muted f-15 mb-0"><i class="mdi mdi-map-marker mr-2"></i>@Model.Candidate.Country @Model.Candidate.City, @Model.Candidate.Address</a>
                         </li>
 
                         <li class="list-inline-item mr-3">
-                            <a href="#" class="text-muted f-15 mb-0"><i class="mdi mdi-web mr-2"></i>Www.webthemes.co.in</a>
+                            <a href="#" class="text-muted f-15 mb-0"><i class="mdi mdi-web mr-2"></i>@Model.Candidate.Website</a>
                         </li>
 
                         <li class="list-inline-item mr-3">
-                            <a href="#" class="text-muted f-15 mb-0"><i class="mdi mdi-email mr-2"></i>Webthemes.ltd@gmail.com</a>
+                            <a href="#" class="text-muted f-15 mb-0"><i class="mdi mdi-email mr-2"></i>@Model.Candidate.Email</a>
                         </li>
 
                         <li class="list-inline-item mr-3">
-                            <a href="#" class="text-muted f-15 mb-0"><i class="mdi mdi-cellphone-iphone mr-2"></i>123 456 7890</a>
+                            <a href="#" class="text-muted f-15 mb-0"><i class="mdi mdi-cellphone-iphone mr-2"></i>@Model.Candidate.Phone</a>
                         </li>
                     </ul>
                 </div>
@@ -84,206 +82,94 @@
             <div class="col-lg-12">
                 <div class="job-detail mt-2 p-4">
                     <div class="job-detail-desc">
-                        <p class="text-muted f-14 mb-3">Cras dapibus Vivamus elementum semper nisi Aenean vulputate eleifend tellus Aenean leo ligula porttitor eu consequat vitae eleifend ac enim aliquam lorem ante dapibus in viverra quis feugiat a tellus phasellus viverra nulla ut metus variuse laoreet quisque rutrum aenean imperdiet etiam ultricies nisi that is maecenas tempus tini tellus eget condimentum rhoncus sem semper libero sit amet adipiscing sem neque sed ipsum nam quam nunc blandit vel luctus pulvinar hendrerit lorem maecenas nec odio et ante tincidunt tempus donec vitae libero venenatis faucibus nullam quis ante etiam sit amet orci eget eros faucibus tincidunt Duis leo Sed fringilla a mauris sit amet nibh donec sodales sagittis magna vel augue curabitur ullamcorper ultricies nisi nam eget dui etiame rhoncus ut enim as minima veniam quis nostrum exercitationem ullam corporis suscipit laboriosam nisi ut aliquid commodi.</p>
-
-                        <p class="text-muted f-14 mb-0">Sed consequat eget bibendum augue cursus nunc quis gravida magna mi a Itaque earum rerum hic tenetur a sapiente delectus ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat liber fusce vulputate eleifend sapien vestibulum purus quam scelerisque ut mollis sed nonummy id metus nullam accumsan lorem in dui cras ultricies mi eu turpis hendrerit fringilla vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia in dui quis consectetuer lacinia nam pretium turpis arcu duis arcu tortor.</p>
+                        @Html.Raw(Model.Candidate.Overview)
                     </div>
                 </div>
             </div>
         </div>
+        @if (Model.Candidate.Educations.Count > 0)
+        {
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3 class="text-dark mt-4 mb-4">Education</h3>
+                </div>
+            </div>
+        }
+        <div class="row">
+            @foreach (var edu in Model.Candidate.Educations)
+            {
+                <div class="col-lg-4">
+                    <div class="job-detail candidates-profile-education text-center text-muted mb-5 mt-5">
+                        <div class="profile-education-icon">
+                            <i class="mdi mdi-school"></i>
+                        </div>
+                        <h6 class="text-uppercase f-17"><a href="#" class="text-muted">@edu.University</a></h6>
+                        <p class="f-14 mb-1">@edu.BeginDate.ToString("MMM yyyy") - @edu.FinalDate.ToString("MMM yyyy")</p>
+                        <p class="f-14 mb-0">@edu.CourseTitle</p>
+                        <hr class="mt-2 mb-2">
+                        <p class="f-14 mb-0">@edu.JobEduLevel</p>
+                    </div>
+                </div>
+            }
+        </div>
+        @if (Model.Candidate.Experiences.Count > 0)
+        {
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3 class="text-dark mb-4">Experience</h3>
+                </div>
+            </div>
+        }
+
 
         <div class="row">
-            <div class="col-lg-12">
-                <h3 class="text-dark mt-4 mb-4">Education</h3>
-            </div>
+            @foreach (var exp in Model.Candidate.Experiences)
+            {<div class="col-md-6">
+                    <div class="job-detail job-list-box mt-4 p-4">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="company-brand-logo text-center mb-4">
+                                    <img src="~/Uploads/images/featured-job/img-2.png" alt="" class="img-fluid mx-auto d-block">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-9">
+                                <div class="job-list-desc candidates-profile-exp-desc">
+                                    <h5 class="f-19 mb-2"><a href="#" class="text-dark">@exp.Company</a></h5>
+                                    <p class="text-muted mb-0 f-16">@exp.Category.Name</p>
+                                    <p class="text-muted mb-0 f-16">@exp.BeginDate.ToString("MMM yyyy") - @exp.FinalDate.ToString("MMM yyyy")</p>
+                                    <p class="text-muted mb-0 f-16">Salary : $@exp.Salary</p>
+                                    <p class="text-muted mb-0 f-16"><i class="mdi mdi-bank mr-2"></i>@exp.Website</p>
+                                    <p class="text-muted mb-0 f-16"><i class="mdi mdi-map-marker mr-2"></i>@exp.Address</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
         </div>
-
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="job-detail candidates-profile-education text-center text-muted mb-5 mt-5">
-                    <div class="profile-education-icon">
-                        <i class="mdi mdi-school"></i>
-                    </div>
-                    <h6 class="text-uppercase f-17"><a href="#" class="text-muted">University Of USA</a></h6>
-                    <p class="f-14 mb-1">May 2016 - April 2017</p>
-                    <p class="f-14 mb-0">Diploma In Management Studies</p>
-                    <hr class="mt-2 mb-2">
-                    <p class="f-14 mb-0">Suspendisse faucibus et pellentesque egestas lacus ante convallis.</p>
+        @if (Model.Candidate.Skils.Count > 0)
+        {
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3 class="text-dark mt-4">Skills</h3>
                 </div>
             </div>
-
-            <div class="col-lg-4">
-                <div class="job-detail candidates-profile-education text-center text-muted mb-5 mt-5">
-                    <div class="profile-education-icon">
-                        <i class="mdi mdi-library"></i>
-                    </div>
-                    <h6 class="text-uppercase f-17"><a href="#" class="text-muted">University Of USA</a></h6>
-                    <p class="f-14 mb-1">May 2017 - April 2018</p>
-                    <p class="f-14 mb-0">Diploma In Management</p>
-                    <hr class="mt-2 mb-2">
-                    <p class="f-14 mb-0">Suspendisse faucibus et pellentesque egestas lacus ante convallis.</p>
-                </div>
-            </div>
-
-            <div class="col-lg-4">
-                <div class="job-detail candidates-profile-education text-center text-muted mb-5 mt-5">
-                    <div class="profile-education-icon">
-                        <i class="mdi mdi-briefcase-check"></i>
-                    </div>
-                    <h6 class="text-uppercase f-17"><a href="#" class="text-muted">University Of USA</a></h6>
-                    <p class="f-14 mb-1">May 2018 - April 2019</p>
-                    <p class="f-14 mb-0">Management Of Company</p>
-                    <hr class="mt-2 mb-2">
-                    <p class="f-14 mb-0">Suspendisse faucibus et pellentesque egestas lacus ante convallis.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-12">
-                <h3 class="text-dark mb-4">Experience</h3>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-6">
-                <div class="job-detail job-list-box mt-4 p-4">
-                    <div class="row">
-                        <div class="col-lg-3">
-                            <div class="company-brand-logo text-center mb-4">
-                                <img src="~/Public/images/featured-job/img-2.png" alt="" class="img-fluid mx-auto d-block">
-                            </div>
-                        </div>
-
-                        <div class="col-lg-9">
-                            <div class="job-list-desc candidates-profile-exp-desc">
-                                <h5 class="f-19 mb-2"><a href="#" class="text-dark">Web Themes Pvt.Ltd</a></h5>
-                                <p class="text-muted mb-0 f-16">PHP Developer</p>
-                                <p class="text-muted mb-0 f-16">Jan 2016 - Dec 2017</p>
-                                <p class="text-muted mb-0 f-16">Salary : $950</p>
-                                <p class="text-muted mb-0 f-16"><i class="mdi mdi-bank mr-2"></i>www.webthemesltd.co.in</p>
-                                <p class="text-muted mb-0 f-16"><i class="mdi mdi-map-marker mr-2"></i>1919 Ward Road West Nyack, NY 10994</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="job-detail job-list-box mt-4 p-4">
-                    <div class="row">
-                        <div class="col-lg-3">
-                            <div class="company-brand-logo text-center mb-4">
-                                <img src="~/Public/images/featured-job/img-3.png" alt="" class="img-fluid mx-auto d-block">
-                            </div>
-                        </div>
-
-                        <div class="col-lg-9">
-                            <div class="job-list-desc candidates-profile-exp-desc">
-                                <h5 class="f-19 mb-2"><a href="#" class="text-dark">Web code Pvt.Ltd</a></h5>
-                                <p class="text-muted mb-0 f-16">Web Developer</p>
-                                <p class="text-muted mb-0 f-16">Fab 2015 - July 2018</p>
-                                <p class="text-muted mb-0 f-16">Salary : $1100</p>
-                                <p class="text-muted mb-0 f-16"><i class="mdi mdi-bank mr-2"></i>www.webcodeltd.co.in</p>
-                                <p class="text-muted mb-0 f-16"><i class="mdi mdi-map-marker mr-2"></i>519 Leo Street Butler, PA 16001</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-6">
-                <div class="job-detail job-list-box mt-4 p-4">
-                    <div class="row">
-                        <div class="col-lg-3">
-                            <div class="company-brand-logo text-center mb-4">
-                                <img src="~/Public/images/featured-job/img-5.png" alt="" class="img-fluid mx-auto d-block">
-                            </div>
-                        </div>
-
-                        <div class="col-lg-9">
-                            <div class="job-list-desc candidates-profile-exp-desc">
-                                <h5 class="f-19 mb-2"><a href="#" class="text-dark">Brand Themes Pvt.Ltd</a></h5>
-                                <p class="text-muted mb-0 f-16">PHP Developer</p>
-                                <p class="text-muted mb-0 f-16">Jan 2016 - Dec 2017</p>
-                                <p class="text-muted mb-0 f-16">Salary : $1000</p>
-                                <p class="text-muted mb-0 f-16"><i class="mdi mdi-bank mr-2"></i>www.brandthemesltd.co.in</p>
-                                <p class="text-muted mb-0 f-16"><i class="mdi mdi-map-marker mr-2"></i>519 Leo Street Butler, PA 16001</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="job-detail job-list-box mt-4 p-4">
-                    <div class="row">
-                        <div class="col-lg-3">
-                            <div class="company-brand-logo text-center mb-4">
-                                <img src="~/Public/images/featured-job/img-7.png" alt="" class="img-fluid mx-auto d-block">
-                            </div>
-                        </div>
-
-                        <div class="col-lg-9">
-                            <div class="job-list-desc candidates-profile-exp-desc">
-                                <h5 class="f-19 mb-2"><a href="#" class="text-dark">Small Themes Pvt.Ltd</a></h5>
-                                <p class="text-muted mb-0 f-16">PHP Developer</p>
-                                <p class="text-muted mb-0 f-16">Jan 2016 - Dec 2017</p>
-                                <p class="text-muted mb-0 f-16">Salary : $900</p>
-                                <p class="text-muted mb-0 f-16"><i class="mdi mdi-bank mr-2"></i>www.smallthemesltd.co.in</p>
-                                <p class="text-muted mb-0 f-16"><i class="mdi mdi-map-marker mr-2"></i>519 Leo Street Butler, PA 16001</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-12">
-                <h3 class="text-dark mt-4">Skills</h3>
-            </div>
-        </div>
+        }
         <div class="row justify-content-center">
             <div class="col-lg-10">
                 <div class="row">
-                    <div class="col-lg-3 col-md-6">
-                        <div class="text-center mt-4">
-                            <div class="skills chart" data-percent="80">
-                                <div class="pie-chart-value">80%</div>
+                    @foreach (var skill in Model.Candidate.Skils)
+                    {
+                        <div class="col-lg-3 col-md-6">
+                            <div class="text-center mt-4">
+                                <div class="skills chart" data-percent="@skill.Degree">
+                                    <div class="pie-chart-value">@skill.Degree %</div>
+                                </div>
+                                <h5 class="text-muted mt-4 mb-0">@skill.Name</h5>
                             </div>
-                            <h5 class="text-muted mt-4 mb-0">HTML/CSS</h5>
                         </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6">
-                        <div class="text-center mt-4">
-                            <div class="skills chart" data-percent="65">
-                                <div class="pie-chart-value">65%</div>
-                            </div>
-                            <h5 class="text-muted mt-4 mb-0">Javascript</h5>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6">
-                        <div class="text-center mt-4">
-                            <div class="skills chart" data-percent="75">
-                                <div class="pie-chart-value">75%</div>
-                            </div>
-                            <h5 class="text-muted mt-4 mb-0">PHP</h5>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6">
-                        <div class="text-center mt-4">
-                            <div class="skills chart" data-percent="90">
-                                <div class="pie-chart-value">90%</div>
-                            </div>
-                            <h5 class="text-muted mt-4 mb-0">Photoshop</h5>
-                        </div>
-                    </div>
+                    }
                 </div>
             </div>
         </div>

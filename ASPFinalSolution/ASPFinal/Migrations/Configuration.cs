@@ -523,7 +523,8 @@ namespace ASPFinal.Migrations
                     FinalDate=new DateTime(2017,12,01),
                     Website="www.webthemesltd.co.in",
                     Address="1919 Ward Road West Nyack, NY",
-                    CandidateId=1
+                    CandidateId=1,
+                    Salary=700
                 },
                 new Experience{
                     Company ="Web Themes Pvt.Ltd",
@@ -532,7 +533,8 @@ namespace ASPFinal.Migrations
                     FinalDate=new DateTime(2017,12,01),
                     Website="www.ebthemesltd.co.in",
                     Address="Road West Nyack, NY",
-                    CandidateId=1
+                    CandidateId=1,
+                    Salary=1000
                 },
                 new Experience{
                     Company ="Web Themes Pvt.Ltd",
@@ -541,7 +543,8 @@ namespace ASPFinal.Migrations
                     FinalDate=new DateTime(2017,12,01),
                     Website="www.bthemesltd.co.in",
                     Address=" Ward Road West Nyack, NY",
-                    CandidateId=1
+                    CandidateId=1,
+                    Salary=800
                 },
                 new Experience{
                     Company ="Web Themes Pvt.Ltd",
@@ -550,7 +553,8 @@ namespace ASPFinal.Migrations
                     FinalDate=new DateTime(2017,12,01),
                     Website="www.wthemesltd.co.in",
                     Address="Nyack, NY",
-                    CandidateId=1
+                    CandidateId=1,
+                    Salary=900
                 },
             });
 
@@ -773,7 +777,9 @@ namespace ASPFinal.Migrations
                     Adress="2453 Clinton StreetLittle Rock, AR 72211",
                     Email="Support@mail.com",
                     HomeTitle="Find your New Job Easiest Way With Joobsy",
-                    Desc="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium"
+                    Desc="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium",
+                    Website="Brandcode Pvt.Ltd.co.in",
+                    Phone="123 456 7890"
                 }
             });
 
@@ -878,7 +884,7 @@ namespace ASPFinal.Migrations
                 new CompanyPhoto{ EmployerId=3, Photo="blog-post/img-3.jpg"},
                 new CompanyPhoto{ EmployerId=4, Photo="blog-post/img-4.jpg"},
                 new CompanyPhoto{ EmployerId=4, Photo="blog-post/img-5.jpg"},
-                new CompanyPhoto{ EmployerId=4, Photo="blog-post/img-6.jpg"}
+                new CompanyPhoto{ EmployerId=1, Photo="blog-post/img-6.jpg"}
             });
 
             // HeaderSetting

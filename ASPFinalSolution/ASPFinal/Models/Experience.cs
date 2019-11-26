@@ -18,6 +18,7 @@ namespace ASPFinal.Models
         public DateTime BeginDate { get; set; }
         [Column(TypeName = "date"), DataType(DataType.Date)]
         public DateTime FinalDate { get; set; }
+        public int? Salary { get; set; }
         [MaxLength(100)]
         public string Website { get; set; }
         [MaxLength(100)]

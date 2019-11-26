@@ -1,16 +1,16 @@
-﻿
+﻿@model FaqVM
 @{
     ViewBag.Title = "Faq";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<section class="faq-bg">
+<section class="faq-bg" style="background-image: url('/Uploads/images/@Model.HeaderSetting.Photo')">
     <div class="bg-overlay"></div>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="page-header-title text-center text-white">
-                    @{Html.RenderPartial("~/Views/Shared/_Breadcrumb.cshtml");}
+                    @{Html.RenderPartial("~/Views/Shared/_Breadcrumb.cshtml",model:Model.breadcrumb);}
                 </div>
             </div>
         </div>
@@ -35,75 +35,21 @@
                     <h3 class="text-dark">General Questions</h3>
                     <div class="faq-border mt-2 mb-4"></div>
                     <div class="accordion faq-item mt-3" id="accordionExample">
-                        <div class="card mb-4">
-                            <a data-toggle="collapse" href="#collapseOne" class="faq" aria-expanded="true" aria-controls="collapseOne">
-                                <div class="card-header" id="headingOne">
-                                    <h6 class="mb-0 faq-question">Ut feugiat eleifend metus ?</h6>
-                                </div>
-                            </a>
-                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                                <div class="card-body">
-                                    <p class="text-muted mb-0 f-14 faq-ans">Temporibus autem quibusdam aut officiis debitis aut rerum necessitatibus saepe eveniet voluptates repudiandae sint et molestiae non recusandae that Itaque earum rerum sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis was doloribus asperiores repellat sed ut perspiciatis unde omnis iste natus error at accusantium doloremque laudantium totam rem aperiam eaque ipsa quae ab.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- collapse one end -->
-
-                        <div class="card mb-4">
-                            <a data-toggle="collapse" href="#collapseTwo" class="faq collapsed" aria-expanded="false" aria-controls="collapseTwo">
-                                <div class="card-header" id="headingTwo">
-                                    <h6 class="mb-0 faq-question">Vitae sapien libero faucibus ?</h6>
-                                </div>
-                            </a>
-                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                                <div class="card-body">
-                                    <p class="text-muted mb-0 faq-ans">Temporibus autem quibusdam aut officiis debitis aut rerum necessitatibus saepe eveniet voluptates repudiandae sint et molestiae non recusandae that Itaque earum rerum sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis was doloribus asperiores repellat sed ut perspiciatis unde omnis iste natus error at accusantium doloremque laudantium totam rem aperiam eaque ipsa quae ab.</p>
+                        @foreach (var faq in Model.Faqs.Where(f=>f.CategoryFaq==CategoryFaq.General))
+                        {
+                            <div class="card mb-4">
+                                <a data-toggle="collapse" href="#collapse-@faq.Id" class="faq" aria-expanded="true" aria-controls="collapse-@faq.Id">
+                                    <div class="card-header" id="heading-@faq.Id">
+                                        <h6 class="mb-0 faq-question">@faq.Question</h6>
+                                    </div>
+                                </a>
+                                <div id="collapse-@faq.Id" class="collapse" aria-labelledby="heading-@faq.Id" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <p class="text-muted mb-0 f-14 faq-ans">@faq.Answer</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- collapse two end -->
-
-                        <div class="card mb-4">
-                            <a data-toggle="collapse" href="#collapsethree" class="faq collapsed" aria-expanded="false" aria-controls="collapsethree">
-                                <div class="card-header" id="headingthree">
-                                    <h6 class="mb-0 faq-question">Feugiat viverra varius ?</h6>
-                                </div>
-                            </a>
-                            <div id="collapsethree" class="collapse" aria-labelledby="headingthree" data-parent="#accordionExample">
-                                <div class="card-body">
-                                    <p class="text-muted mb-0 faq-ans">Temporibus autem quibusdam aut officiis debitis aut rerum necessitatibus saepe eveniet voluptates repudiandae sint et molestiae non recusandae that Itaque earum rerum sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis was doloribus asperiores repellat sed ut perspiciatis unde omnis iste natus error at accusantium doloremque laudantium totam rem aperiam eaque ipsa quae ab.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- collapse three end -->
-
-                        <div class="card mb-4">
-                            <a data-toggle="collapse" href="#collapsefour" class="faq collapsed" aria-expanded="false" aria-controls="collapsefour">
-                                <div class="card-header" id="headingfour">
-                                    <h6 class="mb-0 faq-question">Tincidunt Cras a semper ?</h6>
-                                </div>
-                            </a>
-                            <div id="collapsefour" class="collapse" aria-labelledby="headingfour" data-parent="#accordionExample">
-                                <div class="card-body">
-                                    <p class="text-muted mb-0 faq-ans">Temporibus autem quibusdam aut officiis debitis aut rerum necessitatibus saepe eveniet voluptates repudiandae sint et molestiae non recusandae that Itaque earum rerum sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis was doloribus asperiores repellat sed ut perspiciatis unde omnis iste natus error at accusantium doloremque laudantium totam rem aperiam eaque ipsa quae ab.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- collapse four end -->
-
-                        <div class="card mb-4">
-                            <a data-toggle="collapse" href="#collapsefive" class="faq collapsed" aria-expanded="false" aria-controls="collapsefive">
-                                <div class="card-header" id="headingfive">
-                                    <h6 class="mb-0 faq-question">Curabitur ultricies rhoncus ?</h6>
-                                </div>
-                            </a>
-                            <div id="collapsefive" class="collapse" aria-labelledby="headingfive" data-parent="#accordionExample">
-                                <div class="card-body">
-                                    <p class="text-muted mb-0 faq-ans">Temporibus autem quibusdam aut officiis debitis aut rerum necessitatibus saepe eveniet voluptates repudiandae sint et molestiae non recusandae that Itaque earum rerum sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis was doloribus asperiores repellat sed ut perspiciatis unde omnis iste natus error at accusantium doloremque laudantium totam rem aperiam eaque ipsa quae ab.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- collapse four end -->
+                        }
                     </div>
                 </div>
 
@@ -111,75 +57,22 @@
                     <h3 class="text-dark">Career Faq</h3>
                     <div class="faq-border mt-2 mb-4"></div>
                     <div class="accordion faq-item mt-4" id="accordionExample2">
-                        <div class="card mb-4">
-                            <a data-toggle="collapse" href="#collapsesix" class="faq collapsed" aria-expanded="false" aria-controls="collapsesix">
-                                <div class="card-header" id="headingsix">
-                                    <h6 class="mb-0 faq-question">Quisque condimentum tempor ?</h6>
-                                </div>
-                            </a>
-                            <div id="collapsesix" class="collapse" aria-labelledby="headingsix" data-parent="#accordionExample2">
-                                <div class="card-body">
-                                    <p class="text-muted mb-0 faq-ans">Temporibus autem quibusdam aut officiis debitis aut rerum necessitatibus saepe eveniet voluptates repudiandae sint et molestiae non recusandae that Itaque earum rerum sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis was doloribus asperiores repellat sed ut perspiciatis unde omnis iste natus error at accusantium doloremque laudantium totam rem aperiam eaque ipsa quae ab.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- collapse one end -->
 
-                        <div class="card mb-4">
-                            <a data-toggle="collapse" href="#collapsesevan" class="faq collapsed" aria-expanded="false" aria-controls="collapsesevan">
-                                <div class="card-header" id="headingsevan">
-                                    <h6 class="mb-0 faq-question">Etiam us imperdiet orci ?</h6>
-                                </div>
-                            </a>
-                            <div id="collapsesevan" class="collapse" aria-labelledby="headingsevan" data-parent="#accordionExample2">
-                                <div class="card-body">
-                                    <p class="text-muted mb-0 faq-ans">Temporibus autem quibusdam aut officiis debitis aut rerum necessitatibus saepe eveniet voluptates repudiandae sint et molestiae non recusandae that Itaque earum rerum sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis was doloribus asperiores repellat sed ut perspiciatis unde omnis iste natus error at accusantium doloremque laudantium totam rem aperiam eaque ipsa quae ab.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- collapse two end -->
-
-                        <div class="card mb-4">
-                            <a data-toggle="collapse" href="#collapseeight" class="faq collapsed" aria-expanded="false" aria-controls="collapseeight">
-                                <div class="card-header" id="headingeight">
-                                    <h6 class="mb-0 faq-question">Sed posuere vulputate ?</h6>
-                                </div>
-                            </a>
-                            <div id="collapseeight" class="collapse" aria-labelledby="headingeight" data-parent="#accordionExample2">
-                                <div class="card-body">
-                                    <p class="text-muted mb-0 faq-ans">Temporibus autem quibusdam aut officiis debitis aut rerum necessitatibus saepe eveniet voluptates repudiandae sint et molestiae non recusandae that Itaque earum rerum sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis was doloribus asperiores repellat sed ut perspiciatis unde omnis iste natus error at accusantium doloremque laudantium totam rem aperiam eaque ipsa quae ab.</p>
+                        @foreach (var faq in Model.Faqs.Where(f => f.CategoryFaq == CategoryFaq.Career))
+                        {
+                            <div class="card mb-4">
+                                <a data-toggle="collapse" href="#collapse-@faq.Id" class="faq" aria-expanded="true" aria-controls="collapse-@faq.Id">
+                                    <div class="card-header" id="heading-@faq.Id">
+                                        <h6 class="mb-0 faq-question">@faq.Question</h6>
+                                    </div>
+                                </a>
+                                <div id="collapse-@faq.Id" class="collapse" aria-labelledby="heading-@faq.Id" data-parent="#accordionExample2">
+                                    <div class="card-body">
+                                        <p class="text-muted mb-0 f-14 faq-ans">@faq.Answer</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- collapse three end -->
-
-                        <div class="card mb-4">
-                            <a data-toggle="collapse" href="#collapsenine" class="faq collapsed" aria-expanded="false" aria-controls="collapsenine">
-                                <div class="card-header" id="headingnine">
-                                    <h6 class="mb-0 faq-question">Fusce at felis luctus ?</h6>
-                                </div>
-                            </a>
-                            <div id="collapsenine" class="collapse" aria-labelledby="headingnine" data-parent="#accordionExample2">
-                                <div class="card-body">
-                                    <p class="text-muted mb-0 faq-ans">Temporibus autem quibusdam aut officiis debitis aut rerum necessitatibus saepe eveniet voluptates repudiandae sint et molestiae non recusandae that Itaque earum rerum sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis was doloribus asperiores repellat sed ut perspiciatis unde omnis iste natus error at accusantium doloremque laudantium totam rem aperiam eaque ipsa quae ab.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- collapse four end -->
-
-                        <div class="card mb-4">
-                            <a data-toggle="collapse" href="#collapseten" class="faq collapsed" aria-expanded="false" aria-controls="collapseten">
-                                <div class="card-header" id="headingten">
-                                    <h6 class="mb-0 faq-question">Vestibulum a aliquam leo ?</h6>
-                                </div>
-                            </a>
-                            <div id="collapseten" class="collapse" aria-labelledby="headingten" data-parent="#accordionExample2">
-                                <div class="card-body">
-                                    <p class="text-muted mb-0 faq-ans">Temporibus autem quibusdam aut officiis debitis aut rerum necessitatibus saepe eveniet voluptates repudiandae sint et molestiae non recusandae that Itaque earum rerum sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis was doloribus asperiores repellat sed ut perspiciatis unde omnis iste natus error at accusantium doloremque laudantium totam rem aperiam eaque ipsa quae ab.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- collapse four end -->
+                        }
                     </div>
                 </div>
             </div>

@@ -1,0 +1,23 @@
+﻿@model ICollection<JobCategory>
+<div class="sort-button float-right">
+    <ul class="list-inline mb-0">
+        <li class="list-inline-item mr-3">
+            <select class="nice-select">
+                <option data-display="Sort By">Nothing</option>
+                @foreach (var cat in Model)
+                {
+                    <option value="@cat.Id">@cat.Name</option>
+                }
+            </select>
+        </li>
+        <li class="list-inline-item">
+            <select class="nice-select">
+                <option data-display="Default">Nothing</option>
+                @foreach (var cat in Model)
+                {
+                    <option value="@cat.Id">@cat.Name</option>
+                }
+            </select>
+        </li>
+    </ul>
+</div>

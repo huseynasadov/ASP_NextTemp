@@ -1,9 +1,12 @@
-﻿<!DOCTYPE html>
+﻿@{ 
+    Setting setting = ViewBag.Setting as Setting;
+}
+<!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Joobsy - Responsive Landing Page Tamplate</title>
+    <title>Joobsy - @ViewBag.Title</title>
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <meta name="author" content="Themesdesign" />
@@ -45,28 +48,18 @@
             <div class="container">
                 <div class="float-left">
                     <div class="phone">
-                        <i class="mdi mdi-phone-classic"></i> +1 800 123 45 67
+                        <i class="mdi mdi-phone-classic"></i> @setting.Phone
                     </div>
                     <div class="email">
                         <a href="#">
-                            <i class="mdi mdi-email"></i> Support@mail.com
+                            <i class="mdi mdi-email"></i>@setting.Email
                         </a>
                     </div>
                 </div>
                 <div class="float-right">
                     <ul class="topbar-list list-unstyled d-flex" style="margin: 11px 0px;">
                         <li class="list-inline-item"><a href="javascript:void(0);"><i class="mdi mdi-account mr-2"></i>Benny Simpson</a></li>
-                        <li class="list-inline-item">
-                            <a href="javascript:void(0);">
-                                <select id="select-lang" class="demo-default" placeholder="Language">
-                                    <option value="">Language</option>
-                                    <option value="4">English</option>
-                                    <option value="1">Spanish</option>
-                                    <option value="3">French</option>
-                                    <option value="5">Hindi</option>
-                                </select>
-                            </a>
-                        </li>
+                       
                     </ul>
                 </div>
                 <div class="clearfix"></div>
@@ -76,8 +69,8 @@
             <!-- Logo container-->
             <div>
                 <a href="@Url.Action("index","home")" class="logo">
-                    <img src="~/Public/images/logo-light.png" alt="" class="logo-light" height="28" />
-                    <img src="~/Public/images/logo-dark.png" alt="" class="logo-dark" height="28" />
+                    <img src="~/Uploads/images/@setting.Logo" alt="@setting.LogoName" class="logo-light" height="28" />
+                    <img src="~/Public/images/@setting.Logo" alt="@setting.LogoName" class="logo-dark" height="28" />
                 </a>
             </div>
             <!-- End Logo container-->
@@ -401,13 +394,13 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="text-dark">
-                        <h3 class="mb-4 footer-list-title text-white f-17">Joobsy</h3>
-                        <p class="footer-desc">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium</p>
+                        <h3 class="mb-4 footer-list-title text-white f-17">@setting.LogoName</h3>
+                        <p class="footer-desc">@setting.Desc</p>
                         <ul class="footer-icons list-inline mb-4">
-                            <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-facebook"></i></a></li>
-                            <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-twitter"></i></a></li>
-                            <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-instagram"></i></a></li>
-                            <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-google"></i></a></li>
+                            @foreach (var soc in setting.SettingSocials)
+                            {
+                                <li class="list-inline-item"><a target="_blank" href="@soc.Link" class=""><i class="mdi mdi-@soc.SocialLink.Name"></i></a></li>
+                            }
                         </ul>
                     </div>
                 </div>
@@ -417,10 +410,10 @@
                             <div>
                                 <p class="text-white mb-4 footer-list-title f-17">Company</p>
                                 <ul class="list-unstyled footer-list-menu">
-                                    <li><a href="#">About Us</a></li>
-                                    <li><a href="#">Media & Press</a></li>
-                                    <li><a href="#">Career</a></li>
-                                    <li><a href="#">Blog</a></li>
+                                    <li><a href="@Url.Action("about","Page")">About Us</a></li>
+                                    <li><a href="@Url.Action("faq","Page")">Faq</a></li>
+                                    <li><a href="@Url.Action("team","Page")">Team</a></li>
+                                    <li><a href="@Url.Action("service","Page")">Services</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -467,7 +460,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <p class="copyright mb-0">2019 © Joobsy. Design By Themesdesign</p>
+                    <p class="copyright mb-0">@DateTime.Now.Year © @setting.LogoName. Design By Themesdesign</p>
                 </div>
             </div>
         </div>

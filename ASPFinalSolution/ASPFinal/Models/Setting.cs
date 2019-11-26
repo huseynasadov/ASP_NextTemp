@@ -21,6 +21,10 @@ namespace ASPFinal.Models
         public string Adress { get; set; }
         [Required, MaxLength(200),EmailAddress, DataType(DataType.EmailAddress)]
         public string Email { get; set; }
+        [MaxLength(14)]
+        public string Phone { get; set; }
+        [MaxLength(50)]
+        public string Website { get; set; }
         [Required, Column(TypeName ="ntext")]
         [Display(Name = "Description")]
         public string Desc { get; set; }

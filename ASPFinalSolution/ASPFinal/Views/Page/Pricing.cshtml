@@ -1,17 +1,17 @@
-﻿
+﻿@model PricingVM
 @{
     ViewBag.Title = "Pricing";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
-<section class="pricing-bg">
+<section class="pricing-bg" style="background-image: url('/Uploads/images/@Model.HeaderSetting.Photo')">
     <div class="bg-overlay"></div>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="page-header-title text-center text-white">
-                    @{Html.RenderPartial("~/Views/Shared/_Breadcrumb.cshtml");}
+                    @{Html.RenderPartial("~/Views/Shared/_Breadcrumb.cshtml",model:Model.breadcrumb);}
                 </div>
             </div>
         </div>
@@ -28,62 +28,28 @@
         </div>
 
         <div class="row">
-            <div class="col-lg-4">
-                <div class="pricing-box list-grid-item p-4 mt-4">
-                    <h5 class="text-muted text-center text-uppercase">Free</h5>
-                    <p class="text-muted text-center mb-0 price p-1"><span class="text-custom font-weight-normal"><sup>$</sup>00/</span>Month</p>
-                    <div class="pricing-plan-item text-center">
-                        <ul class="list-unstyled mb-4">
-                            <li class="text-muted"><i class="mdi mdi-minus mr-3"></i>Bandwidth: 1GB</li>
-                            <li class="text-muted"><i class="mdi mdi-minus mr-3"></i>Onlinespace: 50MB</li>
-                            <li class="text-muted"><i class="mdi mdi-minus mr-3"></i>Support: No</li>
-                            <li class="text-muted"><i class="mdi mdi-minus mr-3"></i>Domain: 5</li>
-                            <li class="text-muted"><i class="mdi mdi-minus mr-3"></i>Hidden Fees: No</li>
-                        </ul>
-                        <div class="text-center mt-3">
-                            <a href="#" class="btn btn-block pricing-btn btn-outline">Buy</a>
+            @foreach (var price in Model.Pricing)
+            {
+                <div class="col-lg-4">
+                    <div class="pricing-box list-grid-item p-4 mt-4">
+                        <h5 class="text-muted text-center text-uppercase">@price.Name</h5>
+                        <p class="text-muted text-center mb-0 price p-1"><span class="text-custom font-weight-normal"><sup>$</sup>@price.Amount/</span>Month</p>
+                        <div class="pricing-plan-item text-center">
+                            <ul class="list-unstyled mb-4">
+                                <li class="text-muted"><i class="mdi mdi-minus mr-3"></i>Bandwidth: @price.Bandwidth GB</li>
+                                <li class="text-muted"><i class="mdi mdi-minus mr-3"></i>Onlinespace: @price.Onlinespace MB</li>
+                                <li class="text-muted"><i class="mdi mdi-minus mr-3"></i>Support: @(price.Support==true?"Yes":"No")</li>
+                                <li class="text-muted"><i class="mdi mdi-minus mr-3"></i>Domain: @price.Domain</li>
+                                <li class="text-muted"><i class="mdi mdi-minus mr-3"></i>Hidden Fees: @(price.Fees == true ? "Yes" : "No")</li>
+                            </ul>
+                            <div class="text-center mt-3">
+                                <a href="#" class="btn btn-block pricing-btn btn-outline">Buy</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            }
 
-            <div class="col-lg-4">
-                <div class="pricing-box list-grid-item p-4 mt-4">
-                    <h5 class="text-muted text-center text-uppercase">Economy</h5>
-                    <p class="text-muted text-center mb-0 price p-1"><span class="text-custom font-weight-normal"><sup>$</sup>70/</span>Month</p>
-                    <div class="pricing-plan-item text-center">
-                        <ul class="list-unstyled mb-4">
-                            <li class="text-muted"><i class="mdi mdi-minus mr-3"></i>Bandwidth: 1.5GB</li>
-                            <li class="text-muted"><i class="mdi mdi-minus mr-3"></i>Onlinespace: 500MB</li>
-                            <li class="text-muted"><i class="mdi mdi-minus mr-3"></i>Support: Yes</li>
-                            <li class="text-muted"><i class="mdi mdi-minus mr-3"></i>Domain: 10</li>
-                            <li class="text-muted"><i class="mdi mdi-minus mr-3"></i>Hidden Fees: Yes</li>
-                        </ul>
-                        <div class="text-center mt-3">
-                            <a href="#" class="btn active btn-block pricing-btn btn-outline">Buy</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4">
-                <div class="pricing-box list-grid-item p-4 mt-4">
-                    <h5 class="text-muted text-center text-uppercase">Deluxe</h5>
-                    <p class="text-muted text-center mb-0 price p-1"><span class="text-custom font-weight-normal"><sup>$</sup>95/</span>Month</p>
-                    <div class="pricing-plan-item text-center">
-                        <ul class="list-unstyled mb-4">
-                            <li class="text-muted"><i class="mdi mdi-minus mr-3"></i>Bandwidth: 2GB</li>
-                            <li class="text-muted"><i class="mdi mdi-minus mr-3"></i>Onlinespace: 1GB</li>
-                            <li class="text-muted"><i class="mdi mdi-minus mr-3"></i>Support: Yes</li>
-                            <li class="text-muted"><i class="mdi mdi-minus mr-3"></i>Domain: 15</li>
-                            <li class="text-muted"><i class="mdi mdi-minus mr-3"></i>Hidden Fees: No</li>
-                        </ul>
-                        <div class="text-center mt-3">
-                            <a href="#" class="btn btn-block pricing-btn btn-outline">Buy</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </section>

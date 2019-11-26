@@ -1,17 +1,17 @@
-﻿
+﻿@model EmployerDetailVM
 @{
     ViewBag.Title = "Employer-Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
-<section class="employers-details-bg">
+<section class="employers-details-bg" style="background-image: url('/Uploads/images/@Model.HeaderSetting.Photo')">
     <div class="bg-overlay"></div>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="page-header-title text-center text-white">
-                    @{Html.RenderPartial("~/Views/Shared/_Breadcrumb.cshtml");}
+                    @{Html.RenderPartial("~/Views/Shared/_Breadcrumb.cshtml",model:Model.Breadcrumb);}
                 </div>
             </div>
         </div>
@@ -25,30 +25,37 @@
             <div class="col-lg-12">
                 <div class="text-center p-3">
                     <div class="employers-details-img mb-2">
-                        <img src="~/Public/images/featured-job/img-3.png" alt="" class="img-fluid mx-auto d-block">
+                        <img width="100" src="~/Uploads/images/@Model.Employer.Photo" alt="@Model.Employer.Firstname" class="img-fluid mx-auto d-block rounded-circle">
                     </div>
-                    <h3 class="font-weight-light"><a href="#" class="text-dark">Themes code Pvt.Ltd</a></h3>
+                    <h3 class="font-weight-light"><a href="#" class="text-dark">@Model.Employer.CompanyName</a></h3>
                     <ul class="list-inline mb-0">
                         <li class="list-inline-item mr-3">
-                            <p class="text-muted mb-2"><i class="mdi mdi-map-marker mr-2"></i>4102 Aviation Way Los Angeles, CA 90017</p>
+                            <p class="text-muted mb-2"><i class="mdi mdi-map-marker mr-2"></i>@Model.Employer.CompanyAdress</p>
                         </li>
 
                         <li class="list-inline-item">
-                            <p class="text-muted mb-2"><i class="mdi mdi-marker-check text-success mr-2"></i>Verified</p>
+                            @if (Model.Employer.isVerified == true)
+                            {
+                                <p class="text-muted mb-2"><i class="mdi mdi-marker-check text-success mr-2"></i>Verified</p>
+                            }
+                            else
+                            {
+                                <p class="text-muted mb-2"><i class="mdi mdi-marker-check text-error mr-2"></i> No Verified</p>
+                            }
                         </li>
                     </ul>
 
                     <ul class="list-inline mb-2">
                         <li class="list-inline-item mr-3 ">
-                            <p class="text-muted mb-2"><i class="mdi mdi-earth mr-2"></i>Themescodeltd.co.in</p>
+                            <p class="text-muted mb-2"><i class="mdi mdi-earth mr-2"></i>@Model.Employer.CompanyWebsite</p>
                         </li>
 
                         <li class="list-inline-item mr-3">
-                            <p class="text-muted mb-2"><i class="mdi mdi-email mr-2"></i>Themescodeltd2018@gmail.com</p>
+                            <p class="text-muted mb-2"><i class="mdi mdi-email mr-2"></i>@Model.Employer.CompanyEmail</p>
                         </li>
 
                         <li class="list-inline-item">
-                            <p class="text-muted mb-2"><i class="mdi mdi-cellphone-iphone mr-2"></i>123 456 7890</p>
+                            <p class="text-muted mb-2"><i class="mdi mdi-cellphone-iphone mr-2"></i>@Model.Employer.CompanyPhone</p>
                         </li>
                     </ul>
                 </div>
@@ -62,35 +69,35 @@
                         <div class="col-lg-2 col-md-4">
                             <div class="text-center m-14">
                                 <h5 class="font-weight-light text-dark mb-1">Employer</h5>
-                                <p class="text-muted mb-0">5540 +</p>
+                                <p class="text-muted mb-0">@Model.Employer.Empl0yers +</p>
                             </div>
                         </div>
 
                         <div class="col-lg-2 col-md-4">
                             <div class="text-center m-14">
                                 <h5 class="font-weight-light text-dark mb-1">Type</h5>
-                                <p class="text-muted mb-0">Create Website</p>
+                                <p class="text-muted mb-0">@Model.Employer.Type</p>
                             </div>
                         </div>
 
                         <div class="col-lg-2 col-md-4">
                             <div class="text-center m-14">
                                 <h5 class="font-weight-light text-dark mb-1">Experience</h5>
-                                <p class="text-muted mb-0">4 Years + Exp.</p>
+                                <p class="text-muted mb-0">@Model.Employer.ExperienceDate Years + Exp.</p>
                             </div>
                         </div>
 
                         <div class="col-lg-2 col-md-4">
                             <div class="text-center m-14">
                                 <h5 class="font-weight-light text-dark mb-1">Salary</h5>
-                                <p class="text-muted mb-0">$700 - $2000/month</p>
+                                <p class="text-muted mb-0">$@(Model.Employer.minSalary?.ToString("#")) - $@(Model.Employer.maxSalary?.ToString("#"))/month</p>
                             </div>
                         </div>
 
                         <div class="col-lg-2 col-md-4">
                             <div class="text-center m-14">
                                 <h5 class="font-weight-light text-dark mb-1">Followers</h5>
-                                <p class="text-muted mb-0">584230 +</p>
+                                <p class="text-muted mb-0">@Model.Employer.Followers +</p>
                             </div>
                         </div>
                     </div>
@@ -108,11 +115,7 @@
             <div class="col-lg-12">
                 <div class="job-detail mt-2 p-4">
                     <div class="job-detail-desc">
-                        <p class="text-muted f-14 mb-3">At vero eos accusamus iusto odio dignissimos ducimus blanditiis praesentium voluptatum deleniti that is atque corrupti dolores et quas molestias excepturi sint occaecati cupiditate non at provident similique sunt in culpa qui officia deserunt mollitia animi id est laboru at dolorum fuga Nam libero tempore cum soluta nobis est eligendi optio cumque nihil impedit quo minus quod maxime placeat facere possimus omnis voluptas assumenda est omnis dolor repellendus at enim ipsam voluptatem quia voluptas aut odit aut fugit Cum sociis natoque penatibus magnis dis parturient montes nascetur ridiculus mus donec quam felis ultricies nec pellentesque eu pretium quis sem that phasellus viverra nulla ut metus varius laoreet.</p>
-
-                        <p class="text-muted f-14 mb-3">Nobis est eligendi optio cumque nihil impedit quo minus quod maxime at placeat facere possimus omnis voluptas assumenda est omnis dolor repellendus at enim ipsam eligendi optio cumque nihil impedit quo minus quod maxime placeat voluptatem quia that voluptas aut odit aut fugit Cum sociis natoque penatibus magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec this pellentesque eu pretium quis sem hasellus viverra nulla ut metus varius laoreet uisque rutrum enean imperdie tiam ultricies nisi vel augue.</p>
-
-                        <p class="text-muted f-14 mb-0">Optio cumque nihil impedit quo minus quod maxime at placeate facere possimuse omnis voluptas assumenda est omnis dolor repellendus at enim ipsam voluptatem quia voluptas aut odit aut fugit um sociis natoque penatibus magnis dis parturient montes nascetur at ridiculus mus onec quam felis ultricies nec nihil impedit quo minus quod maxime at placeat facere possimuse omnis voluptas assumenda est omnis dolor repellendus at enime pellentesque eu pretium quis sem Phasellus viverra nulla ut metus varius laoreet uisque rutrum enean imperdiet tiam ultricies nisi vel augue Donec elit libero sodales nec volutpat a suscipit non turpis ullam sagittis Suspendisse pulvinar at augue ac venenatis condimentum sem libero volutpat nibh nec pellentesque velit pede quis nunc estibulum ante ipsum primis in faucibus orci luctus et ultrices as cubilia Curae usce id purus varius tincidunt libero Phasellus dolor.</p>
+                        @Html.Raw(Model.Employer.Overview)
                     </div>
                 </div>
             </div>
@@ -128,57 +131,7 @@
             <div class="col-lg-12">
                 <div class="job-detail mt-2 p-4">
                     <div class="job-detail-desc">
-                        <p class='text-muted f-14 mb-3'>Aenean tellus metus bibendum sed posuere ac mattis non nunc estibulum fringilla pede sit amet augue n turpis Pellentesque posuere raesent turpis enean posuere tortor sed cursus feugiat nunc augue blandit nunc sollicitudin at dolor sagittis lacus estibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae Sed aliquam nisi quis porttitor congue elit erat euismod orci ac placerat dolor lectus quis orci repellendus at enime pellentesque eu pretium quis sem Phasellus viverra nulla hasellus consectetuer vestibulum elit.</p>
-
-                        <h4 class='text-dark'>Details</h4>
-                        <div class='job-details-desc-item'>
-                            <div class='float-left mr-3'>
-                                <i class='mdi mdi-minus text-muted f-16'></i>
-                            </div>
-                            <p class='text-muted f-14 mb-2'>Morbi mattis ullamcorper velit hasellus gravida semper nisi nullam vel sem.</p>
-                        </div>
-
-                        <div class='job-details-desc-item'>
-                            <div class='float-left mr-3'>
-                                <i class='mdi mdi-minus text-muted f-16'></i>
-                            </div>
-                            <p class='text-muted f-14 mb-2'>Phasellus viverra nulla ut metus varius laoreet uisque rutrum enean imperdiet.</p>
-                        </div>
-
-                        <div class='job-details-desc-item'>
-                            <div class='float-left mr-3'>
-                                <i class='mdi mdi-minus text-muted f-16'></i>
-                            </div>
-                            <p class='text-muted f-14 mb-2'>Etiam ultricies nisi vel augue Curabitur ullamcorper ultricies nisi am eget dui tiam rhoncus.</p>
-                        </div>
-
-                        <div class='job-details-desc-item'>
-                            <div class='float-left mr-3'>
-                                <i class='mdi mdi-minus text-muted f-16'></i>
-                            </div>
-                            <p class='text-muted f-14 mb-2'>Donec mollis hendrerit risus hasellus nec sem in justo pellentesque facilisis.</p>
-                        </div>
-
-                        <div class='job-details-desc-item'>
-                            <div class='float-left mr-3'>
-                                <i class='mdi mdi-minus text-muted f-16'></i>
-                            </div>
-                            <p class='text-muted f-14 mb-2'>Praesent congue erat at massa Sed cursus turpis vitae tortor onec posuere vulputate arcu.</p>
-                        </div>
-
-                        <div class="job-details-desc-item">
-                            <div class="float-left mr-3">
-                                <i class="mdi mdi-minus text-muted f-16"></i>
-                            </div>
-                            <p class="text-muted f-14 mb-2">Donec elit libero, sodales nec volutpat a suscipit non turpis ullam sagittis.</p>
-                        </div>
-
-                        <div class="job-details-desc-item">
-                            <div class="float-left mr-3">
-                                <i class="mdi mdi-minus text-muted f-16"></i>
-                            </div>
-                            <p class="text-muted f-14 mb-0">Aenean tellus metus bibendum sed posuere ac mattis non nunc estibulum fringilla.</p>
-                        </div>
+                        @Html.Raw(Model.Employer.Services)
                     </div>
                 </div>
             </div>
@@ -193,153 +146,45 @@
         <div class="row">
             <div class="col-lg-9">
                 <div class="employers-details-item mt-2">
-                    <div class="job-list-box job-list-desc p-3">
-                        <div class="row align-items-center">
-                            <div class="col-md-2">
-                                <div class="employers-list-img mb-4">
-                                    <img src="~/Public/images/employers/img-1.jpg" alt="" class="img-fluid mx-auto d-block rounded-circle">
+                    @foreach (var rev in Model.Employer.EmployerReviews)
+                    {
+                        <div class="job-list-box job-list-desc p-3 mt-4">
+                            <div class="row align-items-center">
+                                <div class="col-md-2">
+                                    <div class="employers-list-img mb-4">
+                                        <img src="~/Uploads/images/@rev.Candidate.Photo" alt="@rev.Candidate.Firstname" class="img-fluid mx-auto d-block rounded-circle">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-7">
+                                    <div class="grid-list-desc">
+                                        <h5 class="mb-1"><a href="#" class="text-dark">@rev.Candidate.Firstname @rev.Candidate.Lastname</a></h5>
+                                        <p class="text-muted f-15 mb-0">@rev.Candidate.Profession</p>
+                                        <ul class="employers-icons list-inline mb-1">
+                                            <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
+                                            <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
+                                            <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
+                                            <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
+                                            <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="employers-details-time">
+                                        <h6 class="text-muted font-weight-light text-right mb-0"><i class="mdi mdi-clock-outline mr-2"></i>@((DateTime.Now-rev.Date).TotalMinutes.ToString("#")) minutes ago</h6>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="col-md-7">
-                                <div class="grid-list-desc">
-                                    <h5 class="mb-1"><a href="#" class="text-dark">Mario Thomas</a></h5>
-                                    <p class="text-muted f-15 mb-0">Web Developer</p>
-                                    <ul class="employers-icons list-inline mb-1">
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="col-md-3">
-                                <div class="employers-details-time">
-                                    <h6 class="text-muted font-weight-light text-right mb-0"><i class="mdi mdi-clock-outline mr-2"></i>32 minutes ago</h6>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-10 offset-md-2">
-                                <hr class="employers-details-item-border mt-1 mb-2">
-                                <p class="text-muted mb-0">Phasellus viverra nulla ut metus varius laoreet quisque rutrum aenean imperdiet etiam ultricies nisi avel augue curabitur ullamcorper ultricies nisi nam eget dui.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="job-list-box job-list-desc p-3 mt-4">
-                        <div class="row align-items-center">
-                            <div class="col-md-2">
-                                <div class="employers-list-img mb-4">
-                                    <img src="~/Public/images/employers/img-2.jpg" alt="" class="img-fluid mx-auto d-block rounded-circle">
-                                </div>
-                            </div>
-
-                            <div class="col-md-7">
-                                <div class="grid-list-desc">
-                                    <h5 class="mb-1"><a href="#" class="text-dark">Brian Wright</a></h5>
-                                    <p class="text-muted f-15 mb-0">PHP Developer</p>
-                                    <ul class="employers-icons list-inline mb-1">
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="col-md-3">
-                                <div class="employers-details-time">
-                                    <h6 class="text-muted font-weight-light text-right mb-0"><i class="mdi mdi-clock-outline mr-2"></i>49 minutes ago</h6>
+                            <div class="row">
+                                <div class="col-md-10 offset-md-2">
+                                    <hr class="employers-details-item-border mt-1 mb-2">
+                                    <p class="text-muted mb-0">@rev.Text</p>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="row">
-                            <div class="col-md-10 offset-md-2">
-                                <hr class="employers-details-item-border mt-1 mb-2">
-                                <p class="text-muted mb-0">Maecenas tempus tellus eget condimentum rhoncus sem quam semper libero sit amet adipiscing sem neque sed ipsum am blandit luctus.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="job-list-box job-list-desc p-3 mt-4">
-                        <div class="row align-items-center">
-                            <div class="col-md-2">
-                                <div class="employers-list-img mb-4">
-                                    <img src="~/Public/images/employers/img-3.jpg" alt="" class="img-fluid mx-auto d-block rounded-circle">
-                                </div>
-                            </div>
-
-                            <div class="col-md-7">
-                                <div class="grid-list-desc">
-                                    <h5 class="mb-1"><a href="#" class="text-dark">James King</a></h5>
-                                    <p class="text-muted f-15 mb-0">Web Designer</p>
-                                    <ul class="employers-icons list-inline mb-1">
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="col-md-3">
-                                <div class="employers-details-time">
-                                    <h6 class="text-muted font-weight-light text-right mb-0"><i class="mdi mdi-clock-outline mr-2"></i>52 minutes ago</h6>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-10 offset-md-2">
-                                <hr class="employers-details-item-border mt-1 mb-2">
-                                <p class="text-muted mb-0">Sed fringilla mauris sit amet nibh Donec sodales sagittis magna ed consequat leo eget bibendum sodales augue velit cursus nunc quis gravida magna mi a libero.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="job-list-box job-list-desc p-3 mt-4">
-                        <div class="row align-items-center">
-                            <div class="col-md-2">
-                                <div class="employers-list-img mb-4">
-                                    <img src="~/Public/images/employers/img-4.jpg" alt="" class="img-fluid mx-auto d-block rounded-circle">
-                                </div>
-                            </div>
-
-                            <div class="col-md-7">
-                                <div class="grid-list-desc">
-                                    <h5 class="mb-1"><a href="#" class="text-dark">Penny Romero</a></h5>
-                                    <p class="text-muted f-15 mb-0">Graphic Designer</p>
-                                    <ul class="employers-icons list-inline mb-1">
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="col-md-3">
-                                <div class="employers-details-time">
-                                    <h6 class="text-muted font-weight-light text-right mb-0"><i class="mdi mdi-clock-outline mr-2"></i>48 minutes ago</h6>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-10 offset-md-2">
-                                <hr class="employers-details-item-border mt-1 mb-2">
-                                <p class="text-muted mb-0">Ultricies nisi nam eget dui phasellus viverra nulla ut metus varius laoreet quisque rutrum aenean imperdiet etiam ultricies nisi avel augue curabitur ullamcorper.</p>
-                            </div>
-                        </div>
-                    </div>
+                    }
                 </div>
             </div>
 
@@ -350,16 +195,11 @@
                         <hr class="m-0">
                         <div class=" p-3 text-center">
                             <ul class="Share-job-social-icons list-inline mb-0">
-                                <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-facebook"></i></a></li>
-                                <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-twitter"></i></a></li>
-                                <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-google-plus"></i></a></li>
-                                <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-linkedin"></i></a></li>
-                            </ul>
-                            <ul class="Share-job-social-icons list-inline mb-0">
-                                <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-pinterest"></i></a></li>
-                                <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-instagram"></i></a></li>
-                                <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-whatsapp"></i></a></li>
-                                <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-share-variant"></i></a></li>
+                                @foreach (var social in ViewBag.Setting.SettingSocials)
+                                {
+                                    <li class="list-inline-item"><a target="_blank" href="@social.Link" class=""><i class="mdi mdi-@social.SocialLink.Name"></i></a></li>
+                                }
+
                             </ul>
                         </div>
                     </div>

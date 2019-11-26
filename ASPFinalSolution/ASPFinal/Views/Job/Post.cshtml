@@ -1,4 +1,4 @@
-﻿
+﻿@model Breadcrumb
 @{
     ViewBag.Title = "Post";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -11,7 +11,7 @@
             <div class="col-md-6">
                 <div class="page-header-title text-center text-white">
 
-                    @{Html.RenderPartial("~/Views/Shared/_Breadcrumb.cshtml");}
+                    @{Html.RenderPartial("~/Views/Shared/_Breadcrumb.cshtml",model:Model);}
                 </div>
             </div>
         </div>

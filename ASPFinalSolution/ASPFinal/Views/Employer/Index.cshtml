@@ -1,16 +1,16 @@
-﻿
+﻿@model EmployerListVM
 @{
     ViewBag.Title = "Employer";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<section class="employers-list-bg">
+<section class="employers-list-bg" style="background-image: url('/Uploads/images/@Model.HeaderSetting.Photo')">
     <div class="bg-overlay"></div>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="page-header-title text-center text-white">
-                    @{Html.RenderPartial("~/Views/Shared/_Breadcrumb.cshtml");}
+                    @{Html.RenderPartial("~/Views/Shared/_Breadcrumb.cshtml",model:Model._SidebarVM.Breadcrumb);}
                 </div>
             </div>
         </div>
@@ -37,429 +37,57 @@
             <div class="col-lg-12">
                 <div class="show-results mt-4">
                     <div class="float-left">
-                        <h5 class="text-dark mb-0 pt-2">Showing  Results : 1-9 of 300</h5>
+                        <h5 class="text-dark mb-0 pt-2">Showing  Results : @Model.Employers.Count</h5>
                     </div>
-                    <div class="sort-button float-right">
-                        <ul class="list-inline mb-0">
-                            <li class="list-inline-item mr-3">
-                                <select class="nice-select">
-                                    <option data-display="Sort By">Nothing</option>
-                                    <option value="1">Web Developer</option>
-                                    <option value="2">PHP Developer</option>
-                                    <option value="3">Web Designer</option>
-                                </select>
-                            </li>
-
-                            <li class="list-inline-item">
-                                <select class="nice-select">
-                                    <option data-display="Default">Nothing</option>
-                                    <option value="1">Web Developer</option>
-                                    <option value="2">PHP Developer</option>
-                                    <option value="3">Web Designer</option>
-                                </select>
-                            </li>
-                        </ul>
-                    </div>
+                    @{Html.RenderPartial("~/Views/Shared/_NiceSelect.cshtml", model: Model._SidebarVM.JobCategories); }
                 </div>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-lg-3">
-                <div class="left-sidebar">
-                    <div class="accordion" id="accordionExample">
-                        <div class="card mt-4">
-                            <a data-toggle="collapse" href="#collapseOne" class="job-list" aria-expanded="true" aria-controls="collapseOne">
-                                <div class="card-header" id="headingOne">
-                                    <h6 class="mb-0 text-dark f-18">Last Activity</h6>
-                                </div>
-                            </a>
-                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne">
-                                <div class="card-body p-0">
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
-                                        <label class="custom-control-label ml-1 text-muted f-15" for="customRadio1">Last Hour</label>
-                                    </div>
-
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
-                                        <label class="custom-control-label ml-1 text-muted f-15" for="customRadio2">Last 24 hours</label>
-                                    </div>
-
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio3" name="customRadio" class="custom-control-input">
-                                        <label class="custom-control-label ml-1 text-muted f-15" for="customRadio3">Last 7 days</label>
-                                    </div>
-
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio4" name="customRadio" class="custom-control-input">
-                                        <label class="custom-control-label ml-1 text-muted f-15" for="customRadio4">Last 14 days</label>
-                                    </div>
-
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio5" name="customRadio" class="custom-control-input">
-                                        <label class="custom-control-label ml-1 text-muted f-15" for="customRadio5">Last 30 days</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- collapse one end -->
-                        <div class="card mt-4">
-                            <a data-toggle="collapse" href="#collapsetwo" class="job-list" aria-expanded="true" aria-controls="collapsetwo">
-                                <div class="card-header" id="headingtwo">
-                                    <h6 class="mb-0 text-dark f-18">Team Size</h6>
-                                </div>
-                            </a>
-                            <div id="collapsetwo" class="collapse show" aria-labelledby="headingtwo">
-                                <div class="card-body p-0">
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck7">
-                                        <label class="custom-control-label ml-1 text-muted f-15" for="customCheck7">1 To 50</label>
-                                    </div>
-
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck8">
-                                        <label class="custom-control-label ml-1 text-muted f-15" for="customCheck8">51 To 100</label>
-                                    </div>
-
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck3">
-                                        <label class="custom-control-label ml-1 text-muted f-15" for="customCheck3">101 To 150</label>
-                                    </div>
-
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck4">
-                                        <label class="custom-control-label ml-1 text-muted f-15" for="customCheck4">151 To 200</label>
-                                    </div>
-
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck5">
-                                        <label class="custom-control-label ml-1 text-muted f-15" for="customCheck5">201 To 250</label>
-                                    </div>
-
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck6">
-                                        <label class="custom-control-label ml-1 text-muted f-15" for="customCheck6">251 To 300</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- collapse one end -->
-                        <div class="card mt-4">
-                            <a data-toggle="collapse" href="#collapsethree" class="job-list" aria-expanded="true" aria-controls="collapsethree">
-                                <div class="card-header" id="headingthree">
-                                    <h6 class="mb-0 text-dark f-18">Categories</h6>
-                                </div>
-                            </a>
-                            <div id="collapsethree" class="collapse show" aria-labelledby="headingthree">
-                                <div class="card-body p-0">
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio7" name="customRadio1" class="custom-control-input">
-                                        <label class="custom-control-label ml-1 text-muted f-15" for="customRadio7">Web Designer</label>
-                                    </div>
-
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio8" name="customRadio1" class="custom-control-input">
-                                        <label class="custom-control-label ml-1 text-muted f-15" for="customRadio8">Graphic Designer</label>
-                                    </div>
-
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio9" name="customRadio1" class="custom-control-input">
-                                        <label class="custom-control-label ml-1 text-muted f-15" for="customRadio9">PHP Developer</label>
-                                    </div>
-
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio10" name="customRadio1" class="custom-control-input">
-                                        <label class="custom-control-label ml-1 text-muted f-15" for="customRadio10">UI/UX Designer</label>
-                                    </div>
-
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio11" name="customRadio1" class="custom-control-input">
-                                        <label class="custom-control-label ml-1 text-muted f-15" for="customRadio11">Banking</label>
-                                    </div>
-
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio12" name="customRadio1" class="custom-control-input">
-                                        <label class="custom-control-label ml-1 text-muted f-15" for="customRadio12">Accountancy</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card mt-4">
-                            <a data-toggle="collapse" href="#collapsefour" class="job-list" aria-expanded="true" aria-controls="collapsefour">
-                                <div class="card-header" id="headingfour">
-                                    <h6 class="mb-0 text-dark f-18">Gender</h6>
-                                </div>
-                            </a>
-                            <div id="collapsefour" class="collapse show" aria-labelledby="headingfour">
-                                <div class="card-body p-0">
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio13" name="customRadio3" class="custom-control-input">
-                                        <label class="custom-control-label ml-1 text-muted f-15" for="customRadio13">Male</label>
-                                    </div>
-
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio14" name="customRadio3" class="custom-control-input">
-                                        <label class="custom-control-label ml-1 text-muted f-15" for="customRadio14">Female</label>
-                                    </div>
-
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio15" name="customRadio3" class="custom-control-input">
-                                        <label class="custom-control-label ml-1 text-muted f-15" for="customRadio15">Others</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- collapse one end -->
-                    </div>
-                </div>
-            </div>
+            @{Html.RenderPartial("~/Views/Shared/_Sidebar.cshtml", model: Model._SidebarVM); }
 
             <div class="col-lg-9">
                 <div class="row">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="list-grid-item mt-4">
-                            <div class="grid-item-content p-2">
-                                <div class="employers-list-img mt-3">
-                                    <img src="~/Public/images/employers/img-1.jpg" alt="" class="img-fluid mx-auto d-block rounded-circle">
+                    @foreach (var emp in Model.Employers)
+                    {
+                        <div class="col-lg-4 col-md-6">
+                            <div class="list-grid-item mt-4">
+                                <div class="grid-item-content p-2">
+                                    <div class="employers-list-img mt-3">
+                                        <img src="~/Uploads/images/@emp.Photo" alt="@emp.Firstname" class="img-fluid mx-auto d-block rounded-circle">
+                                    </div>
+                                    <div class="grid-list-desc text-center mt-4">
+                                        <h5 class="mb-1"><a href="#" class="text-dark">@emp.Firstname @emp.Lastname</a></h5>
+                                        @{
+                                            var sl = "";
+                                            var count = 0;
+                                            foreach (var cat in emp.EmployerCategory)
+                                            {
+                                                ++count;
+                                                sl += cat.Category.Name + (count == emp.EmployerCategory.Count ? "" : ", ");
+                                            }
+                                        }
+                                        <p class="text-muted f-14 mb-0">@sl</p>
+                                        <p class="text-muted f-14 mb-0"><i class="mdi mdi-map-marker mr-2"></i>@emp.Address</p>
+                                        <ul class="employers-icons list-inline mb-1">
+                                            <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
+                                            <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
+                                            <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
+                                            <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
+                                            <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
+                                        </ul>
+                                        <span class="badge badge-warning text-white">4.9</span>
+                                    </div>
                                 </div>
-                                <div class="grid-list-desc text-center mt-4">
-                                    <h5 class="mb-1"><a href="#" class="text-dark">Kyle Jones</a></h5>
-                                    <p class="text-muted f-14 mb-0">Web Delveloper, Graphic Disegner</p>
-                                    <p class="text-muted f-14 mb-0"><i class="mdi mdi-map-marker mr-2"></i>419 Lakeland Terrace Detroit, MI 48226</p>
-                                    <ul class="employers-icons list-inline mb-1">
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                    </ul>
-                                    <span class="badge badge-warning text-white">4.9</span>
+                                <hr class="mt-0 mb-0">
+                                <div class="apply-button text-center mt-2 mb-2">
+                                    <a href="@Url.Action("Details","Employer",new { slug=emp.Slug})" class="btn btn-custom btn-sm">View Profile</a>
                                 </div>
-                            </div>
-                            <hr class="mt-0 mb-0">
-                            <div class="apply-button text-center mt-2 mb-2">
-                                <a href="#" class="btn btn-custom btn-sm">View Profile</a>
                             </div>
                         </div>
-                    </div>
+                    }
 
-                    <div class="col-lg-4 col-md-6">
-                        <div class="list-grid-item mt-4">
-                            <div class="grid-item-content p-2">
-                                <div class="employers-list-img mt-3">
-                                    <img src="~/Public/images/employers/img-2.jpg" alt="" class="img-fluid mx-auto d-block rounded-circle">
-                                </div>
-                                <div class="grid-list-desc text-center mt-4">
-                                    <h5 class="mb-1"><a href="#" class="text-dark">Susan Roth</a></h5>
-                                    <p class="text-muted f-14 mb-0">PHP Delveloper, Web Disegner</p>
-                                    <p class="text-muted f-14 mb-0"><i class="mdi mdi-map-marker mr-2"></i>2984 Woodhill Avenue Easton, MD 21601</p>
-                                    <ul class="employers-icons list-inline mb-1">
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star-half f-19"></i></a></li>
-                                    </ul>
-                                    <span class="badge badge-warning text-white">4.5</span>
-                                </div>
-                            </div>
-                            <hr class="mt-0 mb-0">
-                            <div class="apply-button text-center mt-2 mb-2">
-                                <a href="#" class="btn btn-custom btn-sm">View Profile</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="list-grid-item mt-4">
-                            <div class="grid-item-content p-2">
-                                <div class="employers-list-img mt-3">
-                                    <img src="~/Public/images/employers/img-3.jpg" alt="" class="img-fluid mx-auto d-block rounded-circle">
-                                </div>
-                                <div class="grid-list-desc text-center mt-4">
-                                    <h5 class="mb-1"><a href="#" class="text-dark">Ricky Cash</a></h5>
-                                    <p class="text-muted f-14 mb-0">UI/UX Designer, Software Developer</p>
-                                    <p class="text-muted f-14 mb-0"><i class="mdi mdi-map-marker mr-2"></i>2683 Farland Street Chicago, IL 60631</p>
-                                    <ul class="employers-icons list-inline mb-1">
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star-outline f-19"></i></a></li>
-                                    </ul>
-                                    <span class="badge badge-warning text-white">4.0</span>
-                                </div>
-                            </div>
-                            <hr class="mt-0 mb-0">
-                            <div class="apply-button text-center mt-2 mb-2">
-                                <a href="#" class="btn btn-custom btn-sm">View Profile</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="list-grid-item mt-4">
-                            <div class="grid-item-content p-2">
-                                <div class="employers-list-img mt-3">
-                                    <img src="~/Public/images/employers/img-4.jpg" alt="" class="img-fluid mx-auto d-block rounded-circle">
-                                </div>
-                                <div class="grid-list-desc text-center mt-4">
-                                    <h5 class="mb-1"><a href="#" class="text-dark">Kelly Perez</a></h5>
-                                    <p class="text-muted f-14 mb-0">Software Developer, Graphic Disegner</p>
-                                    <p class="text-muted f-14 mb-0"><i class="mdi mdi-map-marker mr-2"></i>2120 County Line Road St George, FL 34683</p>
-                                    <ul class="employers-icons list-inline mb-1">
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star-half f-19"></i></a></li>
-                                    </ul>
-                                    <span class="badge badge-warning text-white">4.5</span>
-                                </div>
-                            </div>
-                            <hr class="mt-0 mb-0">
-                            <div class="apply-button text-center mt-2 mb-2">
-                                <a href="#" class="btn btn-custom btn-sm">View Profile</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="list-grid-item mt-4">
-                            <div class="grid-item-content p-2">
-                                <div class="employers-list-img mt-3">
-                                    <img src="~/Public/images/employers/img-5.jpg" alt="" class="img-fluid mx-auto d-block rounded-circle">
-                                </div>
-                                <div class="grid-list-desc text-center mt-4">
-                                    <h5 class="mb-1"><a href="#" class="text-dark">Dale Gambill</a></h5>
-                                    <p class="text-muted f-14 mb-0">Graphic Disegner, Web Designer</p>
-                                    <p class="text-muted f-14 mb-0"><i class="mdi mdi-map-marker mr-2"></i>3633 Cessna Drive Fort Wayne, IN 46802</p>
-                                    <ul class="employers-icons list-inline mb-1">
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star-half f-19"></i></a></li>
-                                    </ul>
-                                    <span class="badge badge-warning text-white">4.7</span>
-                                </div>
-                            </div>
-                            <hr class="mt-0 mb-0">
-                            <div class="apply-button text-center mt-2 mb-2">
-                                <a href="#" class="btn btn-custom btn-sm">View Profile</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="list-grid-item mt-4">
-                            <div class="grid-item-content p-2">
-                                <div class="employers-list-img mt-3">
-                                    <img src="~/Public/images/employers/img-6.jpg" alt="" class="img-fluid mx-auto d-block rounded-circle">
-                                </div>
-                                <div class="grid-list-desc text-center mt-4">
-                                    <h5 class="mb-1"><a href="#" class="text-dark">Rita Guidry</a></h5>
-                                    <p class="text-muted f-14 mb-0">PHP Delveloper, Web Disegner</p>
-                                    <p class="text-muted f-14 mb-0"><i class="mdi mdi-map-marker mr-2"></i>2797 Bartlett Avenue Southfield, MI 48075</p>
-                                    <ul class="employers-icons list-inline mb-1">
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                    </ul>
-                                    <span class="badge badge-warning text-white">4.8</span>
-                                </div>
-                            </div>
-                            <hr class="mt-0 mb-0">
-                            <div class="apply-button text-center mt-2 mb-2">
-                                <a href="#" class="btn btn-custom btn-sm">View Profile</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="list-grid-item mt-4">
-                            <div class="grid-item-content p-2">
-                                <div class="employers-list-img mt-3">
-                                    <img src="~/Public/images/employers/img-7.jpg" alt="" class="img-fluid mx-auto d-block rounded-circle">
-                                </div>
-                                <div class="grid-list-desc text-center mt-4">
-                                    <h5 class="mb-1"><a href="#" class="text-dark">Matt Morgan</a></h5>
-                                    <p class="text-muted f-14 mb-0">Web Delveloper, PHP Delveloper</p>
-                                    <p class="text-muted f-14 mb-0"><i class="mdi mdi-map-marker mr-2"></i>2639 Warner Street Casper, WY 82601</p>
-                                    <ul class="employers-icons list-inline mb-1">
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                    </ul>
-                                    <span class="badge badge-warning text-white">5.0</span>
-                                </div>
-                            </div>
-                            <hr class="mt-0 mb-0">
-                            <div class="apply-button text-center mt-2 mb-2">
-                                <a href="#" class="btn btn-custom btn-sm">View Profile</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="list-grid-item mt-4">
-                            <div class="grid-item-content p-2">
-                                <div class="employers-list-img mt-3">
-                                    <img src="~/Public/images/employers/img-8.jpg" alt="" class="img-fluid mx-auto d-block rounded-circle">
-                                </div>
-                                <div class="grid-list-desc text-center mt-4">
-                                    <h5 class="mb-1"><a href="#" class="text-dark">Hattie Blaser</a></h5>
-                                    <p class="text-muted f-14 mb-0">Graphic Disegner, Web Designer</p>
-                                    <p class="text-muted f-14 mb-0"><i class="mdi mdi-map-marker mr-2"></i>4883 Patterson Road Brooklyn, NY 11230</p>
-                                    <ul class="employers-icons list-inline mb-1">
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star-half f-19"></i></a></li>
-                                    </ul>
-                                    <span class="badge badge-warning text-white">4.5</span>
-                                </div>
-                            </div>
-                            <hr class="mt-0 mb-0">
-                            <div class="apply-button text-center mt-2 mb-2">
-                                <a href="#" class="btn btn-custom btn-sm">View Profile</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="list-grid-item mt-4">
-                            <div class="grid-item-content p-2">
-                                <div class="employers-list-img mt-3">
-                                    <img src="~/Public/images/employers/img-9.jpg" alt="" class="img-fluid mx-auto d-block rounded-circle">
-                                </div>
-                                <div class="grid-list-desc text-center mt-4">
-                                    <h5 class="mb-1"><a href="#" class="text-dark">Robert Cole</a></h5>
-                                    <p class="text-muted f-14 mb-0">Web Delveloper, Graphic Disegner</p>
-                                    <p class="text-muted f-14 mb-0"><i class="mdi mdi-map-marker mr-2"></i>2424 Lowland Drive Chicago, IL 60606</p>
-                                    <ul class="employers-icons list-inline mb-1">
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star f-19"></i></a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star-outline f-19"></i></a></li>
-                                    </ul>
-                                    <span class="badge badge-warning text-white">4.2</span>
-                                </div>
-                            </div>
-                            <hr class="mt-0 mb-0">
-                            <div class="apply-button text-center mt-2 mb-2">
-                                <a href="#" class="btn btn-custom btn-sm">View Profile</a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

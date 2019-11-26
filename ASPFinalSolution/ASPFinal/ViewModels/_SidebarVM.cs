@@ -12,5 +12,6 @@ namespace ASPFinal.ViewModels
         public ICollection<JobCategory> JobCategories { get; set; }
         public ICollection<string> Professions { get; set; }
         public ICollection<Skill> Skills { get; set; }
+        public ICollection<Blog> ArchiveBlogs { get; set; }
     }
 }
