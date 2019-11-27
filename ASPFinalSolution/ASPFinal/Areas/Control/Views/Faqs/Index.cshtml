@@ -1,0 +1,58 @@
+﻿@model IEnumerable<ASPFinal.Models.Faq>
+
+@{
+    ViewBag.Title = "FAQ";
+    Layout = "~/Areas/Control/Views/Shared/_LayoutControl.cshtml";
+}
+
+<h2>FAQ</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create",null,new { @class="btn btn-info"})
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Question)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Answer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryFaq)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @(item.Question.Length > 50 ? item.Question.Substring(0, 50) + " ..." : item.Question)
+        </td>
+        <td>
+            @(item.Answer.Length > 50 ? item.Answer.Substring(0, 50) + " ..." : item.Answer)
+        </td>
+        <td>
+            @if (item.Status == true)
+            {
+                <span class="badge badge-success">Avtiv</span>
+            }
+            else
+            {
+                <span class="badge badge-danger">Deactive</span>
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoryFaq)
+        </td>
+        <td>
+            <a href="@Url.Action("Edit","faqs",new { id= item.Id})"><i class="fas fa-edit"></i></a> |
+            <a class="jobDelete" href="@Url.Action("delete","faqs",new { id= item.Id})"><i class="fas fa-trash text-danger"></i></a>
+        </td>
+    </tr>
+}
+
+</table>

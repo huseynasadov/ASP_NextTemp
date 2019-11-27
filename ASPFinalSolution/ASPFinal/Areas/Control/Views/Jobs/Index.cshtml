@@ -1,0 +1,64 @@
+﻿@model IEnumerable<ASPFinal.Models.Job>
+
+@{
+    ViewBag.Title = "Jobs";
+    Layout = "~/Areas/Control/Views/Shared/_LayoutControl.cshtml";
+}
+
+<h2>Jobs</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create",new { @class="btn btn-info" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CompanyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Photo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.CompanyName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Category.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Email)
+    </td>
+    <td>
+        <img src="~/Uploads/images/@item.Photo" width="50"/>
+    </td>
+    <td>
+        @if (item.Status == true)
+        {
+            <span class="badge badge-success">Avtiv</span>
+        }
+        else
+        {
+            <span class="badge badge-danger">Deactive</span>
+        }
+    </td>
+    <td>
+        <a href="@Url.Action("Edit","jobs",new { slug= item.Slug})"><i class="fas fa-edit"></i></a> |
+        <a class="jobDelete" href="@Url.Action("delete","jobs",new { slug= item.Slug})"><i class="fas fa-trash text-danger"></i></a>
+    </td>
+</tr>
+}
+
+</table>

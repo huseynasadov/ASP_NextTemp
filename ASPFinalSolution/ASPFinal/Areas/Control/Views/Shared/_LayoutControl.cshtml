@@ -21,6 +21,7 @@
     @RenderSection("head", false)
     <!-- Custom styles for this template-->
     <link href="~/Areas/Control/Public/css/sb-admin-2.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="~/Public/css/materialdesignicons.min.css" />
     <link href="~/Areas/Control/Public/css/fontawesome-all.min.css" rel=" stylesheet" />
 
 </head>
@@ -54,44 +55,57 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider">
-
-
-
-
-
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Index","Headers")">
+                <a class="nav-link" href="@Url.Action("Index","Jobs")">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Headers</span>
+                    <span>Jobs</span>
                 </a>
             </li>
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Index","Posts")">
+                <a class="nav-link" href="@Url.Action("Index","Employers")">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Posts</span>
+                    <span>Employers</span>
                 </a>
             </li>
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Index","Settings")">
+                <a class="nav-link" href="@Url.Action("Index","Candidates")">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Settings</span>
+                    <span>Candidates</span>
                 </a>
             </li>
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Index","SocialLinks")">
+                <a class="nav-link" href="@Url.Action("Index","Blogs")">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Social Links</span>
+                    <span>Blogs</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Index","Contacts")">
+                <a class="nav-link" href="@Url.Action("Index","AboutUs")">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Contacts</span>
+                    <span>About Us</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Action("Index","Services")">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Services</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Action("Index","Teams")">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Teams</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Action("Index","Faqs")">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>FAQ</span>
                 </a>
             </li>
             @if (admin.AdminPosition == AdminPosition.Admin)
@@ -358,9 +372,10 @@
 
     <!-- Core plugin JavaScript-->
     <script src="~/Areas/Control/Public/vendor/jquery-easing/jquery.easing.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <!-- Custom scripts for all pages-->
     <script src="~/Areas/Control/Public/js/sb-admin-2.min.js"></script>
+    <script src="~/Areas/Control/Public/js/main.js"></script>
     @RenderSection("scripts", false)
 
 </body>

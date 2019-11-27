@@ -1,0 +1,58 @@
+﻿@model IEnumerable<ASPFinal.Models.Blog>
+
+@{
+    ViewBag.Title = "Blogs";
+    Layout = "~/Areas/Control/Views/Shared/_LayoutControl.cshtml";
+}
+
+<h2>Blogs</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create",null,new { @class="btn btn-info"})
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Photos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @(item.Title.Length>50?item.Title.Substring(0,50)+" ...":item.Title)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Category.Name)
+    </td>
+    <td>
+        <img src="~/Uploads/images/@item.Photos" width="50" />
+    </td>
+    <td>
+        @if (item.Status == true)
+        {
+            <span class="badge badge-success">Avtiv</span>
+        }
+        else
+        {
+            <span class="badge badge-danger">Deactive</span>
+        }
+    </td>
+    <td>
+        <a href="@Url.Action("Edit","blogs",new { slug= item.Slug})"><i class="fas fa-edit"></i></a> |
+        <a class="jobDelete" href="@Url.Action("delete","blogs",new { slug= item.Slug})"><i class="fas fa-trash text-danger"></i></a>
+    </td>
+</tr>
+}
+
+</table>

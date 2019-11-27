@@ -1,0 +1,58 @@
+﻿@model IEnumerable<ASPFinal.Models.Service>
+
+@{
+    ViewBag.Title = "Services";
+    Layout = "~/Areas/Control/Views/Shared/_LayoutControl.cshtml";
+}
+
+<h2>Services</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create",null,new { @class="btn btn-info"})
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Content)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Icon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @(item.Title.Length > 50 ? item.Title.Substring(0, 50) + " ..." : item.Title)
+        </td>
+        <td>
+            @Html.Raw(item.Content.Length > 50 ? item.Content.Substring(0, 50) + " ..." : item.Content)
+        </td>
+        <td>
+            <i class="mdi mdi-@item.Icon h1"></i>
+        </td>
+        <td>
+            @if (item.Status == true)
+            {
+                <span class="badge badge-success">Avtiv</span>
+            }
+            else
+            {
+                <span class="badge badge-danger">Deactive</span>
+            }
+            </td>
+        <td>
+            <a href="@Url.Action("Edit","Services",new { id= item.Id})"><i class="fas fa-edit"></i></a> |
+            <a class="jobDelete" href="@Url.Action("delete","Services",new { id= item.Id})"><i class="fas fa-trash text-danger"></i></a>
+        </td>
+    </tr>
+}
+
+</table>
