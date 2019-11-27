@@ -8,16 +8,16 @@ namespace ASPFinal.Areas.Control
         {
             get 
             {
-                return "Control";
+                return "control";
             }
         }
 
         public override void RegisterArea(AreaRegistrationContext context) 
         {
             context.MapRoute(
-                "Control_default",
-                "Control/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional },
+                "control_default",
+                "control/{controller}/{action}/{id}",
+                new { controller = "Auth", action = "Index", id = UrlParameter.Optional },
                 new string[] {"ASPFinal.Areas.Control.Controllers"}
             );
         }

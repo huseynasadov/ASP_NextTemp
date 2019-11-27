@@ -131,6 +131,8 @@
     <Compile Include="Areas\Control\ControlAreaRegistration.cs" />
     <Compile Include="Areas\Control\Controllers\AuthController.cs" />
     <Compile Include="Areas\Control\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Control\Filters\Auth.cs" />
+    <Compile Include="Areas\Control\Models\LoginVM.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\CandidateController.cs" />
@@ -144,6 +146,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\FileManager.cs" />
     <Compile Include="Migrations\201911240938308_allTablesCreated.cs" />
     <Compile Include="Migrations\201911240938308_allTablesCreated.Designer.cs">
       <DependentUpon>201911240938308_allTablesCreated.cs</DependentUpon>
@@ -220,8 +223,13 @@
     <Compile Include="Migrations\201911261107136_PhoneAddedSetting.Designer.cs">
       <DependentUpon>201911261107136_PhoneAddedSetting.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911270537352_AdminManagerTableCreated.cs" />
+    <Compile Include="Migrations\201911270537352_AdminManagerTableCreated.Designer.cs">
+      <DependentUpon>201911270537352_AdminManagerTableCreated.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AboutUs.cs" />
+    <Compile Include="Models\AdminManager.cs" />
     <Compile Include="Models\Blog.cs" />
     <Compile Include="Models\BlogReview.cs" />
     <Compile Include="Models\Candidate.cs" />
@@ -1505,8 +1513,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Control\Models\" />
-    <Folder Include="Areas\Control\Views\Auth\" />
     <Folder Include="Uploads\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\User\" />
@@ -1649,7 +1655,9 @@
     <Content Include="Areas\Control\Public\vendor\fontawesome-free\webfonts\fa-solid-900.woff2" />
     <Content Include="Areas\Control\Public\vendor\jquery\jquery.min.map" />
     <Content Include="Areas\Control\Public\vendor\jquery\jquery.slim.min.map" />
-    <Content Include="Areas\Control\Views\Home\Dashboard.cshtml" />
+    <Content Include="Areas\Control\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Control\Views\Auth\Index.cshtml" />
+    <Content Include="Areas\Control\Views\Auth\Register.cshtml" />
     <None Include="packages.config" />
     <Content Include="Public\fonts\fa-brands-400.eot" />
     <Content Include="Public\fonts\fa-brands-400.ttf" />
@@ -1664,7 +1672,6 @@
     <Content Include="Public\fonts\fa-solid-900.eot" />
     <Content Include="Public\fonts\fa-solid-900.ttf" />
     <Content Include="Public\fonts\fa-solid-900.woff" />
-    <Content Include="Public\fonts\fa-solid-900.woff2" />
     <Content Include="Public\fonts\fa-solid-900d41d.eot" />
     <Content Include="Public\fonts\materialdesignicons-webfont5ba3.eot" />
     <Content Include="Public\fonts\materialdesignicons-webfont5ba3.ttf" />
@@ -1694,6 +1701,7 @@
     <Content Include="Views\Shared\_NiceSelect.cshtml" />
     <Content Include="Views\Shared\_Partners.cshtml" />
     <Content Include="Views\Shared\_AllInfoCounter.cshtml" />
+    <Content Include="Public\fonts\fa-solid-900.woff2" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
@@ -1755,6 +1763,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911261107136_PhoneAddedSetting.resx">
       <DependentUpon>201911261107136_PhoneAddedSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911270537352_AdminManagerTableCreated.resx">
+      <DependentUpon>201911270537352_AdminManagerTableCreated.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

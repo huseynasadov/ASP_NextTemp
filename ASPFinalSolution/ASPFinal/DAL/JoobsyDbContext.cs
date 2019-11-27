@@ -42,5 +42,6 @@ namespace ASPFinal.DAL
         public DbSet<Responsibility> Responsibilities { get; set; }
         public DbSet<HeaderSetting> HeaderSetting { get; set; }
         public DbSet<OpeningHour> OpeningHours { get; set; }
+        public DbSet<AdminManager> AdminManagers { get; set; }
     }
 }

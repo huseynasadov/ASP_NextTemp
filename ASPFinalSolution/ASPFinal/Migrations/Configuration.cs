@@ -918,6 +918,19 @@ namespace ASPFinal.Migrations
                 new OpeningHour{ Days= Days.Saturday, JobId=1,BeginHour="6:30",EndHour="1"},
                 new OpeningHour{ Days= Days.Sunday, JobId=1,BeginHour="",EndHour=""},
             });
+
+            // Admin Manager
+            _db.AdminManagers.AddOrUpdate(a => a.Email, new AdminManager[] {
+                new AdminManager{
+                    Firstname="Huseyn",
+                    Lastname="Asadov",
+                    Email="Huseynia@code.edu.az",
+                    Password="AGFkhc5OoWZDrhVUgtfONApKOIJtIZyZZTc93zg1bpihQMs6UrndQXnCgZ6K5Qg8hA==",
+                    Status=true,
+                    Photo="download.png",
+                    AdminPosition=0
+                }
+            });
             _db.SaveChanges();
         }
     }

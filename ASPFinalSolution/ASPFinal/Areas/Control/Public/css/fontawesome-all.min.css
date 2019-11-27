@@ -9,5 +9,5 @@
     font-weight: 900;
     font-display: auto;
     src: url(/Public/webfonts/fa-solid-900.eot);
-    src: url(/Public/webfonts/fa-solid-900.eot?#iefix) format("embedded-opentype"),url(/Public/webfonts/fa-solid-900.woff2) format("woff2"),url(/Public/webfonts/fa-solid-900.woff) format("woff"),url(/Public/webfonts/fa-solid-900.ttf) format("truetype"),url(/Public/webfonts/fa-solid-900.svg#fontawesome) format("svg")
+    src: url(/Public/fonts/fa-solid-900.eot?#iefix) format("embedded-opentype"),url(/Public/fonts/fa-solid-900.woff2) format("woff2"),url(/Public/fonts/fa-solid-900.woff) format("woff"),url(/Public/fonts/fa-solid-900.ttf) format("truetype"),url(/Public/fonts/fa-solid-900.svg#fontawesome) format("svg")
 }.fa,.far,.fas{font-family:"Font Awesome 5 Free"}.fa,.fas{font-weight:900}
