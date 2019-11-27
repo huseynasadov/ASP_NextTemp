@@ -108,6 +108,18 @@
                     <span>FAQ</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Action("Index","pricings")">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Pricing Plan</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Action("Index","settings")">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Setting</span>
+                </a>
+            </li>
             @if (admin.AdminPosition == AdminPosition.Admin)
             {
                 <li class="nav-item">

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<ASPFinal.Models.Pricing>
+
+@{
+    ViewBag.Title = "Pricing Plan";
+    Layout = "~/Areas/Control/Views/Shared/_LayoutControl.cshtml";
+}
+
+<h2>Pricing Plan</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create",null,new { @class="btn btn-info"})
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Amount) $
+        </td>
+        <td>
+            @if (item.Status == true)
+            {
+                <span class="badge badge-success">Avtiv</span>
+            }
+            else
+            {
+                <span class="badge badge-danger">Deactive</span>
+            }
+        </td>
+        <td>
+            <a href="@Url.Action("Edit","pricings",new { id= item.Id})"><i class="fas fa-edit"></i></a> |
+            <a class="jobDelete" href="@Url.Action("delete","pricings",new { id= item.Id})"><i class="fas fa-trash text-danger"></i></a>
+        </td>
+    </tr>
+}
+
+</table>

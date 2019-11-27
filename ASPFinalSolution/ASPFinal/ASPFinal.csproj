@@ -137,7 +137,9 @@
     <Compile Include="Areas\Control\Controllers\FaqsController.cs" />
     <Compile Include="Areas\Control\Controllers\HomeController.cs" />
     <Compile Include="Areas\Control\Controllers\JobsController.cs" />
+    <Compile Include="Areas\Control\Controllers\PricingsController.cs" />
     <Compile Include="Areas\Control\Controllers\ServicesController.cs" />
+    <Compile Include="Areas\Control\Controllers\SettingsController.cs" />
     <Compile Include="Areas\Control\Controllers\TeamsController.cs" />
     <Compile Include="Areas\Control\Filters\Auth.cs" />
     <Compile Include="Areas\Control\Models\LoginVM.cs" />
@@ -1690,6 +1692,11 @@
     <Content Include="Areas\Control\Views\Faqs\Create.cshtml" />
     <Content Include="Areas\Control\Views\Faqs\Edit.cshtml" />
     <Content Include="Areas\Control\Views\Faqs\Index.cshtml" />
+    <Content Include="Areas\Control\Views\Pricings\Create.cshtml" />
+    <Content Include="Areas\Control\Views\Pricings\Edit.cshtml" />
+    <Content Include="Areas\Control\Views\Pricings\Index.cshtml" />
+    <Content Include="Areas\Control\Views\Settings\Edit.cshtml" />
+    <Content Include="Areas\Control\Views\Settings\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Public\fonts\fa-brands-400.eot" />
     <Content Include="Public\fonts\fa-brands-400.ttf" />
