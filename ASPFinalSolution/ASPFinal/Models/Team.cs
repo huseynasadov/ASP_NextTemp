@@ -14,7 +14,7 @@ namespace ASPFinal.Models
         public string Firstname { get; set; }
         [Required, MaxLength(50)]
         public string Lastname { get; set; }
-        [Required, MaxLength(100)]
+        [MaxLength(100)]
         public string Slug { get; set; }
         [MaxLength(250)]
         public string Photo { get; set; }

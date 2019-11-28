@@ -15,4 +15,12 @@
         itemsDesktop: [1199, 2],
         itemsDesktopSmall: [979, 2]
     });
+
+    //$(".labelPosition").on("click", (function () {
+    //    if ($(this).text().trim() == "Candidate") {
+    //        $("#UserPosition").val("0");
+    //    } else {
+    //        $("#UserPosition").val("1");
+    //    } 
+    //}));
 })(jQuery)

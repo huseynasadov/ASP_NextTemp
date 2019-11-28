@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using ASPFinal.Areas.Control.Filters;
 using ASPFinal.DAL;
+using ASPFinal.Helpers;
 using ASPFinal.Models;
 
 namespace ASPFinal.Areas.Control.Controllers
@@ -34,10 +35,22 @@ namespace ASPFinal.Areas.Control.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Firstname,Lastname,Slug,Photo,CategoryId,ShortInfo,OrderBy,Status")] Team team)
+        public ActionResult Create([Bind(Include = "Id,Firstname,Lastname,Slug,Photo,PhotoUpload,CategoryId,ShortInfo,OrderBy,Status")] Team team)
         {
+            if (team.PhotoUpload != null)
+            {
+                try
+                {
+                    team.Photo = FileManager.Upload(team.PhotoUpload);
+                }
+                catch (Exception e)
+                {
+                    ModelState.AddModelError("PhotoUpload", e.Message);
+                }
+            }
             if (ModelState.IsValid)
             {
+                team.Slug = team.Firstname.ToLower() + "-" + team.Lastname.ToLower(); 
                 db.Teams.Add(team);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -65,10 +78,22 @@ namespace ASPFinal.Areas.Control.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Firstname,Lastname,Slug,Photo,CategoryId,ShortInfo,OrderBy,Status")] Team team)
+        public ActionResult Edit([Bind(Include = "Id,Firstname,Lastname,Slug,Photo,PhotoUpload,CategoryId,ShortInfo,OrderBy,Status")] Team team)
         {
+            if (team.PhotoUpload != null)
+            {
+                try
+                {
+                    team.Photo = FileManager.Upload(team.PhotoUpload);
+                }
+                catch (Exception e)
+                {
+                    ModelState.AddModelError("PhotoUpload", e.Message);
+                }
+            }
             if (ModelState.IsValid)
             {
+                team.Slug = team.Firstname.ToLower() + "-" + team.Lastname.ToLower();
                 db.Entry(team).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

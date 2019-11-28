@@ -1,0 +1,35 @@
+﻿@model IEnumerable<ASPFinal.Models.HeaderSetting>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Control/Views/Shared/_LayoutControl.cshtml";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Photo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Page)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <img width="50" src="~/Uploads/images/@item.Photo"/>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Page)
+        </td>
+        <td>
+            <a href="@Url.Action("edit","HeaderSettings",new { id= item.Id})"><i class="fas fa-edit "></i></a> 
+        </td>
+    </tr>
+}
+
+</table>

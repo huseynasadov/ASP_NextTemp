@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using ASPFinal.Areas.Control.Filters;
 using ASPFinal.DAL;
+using ASPFinal.Helpers;
 using ASPFinal.Models;
 
 namespace ASPFinal.Areas.Control.Controllers
@@ -35,8 +36,20 @@ namespace ASPFinal.Areas.Control.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult Create([Bind(Include = "Id,CompanyName,Title,Slug,CategoryId,JobEduLevellId,JobExpYear,JobType,Gender,Shift,Address,MinSalary,MaxSalary,WebSite,Email,Phone,Desc,Photo,CreatedAt,Hours,Status")] Job job)
+        public ActionResult Create([Bind(Include = "Id,CompanyName,Title,Slug,CategoryId,JobEduLevellId,JobExpYear,JobType,Gender,Shift,Address,MinSalary,MaxSalary,WebSite,Email,Phone,Desc,PhotoUpload,CreatedAt,Hours,Status")] Job job)
         {
+            if (job.PhotoUpload != null)
+            {
+                try
+                {
+                    job.Photo = FileManager.Upload(job.PhotoUpload);
+                }
+                catch (Exception e)
+                {
+                    ModelState.AddModelError("PhotoUpload", e.Message);
+                }
+            }
+
             if (ModelState.IsValid)
             {
                 db.Jobs.Add(job);
@@ -67,11 +80,23 @@ namespace ASPFinal.Areas.Control.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult Edit([Bind(Include = "Id,CompanyName,Title,Slug,CategoryId,JobEduLevellId,JobExpYear,JobType,Gender,Shift,Address,MinSalary,MaxSalary,WebSite,Email,Phone,Desc,Photo,CreatedAt,Hours,Status")] Job job)
+        public ActionResult Edit([Bind(Include = "Id,CompanyName,Title,Slug,CategoryId,JobEduLevellId,JobExpYear,JobType,Gender,Shift,Address,MinSalary,MaxSalary,WebSite,Email,Phone,Desc,Photo,PhotoUpload,CreatedAt,Hours,Status")] Job job)
         {
+            if (job.PhotoUpload != null)
+            {
+                try
+                {
+                    job.Photo = FileManager.Upload(job.PhotoUpload);
+                }
+                catch (Exception e)
+                {
+                    ModelState.AddModelError("PhotoUpload", e.Message);
+                }
+            }
             if (ModelState.IsValid)
             {
                 db.Entry(job).State = EntityState.Modified;
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

@@ -50,10 +50,10 @@
                     </div>
                 </div>
 
-                <h5 class="text-dark mt-4"><i class="mdi mdi-comment-multiple mr-2"></i>@Model.Blog.BlogReview.Count Comments</h5>
+                <h5 class="text-dark mt-4"><i class="mdi mdi-comment-multiple mr-2"></i>@Model.Blog.BlogReview.Where(c=>c.Status==true).Count() Comments</h5>
 
                 <div class="job-detail p-4">
-                    @foreach (var rev in Model.Blog.BlogReview)
+                    @foreach (var rev in Model.Blog.BlogReview.Where(c=>c.Status==true))
                     {
                         <div class="media mt-4">
                             <div class="blog-comment-img">

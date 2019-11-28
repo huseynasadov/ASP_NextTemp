@@ -1,0 +1,59 @@
+﻿@model IEnumerable<ASPFinal.Models.BlogReview>
+
+@{
+    ViewBag.Title = "Blog Reviews";
+    Layout = "~/Areas/Control/Views/Shared/_LayoutControl.cshtml";
+}
+
+<h2>Blog Reviews</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Candidate.Firstname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Blog.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.Candidate.Firstname @item.Candidate.Lastname
+            </td>
+            <td>
+                @(item.Blog.Title.Length > 50 ? item.Blog.Title.Substring(0, 50) + " ..." : item.Blog.Title)
+            </td>
+            <td class="statusActive">
+                @if (item.Status == true)
+                {
+                    <a href="@Url.Action("edit","blogReviews",new { id=item.Id, status=false})" class="statusActive">
+                <span class="badge badge-success">Avtiv</span></a>
+                }
+                else
+                {
+                    <a href="@Url.Action("edit","blogReviews",new { id=item.Id,status=true})" class="statusActive">
+                        <span class="badge badge-danger">Deactive</span>
+                    </a>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                <a href="@Url.Action("details","BlogReviews",new { id= item.Id})"><i class="fas fa-info-circle text-warning"></i></a> |
+                <a class="jobDelete" href="@Url.Action("delete","BlogReviews",new { id= item.Id})"><i class="fas fa-trash text-danger"></i></a>
+            </td>
+        </tr>
+    }
+
+</table>

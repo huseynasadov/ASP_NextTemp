@@ -200,3 +200,6 @@ C:\Users\Huseyn\Desktop\Code Academy\ASPFinalProject\ASP_NextTemp\ASPFinalSoluti
 C:\Users\Huseyn\Desktop\Code Academy\ASPFinalProject\ASP_NextTemp\ASPFinalSolution\ASPFinal\obj\Debug\ASPFinal.csproj.CopyComplete
 C:\Users\Huseyn\Desktop\Code Academy\ASPFinalProject\ASP_NextTemp\ASPFinalSolution\ASPFinal\obj\Debug\ASPFinal.dll
 C:\Users\Huseyn\Desktop\Code Academy\ASPFinalProject\ASP_NextTemp\ASPFinalSolution\ASPFinal\obj\Debug\ASPFinal.pdb
+C:\Users\Huseyn\Desktop\Code Academy\ASPFinalProject\ASP_NextTemp\ASPFinalSolution\ASPFinal\obj\Debug\ASPFinal.Migrations.ReviewsStatusAdded.resources
+C:\Users\Huseyn\Desktop\Code Academy\ASPFinalProject\ASP_NextTemp\ASPFinalSolution\ASPFinal\obj\Debug\ASPFinal.Migrations.slugRequiredCanceled.resources
+C:\Users\Huseyn\Desktop\Code Academy\ASPFinalProject\ASP_NextTemp\ASPFinalSolution\ASPFinal\obj\Debug\ASPFinal.Migrations.UserTableCreated.resources

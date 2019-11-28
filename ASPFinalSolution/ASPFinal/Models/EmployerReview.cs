@@ -14,5 +14,6 @@ namespace ASPFinal.Models
         public int CandidateId { get; set; }
         public string Text { get; set; }
         public DateTime Date { get; set; }
+        public bool Satuts { get; set; }
     }
 }

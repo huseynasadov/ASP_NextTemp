@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ASPFinal.Models.CompanyPhoto>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Control/Views/Shared/_LayoutControl.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create",null,new { @class="btn btn-info"})
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Employer.CompanyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Photo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Employer.CompanyName)
+        </td>
+        <td>
+            <img src="~/Uploads/images/@item.Photo" width="50" />
+        </td>
+        <td>
+            <a href="@Url.Action("Edit","CompanyPhotoes",new { id= item.Id})"><i class="fas fa-edit"></i></a> |
+            <a class="jobDelete" href="@Url.Action("delete","CompanyPhotoes",new { id= item.Id})"><i class="fas fa-trash text-danger"></i></a>
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,49 @@
+﻿@model ASPFinal.Models.BlogReview
+
+@{
+    ViewBag.Title = "Blog Review Details";
+    Layout = "~/Areas/Control/Views/Shared/_LayoutControl.cshtml";
+}
+
+    <h2>Blog Review Details</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Blog.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Blog.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Candidate.Firstname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Candidate.Firstname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Text)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Text)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index",null,new { @class="btn btn-dark"})
+</p>

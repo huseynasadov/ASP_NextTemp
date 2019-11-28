@@ -26,32 +26,49 @@
     });
 
     $(".jobDelete").click(function (event) {
-            var deletinput = this;
-            event.preventDefault();
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
-            }).then((result) => {
-                if (result.value) {
-                    $.ajax({
-                        url: "https://localhost:44399/" + $(deletinput).attr("href"),
-                        success: function () {
-                            Swal.fire(
-                                'Deleted!',
-                                'Your file has been deleted.',
-                                'success'
-                            ).then(() => {
-                                location.reload()
-                            })
-                        }
-                    })
-                }
-            })
+        var deletinput = this;
+        event.preventDefault();
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.value) {
+                $.ajax({
+                    url: "https://localhost:44399/" + $(deletinput).attr("href"),
+                    success: function () {
+                        Swal.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                        ).then(() => {
+                            location.reload()
+                        })
+                    }
+                })
+            }
         })
+    })
+
+
+    $(".statusActive").click(function (event) {
+        event.preventDefault();
+        var span = this;
+        
+        $.ajax({
+            url: "https://localhost:44399/" + $(span).attr("href") ,
+            dataType: "json",
+            type:"POST",
+            success: function (res) {
+                if (res) {
+                    location.reload();
+                }
+            }
+        })
+    });
 })
 

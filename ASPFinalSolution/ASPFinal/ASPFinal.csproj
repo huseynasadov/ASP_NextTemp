@@ -130,11 +130,17 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Control\ControlAreaRegistration.cs" />
     <Compile Include="Areas\Control\Controllers\AboutUsController.cs" />
+    <Compile Include="Areas\Control\Controllers\AdminManagersController.cs" />
     <Compile Include="Areas\Control\Controllers\AuthController.cs" />
+    <Compile Include="Areas\Control\Controllers\BlogReviewsController.cs" />
     <Compile Include="Areas\Control\Controllers\BlogsController.cs" />
     <Compile Include="Areas\Control\Controllers\CandidatesController.cs" />
+    <Compile Include="Areas\Control\Controllers\CompanyPhotoesController.cs" />
+    <Compile Include="Areas\Control\Controllers\EmployerReviewsController.cs" />
     <Compile Include="Areas\Control\Controllers\EmployersController.cs" />
+    <Compile Include="Areas\Control\Controllers\ExperiencesController.cs" />
     <Compile Include="Areas\Control\Controllers\FaqsController.cs" />
+    <Compile Include="Areas\Control\Controllers\HeaderSettingsController.cs" />
     <Compile Include="Areas\Control\Controllers\HomeController.cs" />
     <Compile Include="Areas\Control\Controllers\JobsController.cs" />
     <Compile Include="Areas\Control\Controllers\PricingsController.cs" />
@@ -237,6 +243,18 @@
     <Compile Include="Migrations\201911270537352_AdminManagerTableCreated.Designer.cs">
       <DependentUpon>201911270537352_AdminManagerTableCreated.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911280517106_ReviewsStatusAdded.cs" />
+    <Compile Include="Migrations\201911280517106_ReviewsStatusAdded.Designer.cs">
+      <DependentUpon>201911280517106_ReviewsStatusAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911280857364_slugRequiredCanceled.cs" />
+    <Compile Include="Migrations\201911280857364_slugRequiredCanceled.Designer.cs">
+      <DependentUpon>201911280857364_slugRequiredCanceled.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911281122014_UserTableCreated.cs" />
+    <Compile Include="Migrations\201911281122014_UserTableCreated.Designer.cs">
+      <DependentUpon>201911281122014_UserTableCreated.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AboutUs.cs" />
     <Compile Include="Models\AdminManager.cs" />
@@ -268,6 +286,7 @@
     <Compile Include="Models\SocialLink.cs" />
     <Compile Include="Models\Team.cs" />
     <Compile Include="Models\TeamSocial.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\AboutVM.cs" />
     <Compile Include="ViewModels\BlogDetailVM.cs" />
@@ -285,6 +304,7 @@
     <Compile Include="ViewModels\PricingVM.cs" />
     <Compile Include="ViewModels\ServiceVM.cs" />
     <Compile Include="ViewModels\TeamVM.cs" />
+    <Compile Include="ViewModels\UserVM.cs" />
     <Compile Include="ViewModels\_SidebarVM.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1697,6 +1717,26 @@
     <Content Include="Areas\Control\Views\Pricings\Index.cshtml" />
     <Content Include="Areas\Control\Views\Settings\Edit.cshtml" />
     <Content Include="Areas\Control\Views\Settings\Index.cshtml" />
+    <Content Include="Areas\Control\Views\AdminManagers\Create.cshtml" />
+    <Content Include="Areas\Control\Views\AdminManagers\Details.cshtml" />
+    <Content Include="Areas\Control\Views\AdminManagers\Edit.cshtml" />
+    <Content Include="Areas\Control\Views\AdminManagers\Index.cshtml" />
+    <Content Include="Areas\Control\Views\BlogReviews\Details.cshtml" />
+    <Content Include="Areas\Control\Views\BlogReviews\Index.cshtml" />
+    <Content Include="Areas\Control\Views\CompanyPhotoes\Create.cshtml" />
+    <Content Include="Areas\Control\Views\CompanyPhotoes\Edit.cshtml" />
+    <Content Include="Areas\Control\Views\CompanyPhotoes\Index.cshtml" />
+    <Content Include="Areas\Control\Views\EmployerReviews\Create.cshtml" />
+    <Content Include="Areas\Control\Views\EmployerReviews\Delete.cshtml" />
+    <Content Include="Areas\Control\Views\EmployerReviews\Details.cshtml" />
+    <Content Include="Areas\Control\Views\EmployerReviews\Edit.cshtml" />
+    <Content Include="Areas\Control\Views\EmployerReviews\Index.cshtml" />
+    <Content Include="Areas\Control\Views\Experiences\Create.cshtml" />
+    <Content Include="Areas\Control\Views\Experiences\Edit.cshtml" />
+    <Content Include="Areas\Control\Views\Experiences\Index.cshtml" />
+    <Content Include="Areas\Control\Views\HeaderSettings\Create.cshtml" />
+    <Content Include="Areas\Control\Views\HeaderSettings\Edit.cshtml" />
+    <Content Include="Areas\Control\Views\HeaderSettings\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Public\fonts\fa-brands-400.eot" />
     <Content Include="Public\fonts\fa-brands-400.ttf" />
@@ -1805,6 +1845,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911270537352_AdminManagerTableCreated.resx">
       <DependentUpon>201911270537352_AdminManagerTableCreated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911280517106_ReviewsStatusAdded.resx">
+      <DependentUpon>201911280517106_ReviewsStatusAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911280857364_slugRequiredCanceled.resx">
+      <DependentUpon>201911280857364_slugRequiredCanceled.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911281122014_UserTableCreated.resx">
+      <DependentUpon>201911281122014_UserTableCreated.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

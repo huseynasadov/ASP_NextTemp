@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using ASPFinal.Areas.Control.Filters;
 using ASPFinal.DAL;
+using ASPFinal.Helpers;
 using ASPFinal.Models;
 
 namespace ASPFinal.Areas.Control.Controllers
@@ -32,10 +33,23 @@ namespace ASPFinal.Areas.Control.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult Create([Bind(Include = "Id,Firstname,Lastname,Slug,Address,Rate,Photo,isVerified,CompanyName,CompanyAdress,CompanyPhone,CompanyWebsite,CompanyEmail,Empl0yers,Type,ExperienceDate,minSalary,maxSalary,Followers,Overview,Services,CreatedAt,Status")] Employer employer)
+        public ActionResult Create([Bind(Include = "Id,Firstname,Lastname,Slug,Address,Rate,PhotoUpload,isVerified,CompanyName,CompanyAdress,CompanyPhone,CompanyWebsite,CompanyEmail,Empl0yers,Type,ExperienceDate,minSalary,maxSalary,Followers,Overview,Services,CreatedAt,Status")] Employer employer)
         {
+            if (employer.PhotoUpload != null)
+            {
+                try
+                {
+                    employer.Photo = FileManager.Upload(employer.PhotoUpload);
+                }
+                catch (Exception e)
+                {
+                    ModelState.AddModelError("PhotoUpload", e.Message);
+                }
+            }
             if (ModelState.IsValid)
             {
+                employer.Slug = employer.Firstname.ToLower() + "-" + employer.Lastname.ToLower();
+                employer.CreatedAt = DateTime.Now;
                 db.Employers.Add(employer);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -62,10 +76,23 @@ namespace ASPFinal.Areas.Control.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult Edit([Bind(Include = "Id,Firstname,Lastname,Slug,Address,Rate,Photo,isVerified,CompanyName,CompanyAdress,CompanyPhone,CompanyWebsite,CompanyEmail,Empl0yers,Type,ExperienceDate,minSalary,maxSalary,Followers,Overview,Services,CreatedAt,Status")] Employer employer)
+        public ActionResult Edit([Bind(Include = "Id,Firstname,Lastname,Slug,Address,Rate,Photo,PhotoUpload,isVerified,CompanyName,CompanyAdress,CompanyPhone,CompanyWebsite,CompanyEmail,Empl0yers,Type,ExperienceDate,minSalary,maxSalary,Followers,Overview,Services,CreatedAt,Status")] Employer employer)
         {
+            if (employer.PhotoUpload != null)
+            {
+                try
+                {
+                    employer.Photo = FileManager.Upload(employer.PhotoUpload);
+                }
+                catch (Exception e)
+                {
+                    ModelState.AddModelError("PhotoUpload", e.Message);
+                }
+            }
             if (ModelState.IsValid)
             {
+                employer.Slug = employer.Firstname.ToLower() + "-" + employer.Lastname.ToLower();
+                employer.CreatedAt = DateTime.Now;
                 db.Entry(employer).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

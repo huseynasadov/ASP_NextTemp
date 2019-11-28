@@ -8,7 +8,7 @@ namespace ASPFinal.Helpers
 {
     public class FileManager
     {
-        public static string UploadPath = HttpContext.Current.Server.MapPath("~/Uploads");
+        public static string UploadPath = HttpContext.Current.Server.MapPath("~/Uploads/images");
         public static string Upload(HttpPostedFileBase file, string allowedTypes = "image/png|image/jpeg|image/gif", int maxSize = 2048)
         {
             if (file == null)

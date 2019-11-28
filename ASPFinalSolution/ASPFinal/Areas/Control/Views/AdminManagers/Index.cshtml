@@ -1,0 +1,64 @@
+﻿@model IEnumerable<ASPFinal.Models.AdminManager>
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Areas/Control/Views/Shared/_LayoutControl.cshtml";
+}
+
+
+<p>
+    @Html.ActionLink("New Register", "Register","Auth",null,new { @class="btn btn-info"})
+</p>
+<table class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Firstname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lastname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Photo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AdminPosition)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Firstname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lastname)
+        </td>
+        <td>
+            @if (item.Status == true)
+            {
+                <span class="badge badge-success">Avtiv</span>
+            }
+            else
+            {
+                <span class="badge badge-danger">Deactive</span>
+            }
+            </td>
+        <td>
+            <img width="50" src="~/Uploads/@item.Photo" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AdminPosition)
+        </td>
+        <td>
+            <a href="@Url.Action("Edit","AdminManagers",new { id= item.Id})"><i class="fas fa-edit"></i></a> |
+            <a href="@Url.Action("details","AdminManagers",new { id= item.Id})"><i class="fas fa-info-circle text-warning"></i></a> |
+            <a href="@Url.Action("delete","AdminManagers",new { id= item.Id})"><i class="fas fa-trash text-danger"></i></a>
+        </td>
+    </tr>
+}
+
+</table>

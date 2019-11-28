@@ -633,7 +633,7 @@
                         </div>
                         <div class="clearfix pl-4 pr-4">
                             <div class="float-left">
-                                <p class="text-muted f-14"><i class="mdi mdi-calendar-today text-custom"></i>@emp.CreatedAt.ToString("dd MMM, yyyy")</p>
+                                <p class="text-muted f-14"><i class="mdi mdi-calendar-today text-custom"></i>@(emp.CreatedAt?.ToString("dd MMM, yyyy"))</p>
                             </div>
                             <div class="float-right">
                                 <a href="@Url.Action("Details","Employer",new {slug=emp.Slug })" class="text-custom f-14">Read more..</a>

@@ -20,7 +20,7 @@ namespace ASPFinal.Models
         public string Lastname { get; set; }
         [Required, EmailAddress,DataType(DataType.EmailAddress)]
         public string Email { get; set; }
-        [Required,MaxLength(100)]
+        [MaxLength(100)]
         public string Slug { get; set; }
         [Required, DataType(DataType.Date),Column(TypeName ="date")]
         public DateTime BirthDate { get; set; }

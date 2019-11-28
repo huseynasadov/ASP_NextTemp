@@ -39,7 +39,6 @@ namespace ASPFinal.Controllers
             }
             CandidateDetailVM model = new CandidateDetailVM
             {
-               
                 Candidate = _db.Candidates.Include("CandidateSocials.SocialLink").Include("Educations").Include("Experiences.Category").Include("Skils").Where(c=>c.Status==true).FirstOrDefault(j => j.Slug == slug),
                 HeaderSetting = _db.HeaderSetting.FirstOrDefault(h => h.Page == Models.Page.CandidateDetail),
             };

@@ -16,7 +16,7 @@ namespace ASPFinal.Controllers
             BlogListVM model = new BlogListVM
             {
                 HeaderSetting = _db.HeaderSetting.FirstOrDefault(h => h.Page == Models.Page.BlogList),
-                Blogs = _db.Blogs.Include("BlogReview").Where(c => c.Status == true).ToList(),
+                Blogs = _db.Blogs.Include("BlogReview").Where(c=>c.Status==true).ToList(),
                 _SidebarVM = new _SidebarVM
                 {
                     JobCategories = _db.JobCategories.ToList(),

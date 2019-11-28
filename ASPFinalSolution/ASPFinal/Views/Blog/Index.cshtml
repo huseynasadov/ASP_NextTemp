@@ -50,7 +50,7 @@
                                         </li>
                                         <li class="list-inline-item float-right">
                                             <a href="@Url.Action("details","blog",new { slug=blog.Slug})" class="text-dark">
-                                                <p class="mb-0"><i class="mdi mdi-message-reply-text mr-1"></i>@blog.BlogReview.Count Comment</p>
+                                                <p class="mb-0"><i class="mdi mdi-message-reply-text mr-1"></i>@blog.BlogReview.Where(c=>c.Status==true).Count() Comment</p>
                                             </a>
                                         </li>
                                     </ul>

@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using ASPFinal.Areas.Control.Filters;
 using ASPFinal.DAL;
+using ASPFinal.Helpers;
 using ASPFinal.Models;
 
 namespace ASPFinal.Areas.Control.Controllers
@@ -34,10 +35,22 @@ namespace ASPFinal.Areas.Control.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult Create([Bind(Include = "Id,Title,Slug,Content,Photos,CreatedAt,CategoryId,Status")] Blog blog)
+        public ActionResult Create([Bind(Include = "Id,Title,Slug,Content,PhotoUpload,CreatedAt,CategoryId,Status")] Blog blog)
         {
+            if (blog.PhotoUpload != null)
+            {
+                try
+                {
+                    blog.Photos = FileManager.Upload(blog.PhotoUpload);
+                }
+                catch (Exception e)
+                {
+                    ModelState.AddModelError("PhotoUpload", e.Message);
+                }
+            }
             if (ModelState.IsValid)
             {
+                blog.CreatedAt = DateTime.Now;
                 db.Blogs.Add(blog);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -66,10 +79,22 @@ namespace ASPFinal.Areas.Control.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult Edit([Bind(Include = "Id,Title,Slug,Content,Photos,CreatedAt,CategoryId,Status")] Blog blog)
+        public ActionResult Edit([Bind(Include = "Id,Title,Slug,Content,Photos,PhotoUpload,CreatedAt,CategoryId,Status")] Blog blog)
         {
+            if (blog.PhotoUpload != null)
+            {
+                try
+                {
+                    blog.Photos = FileManager.Upload(blog.PhotoUpload);
+                }
+                catch (Exception e)
+                {
+                    ModelState.AddModelError("PhotoUpload", e.Message);
+                }
+            }
             if (ModelState.IsValid)
             {
+                blog.CreatedAt = DateTime.Now;
                 db.Entry(blog).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

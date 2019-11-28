@@ -15,7 +15,7 @@ namespace ASPFinal.Models
         [Required, MaxLength(50)]
         public string Lastname { get; set; }
         public ICollection<EmployerCategory> EmployerCategory { get; set; }
-        [Required, MaxLength(100)]
+        [MaxLength(100)]
         public string Slug { get; set; }
         [Required, MaxLength(150)]
         public string Address { get; set; }
@@ -47,7 +47,7 @@ namespace ASPFinal.Models
         [Column(TypeName = "ntext")]
         public string Services { get; set; } 
         public ICollection<EmployerReview> EmployerReviews { get; set; }
-        public DateTime CreatedAt { get; set; }
+        public DateTime? CreatedAt { get; set; }
         public ICollection<CompanyPhoto> CompanyPhotos { get; set; }
         public bool Status { get; set; }
     }
