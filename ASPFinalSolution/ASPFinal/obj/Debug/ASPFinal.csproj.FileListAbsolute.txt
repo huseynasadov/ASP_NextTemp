@@ -205,4 +205,3 @@ C:\Users\Huseyn\Desktop\Code Academy\ASPFinalProject\ASP_NextTemp\ASPFinalSoluti
 C:\Users\Huseyn\Desktop\Code Academy\ASPFinalProject\ASP_NextTemp\ASPFinalSolution\ASPFinal\obj\Debug\ASPFinal.Migrations.UserEmployerandUserCandidateCreated.resources
 C:\Users\Huseyn\Desktop\Code Academy\ASPFinalProject\ASP_NextTemp\ASPFinalSolution\ASPFinal\obj\Debug\ASPFinal.Migrations.CandidateEmployerProperitiesNullable.resources
 C:\Users\Huseyn\Desktop\Code Academy\ASPFinalProject\ASP_NextTemp\ASPFinalSolution\ASPFinal\obj\Debug\ASPFinal.Migrations.UserPosiyionChanged.resources
-C:\Users\Huseyn\Desktop\Code Academy\ASPFinalProject\ASP_NextTemp\ASPFinalSolution\ASPFinal\obj\Debug\ASPFinal.csprojAssemblyReference.cache
