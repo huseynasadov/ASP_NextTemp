@@ -1,4 +1,5 @@
 ﻿using ASPFinal.DAL;
+using ASPFinal.Filter;
 using ASPFinal.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -8,14 +9,17 @@ using System.Web.Mvc;
 
 namespace ASPFinal.Controllers
 {
+    [AuthFilter]
     public class JobController : BaseController
     {
         // GET: Job
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
+
+            int count = page ?? 1;
             JobListVM model = new JobListVM {
                 HeaderSetting=_db.HeaderSetting.FirstOrDefault(h=>h.Page==Models.Page.JobGrid),
-                Jobs = _db.Jobs.Include("Category").OrderByDescending(j => j.CreatedAt).ToList(),
+                Jobs = _db.Jobs.Include("Category").OrderByDescending(j => j.CreatedAt).Skip((count - 1) * 9).Take(9).ToList(),
                 _SidebarVM=new _SidebarVM {
                     Breadcrumb = new Breadcrumb
                     {
@@ -23,9 +27,18 @@ namespace ASPFinal.Controllers
                         Path = new Dictionary<string, string>()
                     },
                     JobCategories=_db.JobCategories.Where(j=>j.Status==true).ToList()
+                },
+                Pagination = new PaginationVM {
+                    Page = PagePag.Job,
+                    CurrentPage = count
                 }
             };
-
+            int pageCount = _db.Jobs.Count() / 9;
+            if (_db.Jobs.Count() % 9 != 0)
+            {
+                pageCount++;
+            }
+            model.Pagination.PageCount = pageCount;
             model._SidebarVM.Breadcrumb.Path.Add(ViewBag.Setting.LogoName,Url.Action("index","home"));
             model._SidebarVM.Breadcrumb.Path.Add("Job",Url.Action("index","job"));
             model._SidebarVM.Breadcrumb.Path.Add( model._SidebarVM.Breadcrumb.Title,null);

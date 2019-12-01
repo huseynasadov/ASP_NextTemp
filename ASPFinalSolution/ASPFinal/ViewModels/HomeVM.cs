@@ -16,5 +16,7 @@ namespace ASPFinal.ViewModels
         public ICollection<Candidate> Candidates { get; set; }
         public int BlogCounts { get; set; }
         public ICollection<Partner> Partners { get; set; }
+        public PaginationVM Pagination { get; set; }
+        public ICollection<Job> AllJobs { get; set; }
     }
 }

@@ -10,14 +10,14 @@ namespace ASPFinal.Models
     public class Employer
     {
         public int Id { get; set; }
-        [Required,MaxLength(50)]
+        [MaxLength(50)]
         public string Firstname { get; set; }
-        [Required, MaxLength(50)]
+        [MaxLength(50)]
         public string Lastname { get; set; }
         public ICollection<EmployerCategory> EmployerCategory { get; set; }
         [MaxLength(100)]
         public string Slug { get; set; }
-        [Required, MaxLength(150)]
+        [MaxLength(150)]
         public string Address { get; set; }
         [Range(0,5)]
         public int? Rate { get; set; }
@@ -26,22 +26,22 @@ namespace ASPFinal.Models
         [NotMapped]
         public HttpPostedFileBase PhotoUpload { get; set; }
         public bool isVerified { get; set; }
-        [Required,MaxLength(150)]
+        [MaxLength(150)]
         public string CompanyName { get; set; }
-        [Required, MaxLength(150)]
+        [MaxLength(150)]
         public string CompanyAdress { get; set; }
-        [Required, MaxLength(150)]
+        [MaxLength(150)]
         public string CompanyPhone { get; set; }
         [MaxLength(150)]
         public string CompanyWebsite { get; set; }
-        [Required, EmailAddress]
+        [EmailAddress]
         public string CompanyEmail { get; set; }
         public int? Empl0yers { get; set; }
         public string Type { get; set; }
         public string ExperienceDate { get; set; }
         public int? minSalary { get; set; }
         public int? maxSalary { get; set; }
-        public int Followers { get; set; }
+        public int? Followers { get; set; }
         [Column(TypeName ="ntext")]
         public string Overview { get; set; }
         [Column(TypeName = "ntext")]
@@ -50,5 +50,7 @@ namespace ASPFinal.Models
         public DateTime? CreatedAt { get; set; }
         public ICollection<CompanyPhoto> CompanyPhotos { get; set; }
         public bool Status { get; set; }
+        public User User { get; set; }
+        public int? UserId { get; set; }
     }
 }

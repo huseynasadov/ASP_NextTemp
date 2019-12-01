@@ -1,4 +1,5 @@
-﻿using ASPFinal.ViewModels;
+﻿using ASPFinal.Filter;
+using ASPFinal.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,15 +8,18 @@ using System.Web.Mvc;
 
 namespace ASPFinal.Controllers
 {
+    [AuthFilter]
     public class EmployerController : BaseController
     {
         // GET: Employer
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
+
+            int count = page ?? 1;
             EmployerListVM model = new EmployerListVM
             {
                 HeaderSetting = _db.HeaderSetting.FirstOrDefault(h => h.Page == Models.Page.EmployerList),
-                Employers = _db.Employers.Include("EmployerCategory.Category").OrderByDescending(j => j.CreatedAt).ToList(),
+                Employers = _db.Employers.Include("EmployerCategory.Category").OrderByDescending(j => j.CreatedAt).Skip((count - 1) * 6).Take(6).ToList(),
                 _SidebarVM = new _SidebarVM
                 {
                     Breadcrumb = new Breadcrumb
@@ -24,9 +28,17 @@ namespace ASPFinal.Controllers
                         Path = new Dictionary<string, string>()
                     },
                     JobCategories = _db.JobCategories.Where(j => j.Status == true).ToList()
+                },Pagination = new PaginationVM {
+                    Page = PagePag.Blog,
+                    CurrentPage = count
                 }
             };
-
+            int pageCount = _db.Employers.Count() / 6;
+            if (_db.Employers.Count() % 6 != 0)
+            {
+                pageCount++;
+            }
+            model.Pagination.PageCount = pageCount;
             model._SidebarVM.Breadcrumb.Path.Add(ViewBag.Setting.LogoName, Url.Action("index", "home"));
             model._SidebarVM.Breadcrumb.Path.Add("Employer", Url.Action("index", "employer"));
             model._SidebarVM.Breadcrumb.Path.Add(model._SidebarVM.Breadcrumb.Title, null);

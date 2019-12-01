@@ -14,15 +14,15 @@ namespace ASPFinal.Models
     public class Candidate
     {
         public int Id { get; set; }
-        [Required,MaxLength(50)]
+        [MaxLength(50)]
         public string Firstname { get; set; }
-        [Required, MaxLength(50)]
+        [MaxLength(50)]
         public string Lastname { get; set; }
-        [Required, EmailAddress,DataType(DataType.EmailAddress)]
+        [EmailAddress,DataType(DataType.EmailAddress)]
         public string Email { get; set; }
         [MaxLength(100)]
         public string Slug { get; set; }
-        [Required, DataType(DataType.Date),Column(TypeName ="date")]
+        [DataType(DataType.Date),Column(TypeName ="date")]
         public DateTime BirthDate { get; set; }
         [MaxLength(250)]
         public string Photo { get; set; }
@@ -53,6 +53,8 @@ namespace ASPFinal.Models
         public string Address { get; set; }
         public string Amount { get; set; }
         public bool Status { get; set; }
+        public User User { get; set; }
+        public int? UserId { get; set; }
 
     }
 }

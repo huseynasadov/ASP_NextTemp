@@ -40,15 +40,15 @@
                     <div class="float-left">
                         <h5 class="text-dark mb-0 pt-2">Showing  Results : @Model.Candidates.Count</h5>
                     </div>
-                    @{Html.RenderPartial("~/Views/Shared/_NiceSelect.cshtml",model:Model._SidebarVM.JobCategories); }
-                   
+                    @{Html.RenderPartial("~/Views/Shared/_NiceSelect.cshtml", model: Model._SidebarVM.JobCategories); }
+
                 </div>
             </div>
         </div>
 
-        <div class="row">
-            @{Html.RenderPartial("~/Views/Shared/_Sidebar.cshtml",model:Model._SidebarVM); }
-            
+        <div class="row mb-5">
+            @{Html.RenderPartial("~/Views/Shared/_Sidebar.cshtml", model: Model._SidebarVM); }
+
 
             <div class="col-lg-9">
                 <div class="candidates-listing-item">
@@ -61,7 +61,7 @@
                                         <img src="~/Uploads/images/@can.Photo" alt="@can.Lastname" class="img-fluid d-block rounded">
                                     </div>
                                     <div class="candidates-list-desc job-single-meta  pt-2">
-                                        <h5 class="mb-2 f-19"><a href="#" class="text-dark">@(can.Firstname+""+can.Lastname)</a></h5>
+                                        <h5 class="mb-2 f-19"><a href="#" class="text-dark">@(can.Firstname + "" + can.Lastname)</a></h5>
                                         <ul class="list-inline mb-0">
                                             <li class="list-inline-item mr-4">
                                                 <p class="text-muted f-15 mb-0"><i class="mdi mdi-account mr-1"></i>@can.Profession</p>
@@ -75,13 +75,13 @@
                                                 <p class="text-muted f-15 mb-0"><i class="mdi mdi-currency-usd mr-1"></i>@can.Amount/month</p>
                                             </li>
                                         </ul>
-                                        @{ 
-                                            var sl= "";
+                                        @{
+                                            var sl = "";
                                             var count = 0;
                                             foreach (var skill in can.Skils)
                                             {
                                                 ++count;
-                                                sl += skill.Name + (count==can.Skils.Count?"": ", ");
+                                                sl += skill.Name + (count == can.Skils.Count ? "" : ", ");
                                             }
                                         }
                                         <p class="text-muted mt-1 mb-0">Skills : @sl</p>
@@ -104,7 +104,7 @@
                                 <div class="col-lg-11 offset-lg-1">
                                     <div class="candidates-item-desc">
                                         <hr>
-                                       @Html.Raw(can.AboutMe.Split('.').FirstOrDefault())
+                                        @Html.Raw(can.AboutMe.Split('.').FirstOrDefault())
                                     </div>
                                 </div>
                             </div>
@@ -115,28 +115,7 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-lg-12">
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination job-pagination justify-content-center mt-5 mb-5">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
-                                <i class="mdi mdi-chevron-double-left f-15"></i>
-                            </a>
-                        </li>
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">4</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">
-                                <i class="mdi mdi-chevron-double-right f-15"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
+        @{Html.RenderPartial("~/Views/Shared/_Pagination.cshtml", model: Model.Pagination); }
     </div>
 </section>
 <!-- CANDIDATES LISTING END -->

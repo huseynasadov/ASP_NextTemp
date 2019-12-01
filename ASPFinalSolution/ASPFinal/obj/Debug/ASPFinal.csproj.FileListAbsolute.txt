@@ -174,7 +174,6 @@ C:\Users\Huseyn\Desktop\Code Academy\ASPFinalProject\ASP_NextTemp\ASPFinalSoluti
 C:\Users\Huseyn\Desktop\Code Academy\ASPFinalProject\ASP_NextTemp\ASPFinalSolution\ASPFinal\bin\Newtonsoft.Json.xml
 C:\Users\Huseyn\Desktop\Code Academy\ASPFinalProject\ASP_NextTemp\ASPFinalSolution\ASPFinal\bin\Antlr3.Runtime.pdb
 C:\Users\Huseyn\Desktop\Code Academy\ASPFinalProject\ASP_NextTemp\ASPFinalSolution\ASPFinal\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Huseyn\Desktop\Code Academy\ASPFinalProject\ASP_NextTemp\ASPFinalSolution\ASPFinal\obj\Debug\ASPFinal.csprojAssemblyReference.cache
 C:\Users\Huseyn\Desktop\Code Academy\ASPFinalProject\ASP_NextTemp\ASPFinalSolution\ASPFinal\obj\Debug\ASPFinal.Migrations.allTablesCreated.resources
 C:\Users\Huseyn\Desktop\Code Academy\ASPFinalProject\ASP_NextTemp\ASPFinalSolution\ASPFinal\obj\Debug\ASPFinal.Migrations.TablesAddedSlug.resources
 C:\Users\Huseyn\Desktop\Code Academy\ASPFinalProject\ASP_NextTemp\ASPFinalSolution\ASPFinal\obj\Debug\ASPFinal.Migrations.deletedCountrytable.resources
@@ -203,3 +202,7 @@ C:\Users\Huseyn\Desktop\Code Academy\ASPFinalProject\ASP_NextTemp\ASPFinalSoluti
 C:\Users\Huseyn\Desktop\Code Academy\ASPFinalProject\ASP_NextTemp\ASPFinalSolution\ASPFinal\obj\Debug\ASPFinal.Migrations.ReviewsStatusAdded.resources
 C:\Users\Huseyn\Desktop\Code Academy\ASPFinalProject\ASP_NextTemp\ASPFinalSolution\ASPFinal\obj\Debug\ASPFinal.Migrations.slugRequiredCanceled.resources
 C:\Users\Huseyn\Desktop\Code Academy\ASPFinalProject\ASP_NextTemp\ASPFinalSolution\ASPFinal\obj\Debug\ASPFinal.Migrations.UserTableCreated.resources
+C:\Users\Huseyn\Desktop\Code Academy\ASPFinalProject\ASP_NextTemp\ASPFinalSolution\ASPFinal\obj\Debug\ASPFinal.Migrations.UserEmployerandUserCandidateCreated.resources
+C:\Users\Huseyn\Desktop\Code Academy\ASPFinalProject\ASP_NextTemp\ASPFinalSolution\ASPFinal\obj\Debug\ASPFinal.Migrations.CandidateEmployerProperitiesNullable.resources
+C:\Users\Huseyn\Desktop\Code Academy\ASPFinalProject\ASP_NextTemp\ASPFinalSolution\ASPFinal\obj\Debug\ASPFinal.Migrations.UserPosiyionChanged.resources
+C:\Users\Huseyn\Desktop\Code Academy\ASPFinalProject\ASP_NextTemp\ASPFinalSolution\ASPFinal\obj\Debug\ASPFinal.csprojAssemblyReference.cache

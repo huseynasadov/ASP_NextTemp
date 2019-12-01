@@ -6,10 +6,6 @@ using System.Web;
 
 namespace ASPFinal.Models
 {
-    public enum UserPosition {
-        Employer,
-        Candidate
-    }
     public class User
     {
         public int Id { get; set; }
@@ -20,8 +16,10 @@ namespace ASPFinal.Models
         [Required,MinLength(8)]
         [DataType(DataType.Password)]
         public string Password { get; set; }
-        public UserPosition UserPosition { get; set; }
+        public bool UserPosition { get; set; }
         [MaxLength(200)]
         public string Token { get; set; }
+        public ICollection<Employer> Employers { get; set; }
+        public ICollection<Candidate> Candidates { get; set; }
     }
 }

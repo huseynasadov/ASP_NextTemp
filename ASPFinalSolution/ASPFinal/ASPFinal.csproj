@@ -159,6 +159,7 @@
     <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DAL\JoobsyDbContext.cs" />
+    <Compile Include="Filter\AuthFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -255,6 +256,18 @@
     <Compile Include="Migrations\201911281122014_UserTableCreated.Designer.cs">
       <DependentUpon>201911281122014_UserTableCreated.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911290745368_UserEmployerandUserCandidateCreated.cs" />
+    <Compile Include="Migrations\201911290745368_UserEmployerandUserCandidateCreated.Designer.cs">
+      <DependentUpon>201911290745368_UserEmployerandUserCandidateCreated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911290754576_CandidateEmployerProperitiesNullable.cs" />
+    <Compile Include="Migrations\201911290754576_CandidateEmployerProperitiesNullable.Designer.cs">
+      <DependentUpon>201911290754576_CandidateEmployerProperitiesNullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912010800272_UserPosiyionChanged.cs" />
+    <Compile Include="Migrations\201912010800272_UserPosiyionChanged.Designer.cs">
+      <DependentUpon>201912010800272_UserPosiyionChanged.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AboutUs.cs" />
     <Compile Include="Models\AdminManager.cs" />
@@ -301,6 +314,7 @@
     <Compile Include="ViewModels\HomeVM.cs" />
     <Compile Include="ViewModels\JobDetailVM.cs" />
     <Compile Include="ViewModels\JobListVM.cs" />
+    <Compile Include="ViewModels\PaginationVM.cs" />
     <Compile Include="ViewModels\PricingVM.cs" />
     <Compile Include="ViewModels\ServiceVM.cs" />
     <Compile Include="ViewModels\TeamVM.cs" />
@@ -1545,7 +1559,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Uploads\" />
     <Folder Include="Views\Base\" />
-    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Control\Views\web.config" />
@@ -1781,6 +1794,7 @@
     <Content Include="Views\Shared\_Partners.cshtml" />
     <Content Include="Views\Shared\_AllInfoCounter.cshtml" />
     <Content Include="Public\fonts\fa-solid-900.woff2" />
+    <Content Include="Views\Shared\_Pagination.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
@@ -1854,6 +1868,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911281122014_UserTableCreated.resx">
       <DependentUpon>201911281122014_UserTableCreated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911290745368_UserEmployerandUserCandidateCreated.resx">
+      <DependentUpon>201911290745368_UserEmployerandUserCandidateCreated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911290754576_CandidateEmployerProperitiesNullable.resx">
+      <DependentUpon>201911290754576_CandidateEmployerProperitiesNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912010800272_UserPosiyionChanged.resx">
+      <DependentUpon>201912010800272_UserPosiyionChanged.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

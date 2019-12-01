@@ -16,11 +16,58 @@
         itemsDesktopSmall: [979, 2]
     });
 
-    //$(".labelPosition").on("click", (function () {
-    //    if ($(this).text().trim() == "Candidate") {
-    //        $("#UserPosition").val("0");
-    //    } else {
-    //        $("#UserPosition").val("1");
-    //    } 
-    //}));
+    $(".labelPosition").on("click", (function () {
+        if ($(this).text().trim() == "Candidate") {
+            $("#UserPosition").val("true");
+
+        } else {
+            $("#UserPosition").val("false");
+        } 
+    }));
+
+    $("#FormRegister").on("submit", function (event) {
+        event.preventDefault();
+        var form = $(this);
+        var formData = form.serialize();
+        
+        $.ajax({
+            url: form.attr("action"),
+            data: formData,
+            type: "POST",
+            dataType: "json",
+            success: function (res) {
+                if (res.status) {
+                    location.reload();
+                } else {
+                    alert("this email have system")
+                }
+            },
+            error: function (res) {
+
+            }
+        });
+    });
+
+    $("#FormLogin").on("submit", function (event) {
+        event.preventDefault();
+        var form = $(this);
+        var formData = form.serialize();
+        $.ajax({
+            url: form.attr("action"),
+            data: formData,
+            type: "POST",
+            dataType: "json",
+            success: function (res) {
+                if (res.status) {
+                    location.reload();
+                } else {
+                    alert("please, do register")
+                }
+            },
+            error: function (res) {
+
+            }
+        });
+    });
+
 })(jQuery)

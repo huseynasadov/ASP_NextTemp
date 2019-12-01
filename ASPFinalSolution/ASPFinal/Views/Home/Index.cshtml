@@ -46,7 +46,7 @@
                 </div>
             </div>
         </div>
-        @{Html.RenderPartial("~/Views/Shared/_AllInfoCounter.cshtml",model:Model.Jobs); }
+        @{Html.RenderPartial("~/Views/Shared/_AllInfoCounter.cshtml", model: Model.AllJobs); }
         
     </div>
 </section>
@@ -152,28 +152,7 @@
                             </div>
                         </div>
                         <!-- end row -->
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <nav aria-label="Page navigation example">
-                                    <ul class="pagination job-pagination justify-content-center">
-                                        <li class="page-item disabled">
-                                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
-                                                <i class="mdi mdi-chevron-double-left f-15"></i>
-                                            </a>
-                                        </li>
-                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">
-                                                <i class="mdi mdi-chevron-double-right f-15"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
+                        @{Html.RenderPartial("~/Views/Shared/_Pagination.cshtml",model:Model.Pagination); }
                     </div>
                     <div class="tab-pane fade" id="featured-job" role="tabpanel" aria-labelledby="featured-job-tab">
                         <div class="row mb-5">
@@ -245,28 +224,8 @@
                             </div>
                         </div>
                         <!-- end row -->
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <nav aria-label="Page navigation example">
-                                    <ul class="pagination job-pagination justify-content-center">
-                                        <li class="page-item disabled">
-                                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
-                                                <i class="mdi mdi-chevron-double-left f-15"></i>
-                                            </a>
-                                        </li>
-                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">
-                                                <i class="mdi mdi-chevron-double-right f-15"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
+
+                        @{Html.RenderPartial("~/Views/Shared/_Pagination.cshtml", model: Model.Pagination); }
                     </div>
                     <div class="tab-pane fade" id="part-job" role="tabpanel" aria-labelledby="part-job-tab">
                         <div class="row mb-5">
@@ -340,28 +299,8 @@
                             </div>
                         </div>
                         <!-- end row -->
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <nav aria-label="Page navigation example">
-                                    <ul class="pagination job-pagination justify-content-center">
-                                        <li class="page-item disabled">
-                                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
-                                                <i class="mdi mdi-chevron-double-left f-15"></i>
-                                            </a>
-                                        </li>
-                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">
-                                                <i class="mdi mdi-chevron-double-right f-15"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
+
+                        @{Html.RenderPartial("~/Views/Shared/_Pagination.cshtml", model: Model.Pagination); }
                     </div>
                     <div class="tab-pane fade" id="full-job" role="tabpanel" aria-labelledby="full-job-tab">
                         <div class="row mb-5">
@@ -435,28 +374,8 @@
                         </div>
                         <!-- end row -->
                         <!-- Pagination-->
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <nav aria-label="Page navigation example">
-                                    <ul class="pagination job-pagination justify-content-center">
-                                        <li class="page-item disabled">
-                                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
-                                                <i class="mdi mdi-chevron-double-left f-15"></i>
-                                            </a>
-                                        </li>
-                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">
-                                                <i class="mdi mdi-chevron-double-right f-15"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
+
+                        @{Html.RenderPartial("~/Views/Shared/_Pagination.cshtml", model: Model.Pagination); }
                         <!-- Pagination end-->
                     </div>
                 </div>
@@ -527,7 +446,7 @@
                         <i class="mdi mdi-file-document-box h1 text-white"></i>
                     </div>
                     <div class="counter-content">
-                        <h1 class="counter-value text-custom mb-1" data-count="@Model.BlogCounts">80</h1>
+                        <h1 class="counter-value text-custom mb-1" data-count="@Model.BlogCounts">10</h1>
                         <p class="counter-name text-white f-14 text-uppercase">Blogs</p>
                     </div>
                 </div>
@@ -539,7 +458,7 @@
                         <i class="mdi mdi-calendar-multiple-check h1 text-white"></i>
                     </div>
                     <div class="counter-content">
-                        <h1 class="counter-value text-custom mb-1" data-count="@Model.Jobs.Count()">10</h1>
+                        <h1 class="counter-value text-custom mb-1" data-count="@Model.AllJobs.Count()">10</h1>
                         <p class="counter-name text-white f-14 text-uppercase">Job Posted</p>
                     </div>
                 </div>

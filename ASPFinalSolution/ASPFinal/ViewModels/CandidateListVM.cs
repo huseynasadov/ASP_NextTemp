@@ -12,5 +12,6 @@ namespace ASPFinal.ViewModels
         public HeaderSetting HeaderSetting { get; set; }
         public ICollection<Candidate> Candidates { get; set; }
         public ICollection<Skill> Skills { get; set; }
+        public PaginationVM Pagination { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using ASPFinal.ViewModels;
+﻿using ASPFinal.Filter;
+using ASPFinal.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Web.Mvc;
 
 namespace ASPFinal.Controllers
 {
+    [AuthFilter]
     public class PageController : BaseController 
     {
         // GET: Page

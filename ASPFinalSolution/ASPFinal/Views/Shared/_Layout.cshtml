@@ -1,5 +1,6 @@
-﻿@{ 
+﻿@{
     Setting setting = ViewBag.Setting as Setting;
+    User user = ViewBag.User as User;
 }
 <!DOCTYPE html>
 <html lang="en" class="no-js">
@@ -58,8 +59,8 @@
                 </div>
                 <div class="float-right">
                     <ul class="topbar-list list-unstyled d-flex" style="margin: 11px 0px;">
-                        <li class="list-inline-item"><a href="javascript:void(0);"><i class="mdi mdi-account mr-2"></i>Benny Simpson</a></li>
-                       
+                        <li class="list-inline-item"><a href="javascript:void(0);"><i class="mdi mdi-account mr-2"></i>@(user != null ? user.Username : "")</a></li>
+
                     </ul>
                 </div>
                 <div class="clearfix"></div>
@@ -115,9 +116,13 @@
                             <li>
                                 <a href="@Url.Action("index","Candidate")">Candidates Listing</a>
                             </li>
-                            <li>
-                                <a href="@Url.Action("create","Candidate")">Create Resume</a>
-                            </li>
+                            @if (user !=  null && user.UserPosition == true)
+                            {
+                                <li>
+                                    <a href="@Url.Action("create","Candidate")">Create Resume</a>
+                                </li>
+                            }
+
                         </ul>
                     </li>
                     <li class="has-submenu">
@@ -170,8 +175,11 @@
                     <li class="has-submenu">
                         <a href="@Url.Action("index","Contact")">contact</a>
                     </li>
-                    <a href="@Url.Action("post","job")" class="btn btn-custom btn-sm"><i class="mdi mdi-cloud-upload"></i> Post a Job</a>
+                    @if (user !=  null && user.UserPosition == false)
+                    {
+                        <a href="@Url.Action("post","job")" class="btn btn-custom btn-sm"><i class="mdi mdi-cloud-upload"></i> Post a Job</a>
 
+                    }
                 </ul>
                 <!-- End navigation menu-->
             </div>
@@ -191,12 +199,12 @@
                     </div>
                     <div class="modal-body">
                         <div class="custom-form mt-4">
-                            <form>
+                            <form action="@Url.Action("Login","User")" id="FormLogin">
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group blog-details-form">
                                             <i class="mdi mdi-account text-muted f-17"></i>
-                                            <input name="name" id="name" type="text" class="form-control blog-details f-15 pt-2" placeholder="Username" required="">
+                                            <input name="Username" id="Username" type="text" class="form-control blog-details f-15 pt-2" placeholder="Username" required="">
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
@@ -221,7 +229,7 @@
                                 </div>
                                 <div class="row mt-3">
                                     <div class="col-sm-12 text-right">
-                                        <input type="submit" id="submit2" name="submit" class="btn-block btn btn-custom" value="Log In">
+                                        <button type="submit" class="btn btn-info">Log In</button>
                                     </div>
                                 </div>
                             </form>
@@ -261,7 +269,7 @@
                             </div>
                         </div>
                         <div class="custom-form mt-4">
-                            <form action="@Url.Action("login","User")" method="post">
+                            <form action="@Url.Action("Register","User")" method="post" id="FormRegister">
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group blog-details-form">
@@ -285,10 +293,7 @@
                                         <div class="form-group blog-details-form">
                                             <i class="mdi mdi-lock text-muted f-17"></i>
                                             <input id="confirm-password" type="Password" class="form-control blog-details f-15 pt-2" placeholder="Confirm Password" required="">
-                                            @*<select id="UserPosition" name="UserPosition">
-                                                <option value="0" selected></option>
-                                                <option value="1"></option>
-                                            </select>*@
+                                            <input type="text" value="true" id="UserPosition" name="UserPosition" hidden />
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
@@ -307,7 +312,7 @@
                                 </div>
                                 <div class="row mt-3">
                                     <div class="col-sm-12 text-right">
-                                        <input type="submit" id="submit3" name="submit" class="btn-block btn btn-custom" value="Register Now">
+                                        <button type="submit" class="btn ">Register Now</button>
                                     </div>
                                 </div>
 
@@ -340,7 +345,6 @@
                                     </li>
                                 </ul>
                             </form>
-                            <!-- /form -->
                         </div>
                     </div>
                 </div>

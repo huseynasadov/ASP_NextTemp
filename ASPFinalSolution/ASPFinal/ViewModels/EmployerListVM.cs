@@ -11,5 +11,6 @@ namespace ASPFinal.ViewModels
         public HeaderSetting HeaderSetting { get; set; }
         public _SidebarVM _SidebarVM { get; set; }
         public ICollection<Employer> Employers { get; set; }
+        public PaginationVM Pagination { get; set; }
     }
 }
